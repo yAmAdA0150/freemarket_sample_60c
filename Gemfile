@@ -86,3 +86,5 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'pry-rails'
+gem 'nokogiri', ">= 1.10.4"
+
