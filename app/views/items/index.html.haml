@@ -1,20 +1,43 @@
-.contents
-  .contents__thema
-    %h2.contents__attention 
+-# aタグのURLは仮置きのため#undefinedを入力しています
+-# .main-itemsクラスのレディース新着アイテムの「もっとみる＞」はクリックするとレディースの商品一覧に飛びます
+.content-main
+  .main__header
+    %h2.main__header__name
       = "人気のカテゴリ"
-    .cointents__attention__object
-    %ul.contents__attention__box
-      %li.contents__attention__name
-        %a(href='https://www.mercari.com/jp/')
+    .main__header__block
+    %ul.main__header__block__menu
+      %li.main__header__block__name
+        %a(href='#undefined')
           レディース
-      %li.contents__attention__name
-        %a(href='https://www.mercari.com/jp/')
+      %li.main__header__block__name
+        %a(href='#undefined')
           メンズ
-      %li.contents__attention__name
-        %a(href='https://www.mercari.com/jp/')
+      %li.main__header__block__name
+        %a(href='#undefined')
           家電・スマホ・カメラ
-      %li.contents__attention__name
-        %a(href='https://www.mercari.com/jp/')
+      %li.main__header__block__name
+        %a(href='#undefined')
           おもちゃ・ホビー・グッズ
-  contents
-      
+        
+.main-items
+  .items__content
+    .items__content__block
+    %h3.items__content__block__name
+      レディース新着アイテム
+    .items__content__block__description
+      %a(href='https://www.mercari.com/jp/category/1/')
+        もっと見る
+      %a(href='https://www.mercari.com/jp/category/1/')
+        -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（川崎は@import " font-awesome ";は未入力）
+        %i.fas.fa-angle-right
+
+
+  -# ここから下は検証からコピーしてconvert to HAMLして貼り付けただけで手を加えていません。
+  %div{:style => "visibility: visible; transition: all 0.5s ease 0s; opacity: 1;"}
+  %a.style_link__3tLB3.style_fluidLink__WTcwb{:href => "https://item.mercari.com/jp/m46869239326/"}
+    %figure.style_card__1SiAF.style_responsiveLv1__26FNN.common_fontFamily__3-3Si.style_fluid__19gwX
+      %figcaption
+        %span ハローキティ ユニークデザイン 可愛いキーケース＆コインケース 経年劣化あり
+      .style_thumbnail__N_xAi
+        %span{"aria-label" => "Price"} ¥1,500
+        %img{:alt => "Thumbnail of \"ハローキティ ユニークデザイン 可愛いキーケース＆コインケース 経年劣化あり\"", :src => "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122"}/
