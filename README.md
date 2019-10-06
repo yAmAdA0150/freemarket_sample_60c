@@ -20,6 +20,7 @@
 - has_many :notifications
 - has_many :to_do_lists
 - has_many :messages
+- has_one  :adress
 - has_one :credit_card
 - has_one :profile 
 
@@ -34,6 +35,17 @@
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
+|sales|integer||
+|point|integer||
+|image|string||
+|profile|text||
+
+### Association
+belongs_to :user
+
+## Adressテーブル
+|Column|Type|Options|
+|------|----|-------|
 |postcode|integer|null: false|
 |prefecture|references|null: false,FK: true|
 |city|string|null: false|
@@ -43,14 +55,9 @@
 |birthyear|integer||
 |birthmonth|integer||
 |birthday|integer||
-|sales|integer||
-|Point|integer||
-|Image|string||
-|Profile|text||
 
 ### Association
 belongs_to :user
-
 
 ## credit_cardsテーブル
 |Column|Type|Options|
