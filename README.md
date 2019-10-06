@@ -20,7 +20,7 @@
 - has_many :notifications
 - has_many :to_do_lists
 - has_many :messages
-- has_one  :adress
+- has_one  :address
 - has_one :credit_card
 - has_one :profile 
 
@@ -43,13 +43,13 @@
 ### Association
 belongs_to :user
 
-## Adressテーブル
+## Addressテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postcode|integer|null: false|
 |prefecture|references|null: false,FK: true|
 |city|string|null: false|
-|address|text||
+|street|text||
 |building_name|text||
 |phone_number|integer||
 |birthyear|integer||
