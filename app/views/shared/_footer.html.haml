@@ -42,6 +42,11 @@
         %li.about__menu__list
           =link_to "/", class:"about__menu__list__link" do
             メルカリロゴ利用ガイドライン
+        =link_to "/", class:"link" do
+          = fa_icon 'twitter', class: 'icon fa-3x'
+        =link_to "/", class:"link" do
+          = fa_icon 'facebook-square', class: 'icon fa-3x'
+
     .help 
       %h2.help__title
         ヘルプ＆ガイド
@@ -73,7 +78,7 @@
     .agreement
       %h2.agreement__title
         プライバシーと利用規約
-      .agreement__left__menu
+      .agreement__left
         %ul.agreement__left__menu
           %li.agreement__left__menu__list
             =link_to "/", class:"agreement__left__menu__list__link" do
@@ -87,7 +92,7 @@
           %li.agreement__left__menu__list
             =link_to "/", class:"agreement__left__menu__list__link" do
               コンプライアンスポリシー
-      .agreement__right__menu
+      .agreement__right
         %ul.agreement__right__menu
           %li.agreement__right__menu__list
             =link_to "/", class:"agreement__right__menu__list__link" do
