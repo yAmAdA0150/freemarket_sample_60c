@@ -178,7 +178,7 @@ li {
         }
         .items {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 3fr);
             gap: 6px 6px;
             .item {
                 box-sizing: border-box;
@@ -270,33 +270,27 @@ li {
 
 @media(min-width:768px) {
     .main__header {
-        padding: 56px 0px 30px;
+        padding: 56px 0px 30px!important;
         &__name {
-            font-size: 28px;
+            font-size: 28px!important;
         }
         &__block {
             &__menu {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin: -10px 0px 0px -10px;
+                display: block!important;
+                text-align: center!important;
+                width: 100%!important;
+                margin: -10px 0px 0px -10px!important;
                 &__name {
-                    margin: 10px 0px 0px 10px;
+                    margin: 10px 0px 0px 10px!important;
                 }
             }
         }
     }
     .items {
-        grid-template-columns: repeat(5, 1fr)!important;
+        grid-template-columns: repeat(5, 2fr)!important;
         gap: 20px 20px!important;
-    }
-    .item {
-        // width: 157px;
-        &__box {
-            // width: 157px!important;
-            &__image {
-                // height: 157px!important;
-            }
+        &__content__block__name {
+            font-size: 24px!important;
         }
     }
     .wrapper {
@@ -320,15 +314,12 @@ li {
 
 @media (max-width: 767px) and (min-width: 375px) {
     .item {
-        // height: 117px!important;
         &__box {
-            // width: 117px!important;
             &__text {
                 font-size: 12px!important;
                 height: 46px!important;
                 padding: 0 8px!important;
                 &__image {
-                    // height: 117px!important;
                     &__price {
                         bottom: 4px!important;
                         font-size: 14px!important;
@@ -342,16 +333,13 @@ li {
 
 @media (max-width: 374px) {
     .item {
-        // height: 98px!important;
         &__box {
-            // width: 98px!important;
             &__text {
                 font-size: 11px!important;
                 height: 42px!important;
                 padding: 0 8px!important;
             }
             &__image {
-                // height: 98px!important;
                 &__price {
                     bottom: 4px!important;
                     font-size: 14px!important;
