@@ -16,13 +16,18 @@
           = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'list-ul', class: 'icons'
             カテゴリーから探す
+        -# 下の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
+        -# jsも使うのでrenderで分ける方がいいかも...
+        -# とりあえずクラス名だけ記述している状態です。
         -# .topbar__under__choice__example__list
       %li.topbar__under__left__choice
         %h2.topbar__under__left__choice__example
           = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'tag', class: 'icons'
             ブランドから探す
-        -# 下の記述は、カーソルを合わせた時に出てくる候補部分
+        -# 下の記述は、カーソルを合わせた際にブランド一覧を表示するためのもの。
+        -# jsも使うのでrenderで分ける方がいいかも...
+        -# とりあえずクラス名だけ記述している状態です。
         -# .topbar__under__choice__example__list
 
       -# この下からifでログインしているかいないかで分岐する。
@@ -31,29 +36,28 @@
       %li.topbar__under__right__contents
         %h2.topbar__under__right__contents__user
           = link_to 'https://www.mercari.com/jp/', class: 'link' do
-            = fa_icon 'heart', class: 'mark'
+            = fa_icon 'heart'
             いいね！一覧
       %li.topbar__under__right__contents
         %h2.topbar__under__right__contents__user
           = link_to 'https://www.mercari.com/jp/', class: 'link' do
-            = fa_icon 'bell', class: 'mark'
+            = fa_icon 'bell'
             お知らせ
       %li.topbar__under__right__contents
         %h2.topbar__under__right__contents__user
           = link_to 'https://www.mercari.com/jp/', class: 'link' do
-            = fa_icon 'check', class: 'mark'
+            = fa_icon 'check'
             やることリスト
       %li.topbar__under__right__contents
         %h2.topbar__under__right__contents__user
           = link_to 'https://www.mercari.com/jp/', class: 'link' do
-            = fa_icon 'user', class: 'mark'
+            = fa_icon 'user'
             マイページ
       -# -else
-      -#   %li.topbar__under__right__contents
-      -#     = link_to 'https://www.mercari.com/jp/', class: "link" do
-      -#       .topbar__under__right__contents__list
-      -#         .topbar__under__right__contents__list--text-red 新規会員登録
-      -#   %li.topbar__under__right__contents
-      -#     = link_to 'https://www.mercari.com/jp/', class: "link" do
-      -#       .topbar__under__right__contents__list
-      -#         .topbar__under__right__contents__list--text-blue ログイン
+      -# %li.topbar__under__right__contents
+      -#   = link_to 'https://www.mercari.com/jp/', class: "link" do
+      -#     .topbar__under__right__contents__list
+      -#       .topbar__under__right__contents__list--text-red 新規会員登録
+      -# %li.topbar__under__right__contents
+      -#   = link_to 'https://www.mercari.com/jp/', class: "login" do
+      -#     ログイン
