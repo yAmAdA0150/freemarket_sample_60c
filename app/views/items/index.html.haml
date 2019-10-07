@@ -1,112 +1,148 @@
 -# aタグのURLは仮置きのため#undefinedを入力しています
 -# .main-itemsクラスのレディース新着アイテムの「もっとみる＞」はクリックするとレディースの商品一覧に飛びます
 .wrapper
-  .slide__contents
-    %ul
-      %li.img1
-        =link_to "https://jp-news.mercari.com/2019/10/04/free-campaign/" do
-          %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
-      %li.img2
-        %a{:href => "#"}
-          %img{:alt => "キャンプ", :src => "https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?3761641567"}/
-      %li.img3
-        %a{:href => "#"}
-          %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
-      %li.img4
-        =link_to "https://jp-news.mercari.com/2019/10/04/free-campaign/" do
-          %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
-      %li.img5
-        %a{:href => "#"}
-          %img{:alt => "キャンプ", :src => "https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?3761641567"}>/
-  .content-main
-    .main__header
-      %h2.main__header__name
-        = "人気のカテゴリ"
-      .main__header__block
-        %ul.main__header__block__menu
-          -# -categories.each |do|
-          -#   %li.main__header__block__name
-          -#     = link_to "#category.name do
-          -#       = category.name
-          %li.main__header__block__menu__name
-            =link_to "#category.name", class:"link" do
-              レディース
-          %li.main__header__block__menu__name
-            =link_to "#category.name", class:"link" do
-              メンズ
-          %li.main__header__block__menu__name
-            =link_to "#category.name", class:"link" do
-              家電・スマホ・カメラ
-          %li.main__header__block__menu__name
-            =link_to "#category.name", class:"link" do
-              おもちゃ・ホビー・グッズ
-  .main-items
-    -# ここでrender
-    .items__content
-      .items__content__block
-        %h3.items__content__block__name
-          category.name新着アイテム
-        .items__content__block__description
-          =link_to "https://www.mercari.com/jp/category/1/" do
-            もっと見る
-          =link_to "https://www.mercari.com/jp/category/1/" do
-            -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-            %i.fas.fa-angle-right
-      -# ここは_item.html.hamlをrenderします
-      .items
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
-        =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
-          .item
-            .item__box
-              =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image"
-              .item__box__price
-                item.price
-              .item__box__text
-                item.text
+  .contents
+    .slide__contents
+      %ul
+        %li.img1
+          =link_to "https://jp-news.mercari.com/2019/10/04/free-campaign/" do
+            %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
+        %li.img2
+          %a{:href => "#"}
+            %img{:alt => "キャンプ", :src => "https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?3761641567"}/
+        %li.img3
+          %a{:href => "#"}
+            %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
+        %li.img4
+          =link_to "https://jp-news.mercari.com/2019/10/04/free-campaign/" do
+            %img{:alt => "手数料無料", :src => "https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg"}>/
+        %li.img5
+          %a{:href => "#"}
+            %img{:alt => "キャンプ", :src => "https://www-mercari-jp.akamaized.net/assets/img/featured/camp/index/index_keyvisual.png?3761641567"}>/
+    .content-main
+      .main__header
+        %h2.main__header__name
+          = "人気のカテゴリ"
+        .main__header__block
+          %ul.main__header__block__menu
+            -# -categories.each |do|
+            -#   %li.main__header__block__name
+            -#     = link_to "#category.name do
+            -#       = category.name
+            %li.main__header__block__menu__name
+              =link_to "#category.name", class:"link" do
+                レディース
+            %li.main__header__block__menu__name
+              =link_to "#category.name", class:"link" do
+                メンズ
+            %li.main__header__block__menu__name
+              =link_to "#category.name", class:"link" do
+                家電・スマホ・カメラ
+            %li.main__header__block__menu__name
+              =link_to "#category.name", class:"link" do
+                おもちゃ・ホビー・グッズ
+    .main-items
+      -# ここでrender
+      .items__content
+        .items__content__block
+          %h3.items__content__block__name
+            category.name新着アイテム
+          .items__content__block__description
+            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
+              もっと見る
+            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
+              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
+              %i.fas.fa-angle-right
+        -# ここは_item.html.hamlをrenderします
+        .item_all
+          .items
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
+            .item
+              =link_to "https://item.mercari.com/jp/m46869239326/", class:"item-link" do
+                .item__box
+                  .item__box__image
+                    %span.item__box__image__price
+                      item.price
+                    =image_tag "https://static.mercdn.net/thumb/photos/m46869239326_1.jpg?1570023122", alt:"item.text", class:"item__box__image__photo"
+                  .item__box__text
+                    %span.item__box__text__title
+                      item.text
