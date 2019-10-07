@@ -23,23 +23,23 @@
       %h2.main__header__name
         = "人気のカテゴリ"
       .main__header__block
-      %ul.main__header__block__menu
-        -# -categories.each |do|
-        -#   %li.main__header__block__name
-        -#     = link_to "#category.name do
-        -#       = category.name
-        %li.main__header__block__menu__name
-          =link_to "#category.name", class:"link" do
-            レディース
-        %li.main__header__block__menu__name
-          =link_to "#category.name", class:"link" do
-            メンズ
-        %li.main__header__block__menu__name
-          =link_to "#category.name", class:"link" do
-            家電・スマホ・カメラ
-        %li.main__header__block__menu__name
-          =link_to "#category.name", class:"link" do
-            おもちゃ・ホビー・グッズ
+        %ul.main__header__block__menu
+          -# -categories.each |do|
+          -#   %li.main__header__block__name
+          -#     = link_to "#category.name do
+          -#       = category.name
+          %li.main__header__block__menu__name
+            =link_to "#category.name", class:"link" do
+              レディース
+          %li.main__header__block__menu__name
+            =link_to "#category.name", class:"link" do
+              メンズ
+          %li.main__header__block__menu__name
+            =link_to "#category.name", class:"link" do
+              家電・スマホ・カメラ
+          %li.main__header__block__menu__name
+            =link_to "#category.name", class:"link" do
+              おもちゃ・ホビー・グッズ
   .main-items
     -# ここでrender
     .items__content
