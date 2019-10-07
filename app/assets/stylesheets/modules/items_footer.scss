@@ -58,7 +58,7 @@
         width: auto!important;
     }
     .bottom {
-        width: 1020px;
+        width: 1020px!important;
         margin: 30px auto 20px!important;
     }
 }
@@ -332,7 +332,6 @@ footer {
         &__link {
             color: inherit;
             text-decoration: none;
-            text-align: center;
             &__logo {
                 height: 33px;
                 width: 124px;
