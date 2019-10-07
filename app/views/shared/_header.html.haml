@@ -25,19 +25,35 @@
         -# 下の記述は、カーソルを合わせた時に出てくる候補部分
         -# .topbar__under__choice__example__list
 
-        -# この下からifでログインしているかいないかで分岐する。current_user使って。
-        -# ベルマーク = fa_icon 'bell', class: ''
-        -# お知らせ
-        -# チェックアイコン = fa_icon 'check', class: ''
-        -# やることリスト
-        -# 人の顔 = fa_icon 'user', class: ''
-        -# マイページ
+      -# この下からifでログインしているかいないかで分岐する。
     %ul.topbar__under__right
+      -# - if user_signed_in?
       %li.topbar__under__right__contents
-        = link_to 'https://www.mercari.com/jp/', class: "link" do
-          .topbar__under__right__contents__list
-            .topbar__under__right__contents__list--text-red 新規会員登録
+        %h2.topbar__under__right__contents__user
+          = link_to 'https://www.mercari.com/jp/', class: 'link' do
+            = fa_icon 'heart', class: 'mark'
+            いいね！一覧
       %li.topbar__under__right__contents
-        = link_to 'https://www.mercari.com/jp/', class: "link" do
-          .topbar__under__right__contents__list
-            .topbar__under__right__contents__list--text-blue ログイン
+        %h2.topbar__under__right__contents__user
+          = link_to 'https://www.mercari.com/jp/', class: 'link' do
+            = fa_icon 'bell', class: 'mark'
+            お知らせ
+      %li.topbar__under__right__contents
+        %h2.topbar__under__right__contents__user
+          = link_to 'https://www.mercari.com/jp/', class: 'link' do
+            = fa_icon 'check', class: 'mark'
+            やることリスト
+      %li.topbar__under__right__contents
+        %h2.topbar__under__right__contents__user
+          = link_to 'https://www.mercari.com/jp/', class: 'link' do
+            = fa_icon 'user', class: 'mark'
+            マイページ
+      -# -else
+      -#   %li.topbar__under__right__contents
+      -#     = link_to 'https://www.mercari.com/jp/', class: "link" do
+      -#       .topbar__under__right__contents__list
+      -#         .topbar__under__right__contents__list--text-red 新規会員登録
+      -#   %li.topbar__under__right__contents
+      -#     = link_to 'https://www.mercari.com/jp/', class: "link" do
+      -#       .topbar__under__right__contents__list
+      -#         .topbar__under__right__contents__list--text-blue ログイン
