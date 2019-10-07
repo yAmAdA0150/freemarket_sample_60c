@@ -1,32 +1,43 @@
 .topbar
-  .main
-    .main__icon
+  .topbar__main
+    %h1.topbar__main__icon
       = link_to 'https://www.mercari.com/jp/' do
-        =image_tag "mercari_widelogo.png", alt: "Mercari", class: "main__icon--logo"
-    .main__search
-      %form{class: 'main__search__form'}
-        %input{placeholder: "何かお探しですか？", class: 'main__search__form--folder'}
-        %button{class: 'main__search__form--push'}
+        =image_tag "mercari_widelogo.png", alt: "Mercari", class: "topbar__main__icon--logo"
+    .topbar__main__search
+      %form{class: 'topbar__main__search__form'}
+        %input{placeholder: "何かお探しですか？", class: 'topbar__main__search__form--folder'}
+        %button{class: 'topbar__main__search__form--push'}
           = link_to 'https://www.mercari.com/jp/' do
             = fa_icon 'search', class: 'icon'
-  .under
-    .choice
-      .choice__example
-        .chice__example--button
-          = link_to 'https://www.mercari.com/jp/' do
+  .topbar__under
+    %ul.topbar__under__left
+      %li.topbar__under__left__choice
+        %h2.topbar__under__left__choice__example
+          = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'list-ul', class: 'icons'
             カテゴリーから探す
-        .choice__example--list
-      .choice__example
-        .chice__example--button
-          = link_to 'https://www.mercari.com/jp/' do
+        -# .topbar__under__choice__example__list
+      %li.topbar__under__left__choice
+        %h2.topbar__under__left__choice__example
+          = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'tag', class: 'icons'
             ブランドから探す
-        .choice__example--list
-    .sign
-      .sign__new
-        = link_to 'https://www.mercari.com/jp/', class: 'sign__new--botton' do
-          新規会員登録
-      .sign__login
-        = link_to 'https://www.mercari.com/jp/', class: 'sign__login--botton' do
-          ログイン
+        -# 下の記述は、カーソルを合わせた時に出てくる候補部分
+        -# .topbar__under__choice__example__list
+
+        -# この下からifでログインしているかいないかで分岐する。current_user使って。
+        -# ベルマーク = fa_icon 'bell', class: ''
+        -# お知らせ
+        -# チェックアイコン = fa_icon 'check', class: ''
+        -# やることリスト
+        -# 人の顔 = fa_icon 'user', class: ''
+        -# マイページ
+    %ul.topbar__under__right
+      %li.topbar__under__right__contents
+        = link_to 'https://www.mercari.com/jp/', class: "link" do
+          .topbar__under__right__contents__list
+            .topbar__under__right__contents__list--text-red 新規会員登録
+      %li.topbar__under__right__contents
+        = link_to 'https://www.mercari.com/jp/', class: "link" do
+          .topbar__under__right__contents__list
+            .topbar__under__right__contents__list--text-blue ログイン
