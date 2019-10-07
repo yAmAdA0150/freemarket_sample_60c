@@ -88,3 +88,16 @@ gem 'devise'
 gem 'pry-rails'
 gem 'nokogiri', ">= 1.10.4"
 
+gem 'ransack'
+gem 'gretel'
+gem 'pundit'
+gem 'cancancan'
+gem 'ancestry'
+gem 'twilio-ruby'
+gem 'dotenv'
+gem 'rubocop'
+gem 'dotenv-rails'
+gem 'sidekiq'
+gem 'sidekiq-failures'
+gem 'impressionist'
+
