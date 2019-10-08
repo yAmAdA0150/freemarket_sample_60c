@@ -78,7 +78,7 @@ header {
             justify-content: space-between;
             margin-top: 8px;
             &__left {
-                height: 32px;
+                height: 2rem;
                 text-decoration: none;
                 line-height: 32px;
                 display: flex;
@@ -87,6 +87,7 @@ header {
                     text-align: center;
                     text-decoration: none;
                     position: relative;
+                    list-style-type: none;
                     z-index: 3;
                     padding-right: 20px;
                     &:hover ul.topbar__under__left__choice__example__list {
@@ -129,72 +130,65 @@ header {
                             width: 100%;
                             background-color: white;
                             &__type {
+                                // overflow: hidden;
+                                // opacity: 0;
                                 position: relative;
+                                list-style: none;
                                 top: 0;
-                                margin-left: 0;
+                                // margin-left: 0;
                                 height: 616px;
-                                font-size: 16px;
-                                font-weight: none;
-                                color: #222222;
+                                // font-size: 16px;
+                                // font-weight: none;
+                                // color: #222222;
                                 &:hover ul.topbar__under__left__choice__example__list__type__category {
-                                  top: 42px;
-                                  visibility: visible;
+                                  overflow: visible;
                                   opacity: 1;
                                 }
                                 &:hover {
+                                  color: white;
                                   background-color: #FF0211;
-                                }
-                                .show {
-                                  opacity: 1;
                                 }
                                 &__category {
                                   position: absolute;
+                                  top: 0;
                                   opacity: 0;
-                                  top: 40px;
-                                  z-index: 1;
+                                  // z-index: 1;
                                   left: 100%;
                                   width: 100%;
                                   background-color: white;
                                   &__menu {
                                     position: relative;
-                                    top: 0;
+                                    list-style: none;
                                     margin-left: 0;
                                     height: 616px;
                                     font-size: 16px;
                                     font-weight: none;
                                     color: #222222;
-                                    .show {
-                                      opacity: 1;
-                                    }    
                                     &:hover {
                                       background-color: #EEEEEE;
                                     }
                                     &:hover ul.topbar__under__left__choice__example__list__type__category__menu__final {
-                                      top: 42px;
                                       visibility: visible;
                                       opacity: 1;
                                     }
                                     &__final {
                                       position: absolute;
+                                      top: 0;
                                       opacity: 0;
-                                      top: 40px;
                                       left: 100%;
                                       width: 100%;
-                                      height: 616px;
                                       background-color: white;
                                       &__page {
                                         text-decoration: none;
                                         position: relative;
-                                        top: 0;
+                                        list-style: none;
                                         margin-left: 0;
                                         height: 616px;
                                         font-size: 16px;
                                         font-weight: none;
                                         color: #222222;
                                         visibility: visible;
-                                        .show {
-                                          opacity: 1;
-                                        }        
+                                        opacity: 0;
                                         &:hover {
                                           background-color: #EEEEEE;
                                         }
