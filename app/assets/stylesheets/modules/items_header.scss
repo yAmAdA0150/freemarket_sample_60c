@@ -89,6 +89,13 @@ header {
           position: relative;
           z-index: 3;
           padding-right: 20px;
+          -webkit-transition: all .5s;
+          transition: all .5s;
+          &:hover {
+            top: 50px;
+            visibility: visible;
+            opacity: 1;
+          }
           &__example {
             height: 32px;
             line-height: 30px;
@@ -106,12 +113,37 @@ header {
             .link:hover {
               color: #4DC9FF;
               text-decoration: none;
+              display: block;
             }
             .icons {
               color: #FF0211;
               font-size: 12px;
               margin-right: 4px;
               font-size: 1em;
+            }
+            &__category {
+              visibility: hidden;
+              opacity: 0;
+              z-index: 1;              background-color: #fafafa;
+              position: absolute;
+              -webkit-transition: all .2s ease;
+              transition: all .2s ease;
+              height: 160px;
+              top: 50px;
+              left: 0;
+              z-index: 1;
+              opacity: 1;
+              width: 200px;
+              height: 160px;
+              &__list {
+                margin-left: 0;
+                height: 160px;
+                &:hover {
+                  visibility: visible;
+                  color: white;
+                  background-color: red;
+                }
+              }
             }
           }
         }

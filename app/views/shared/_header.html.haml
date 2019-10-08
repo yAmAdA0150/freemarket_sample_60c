@@ -16,21 +16,26 @@
           = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'list-ul', class: 'icons'
             カテゴリーから探す
-        -# 下の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
-        -# jsも使うのでrenderで分ける方がいいかも...
-        -# とりあえずクラス名だけ記述している状態です。
-        -# .topbar__under__choice__example__list
+          %ul.topbar__under__left__choice__example__category
+            %li.topbar__under__left__choice__example__category__list
+              レディース
+              -# .topbar__under__left__category
+              -#   = render partial: 'shared/category'
+                -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
+                -# renderで分けているけどまだ表示できていない状態...
       %li.topbar__under__left__choice
         %h2.topbar__under__left__choice__example
           = link_to 'https://www.mercari.com/jp/', class: "link" do
             = fa_icon 'tag', class: 'icons'
             ブランドから探す
-        -# 下の記述は、カーソルを合わせた際にブランド一覧を表示するためのもの。
-        -# jsも使うのでrenderで分ける方がいいかも...
-        -# とりあえずクラス名だけ記述している状態です。
-        -# .topbar__under__choice__example__list
-
-      -# この下からifでログインしているかいないかで分岐する。
+        -# = render partial: 'shared/brand'
+          -# %ul.brand
+          -#   = link_to 'https://www.mercari.com/jp/', class: 'list' do
+          -#     %li.brand__menu
+          -#       シャネル
+        -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
+        -# renderで分けているけどまだ表示できていない状態...
+          -# この下からifでログインしているかいないかで分岐する。
     %ul.topbar__under__right
       -# - if user_signed_in?
       %li.topbar__under__right__contents
@@ -53,7 +58,7 @@
           = link_to 'https://www.mercari.com/jp/', class: 'link' do
             = fa_icon 'user'
             マイページ
-      -# -else
+      -# - else
       -# %li.topbar__under__right__contents
       -#   = link_to 'https://www.mercari.com/jp/', class: "link" do
       -#     .topbar__under__right__contents__list
