@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_102622) do
+ActiveRecord::Schema.define(version: 2019_10_07_115701) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_102622) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -212,18 +212,18 @@ ActiveRecord::Schema.define(version: 2019_10_08_102622) do
     t.string "email", null: false
     t.string "passward", null: false
     t.string "password_confirmation", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.integer "birthyear"
+    t.integer "birthmonth"
+    t.integer "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.integer "birthyear"
-    t.integer "birthmonth"
-    t.integer "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
