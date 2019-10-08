@@ -1,3 +1,35 @@
+$(function() {
+  $('.slider').slick({
+    autoplay:true,
+    // arrows: strue,
+    autoplaySpeed:5000,
+    // dots:true,
+    // nextArrow: '<img src = "https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png" class="slide-arrow next-arrow">'
+  });
+  // // adaptiveHeight:true,
+  // // slidesToShow:3,
+  // infinite: true, //スライドのループ有効化
+  // dots:true, //ドットのナビゲーションを表示
+  // centerMode: true, //要素を中央寄せ
+  // centerPadding:'10%', //両サイドの見えている部分のサイズ
+  // autoplay:true, //自動再生
+    // arrows:true,
+    // appendDots: $('.dots'),
+    // appendArrows: $('.arrows'),
+  // variableWidth:true,
+  // slidesToShow: 1,ss
+  // slidesToScroll:1,
+  // asNavFor: null,
+  // dotsClass: 'slide-dots'
+  // appendDots:$("#apDots"),
+  // dotsClass: 'slide-dots',
+    // cssEase: 'linear',
+    // prevArrow: '＜',
+    // nextArrow: '＞'
+  // prevArrow: '<img src="https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg" class="prev-arrow">',
+  // snextArrow: '<img src="https://web-jp-assets.mercdn.net/_next/static/images/carousel-prev-af7ca886ce42c4c02610cd15421ddcad.png" class="next-arrow">'
+});
+  
 document.addEventListener("DOMContentLoaded", function() {
   function showElementAnimation() {
 
@@ -19,5 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
   showElementAnimation();
   window.addEventListener('scroll', showElementAnimation);
 })
+
+
 
 

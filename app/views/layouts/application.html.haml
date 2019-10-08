@@ -6,8 +6,11 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{ rel: "stylesheet", type: "text/css", href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"}
+    %link{ rel: "stylesheet", type: "text/css", href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"}
   %body
-    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css>", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js>", :rel => "stylesheet", :type => "text/css"}/
     = yield 
+
