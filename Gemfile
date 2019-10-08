@@ -100,4 +100,5 @@ gem 'dotenv-rails'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'impressionist'
-
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
