@@ -1,7 +1,5 @@
+= render 'shared/header'
 .wrapper
-  = render 'shared/header'
--# aタグのURLは仮置きのため#undefinedを入力しています
--# .main-itemsクラスのレディース新着アイテムの「もっとみる＞」はクリックするとレディースの商品一覧に飛びます
   .contents
     .slider
       .image1
@@ -50,9 +48,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -165,9 +161,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -280,9 +274,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -395,9 +387,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -532,9 +522,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -647,9 +635,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -762,9 +748,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -877,9 +861,7 @@
           .items__content__block__description
             =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
               もっと見る
-            =link_to "https://www.mercari.com/jp/category/1/",class:"more-link" do
-              -# ">"はfont-awesomeのように見えた。コードは書いたが、application.scssファイルは未編集です。（ぐっさんのファイルに@import " font-awesome ";入力済み）
-              %i.fas.fa-angle-right
+              = fa_icon 'angle-right'
         -# ここは_item.html.hamlをrenderします
         .item_all
           .items
@@ -983,6 +965,5 @@
                   .item__box__text
                     %span.item__box__text__title
                       item.text
-  = render 'shared/camera'
-
-  = render 'shared/footer'
+= render 'shared/camera'
+= render 'shared/footer'

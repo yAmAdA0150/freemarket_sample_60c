@@ -17,56 +17,56 @@
             = link_to '#', class: "link" do
               = fa_icon 'list-ul', class: 'icons'
               カテゴリーから探す
-            %ul.topbar__under__left__choice__example__list
-              %li.topbar__under__left__choice__example__list__type
-                一段目
-                %ul.topbar__under__left__choice__example__list__type__category
-                  %li.topbar__under__left__choice__example__list__type__category__menu
-                    二段目
-                    %ul.topbar__under__left__choice__example__list__type__category__menu__final
-                      %li.topbar__under__left__choice__example__list__type__category__menu__final__page
-                        三段目
+            -# %ul.topbar__under__left__choice__example__list
+            -#   %li.topbar__under__left__choice__example__list__type
+            -#     一段目
+            -#     %ul.topbar__under__left__choice__example__list__type__category
+            -#       %li.topbar__under__left__choice__example__list__type__category__menu
+            -#         二段目
+            -#         %ul.topbar__under__left__choice__example__list__type__category__menu__final
+            -#           %li.topbar__under__left__choice__example__list__type__category__menu__final__page
+            -#             三段目
                 -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
         %li.topbar__under__left__choice
           %h2.topbar__under__left__choice__example
             = link_to '#', class: "link" do
               = fa_icon 'tag', class: 'icons'
               ブランドから探す
-            %ul.topbar__under__left__choice__example__list
-              %li.topbar__under__left__choice__example__list__type
-                ブランド一段目
+            -# %ul.topbar__under__left__choice__example__list
+            -#   %li.topbar__under__left__choice__example__list__type
+            -#     ブランド一段目
                 -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
                 -# この下からifでログインしているかいないかで分岐する。
       %ul.topbar__under__right
         -# - if user_signed_in?
-        %li.topbar__under__right__contents
-          %h2.topbar__under__right__contents__user
-            = link_to '#', class: 'link' do
-              = fa_icon 'heart'
-              いいね！一覧
-        %li.topbar__under__right__contents
-          %h2.topbar__under__right__contents__user
-            = link_to '#', class: 'link' do
-              = fa_icon 'bell'
-              お知らせ
-        %li.topbar__under__right__contents
-          %h2.topbar__under__right__contents__user
-            = link_to '#', class: 'link' do
-              = fa_icon 'check'
-              やることリスト
-        %li.topbar__under__right__contents
-          %h2.topbar__under__right__contents__user
-            = link_to '#', class: 'link' do
-              = fa_icon 'user'
-              マイページ
+        -# %li.topbar__under__right__contents
+        -#   %h2.topbar__under__right__contents__user
+        -#     = link_to '#', class: 'link' do
+        -#       = fa_icon 'heart'
+        -#       いいね！一覧
+        -# %li.topbar__under__right__contents
+        -#   %h2.topbar__under__right__contents__user
+        -#     = link_to '#', class: 'link' do
+        -#       = fa_icon 'bell'
+        -#       お知らせ
+        -# %li.topbar__under__right__contents
+        -#   %h2.topbar__under__right__contents__user
+        -#     = link_to '#', class: 'link' do
+        -#       = fa_icon 'check'
+        -#       やることリスト
+        -# %li.topbar__under__right__contents
+        -#   %h2.topbar__under__right__contents__user
+        -#     = link_to '#', class: 'link' do
+        -#       = fa_icon 'user'
+        -#       マイページ
         -# - else
-        -# %li.topbar__under__right__contents
-        -#   = link_to '#', class: "link" do
-        -#     .topbar__under__right__contents__list
-        -#       .topbar__under__right__contents__list--text-red 新規会員登録
-        -# %li.topbar__under__right__contents
-        -#   = link_to '#', class: "login" do
-        -#     ログイン
+        %li.topbar__under__right__contents
+          = link_to '#', class: "link" do
+            .topbar__under__right__contents__list
+              .topbar__under__right__contents__list--text-red 新規会員登録
+        %li.topbar__under__right__contents
+          = link_to '#', class: "login" do
+            ログイン
 .narrow
   .narrow__top
     =link_to "/", class:"narrow__top__icon" do

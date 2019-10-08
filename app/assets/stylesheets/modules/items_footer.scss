@@ -42,20 +42,22 @@
     .help,
     .agreement,
     .country {
-        width: auto!important;
+        // width: auto!important;
         padding: 0px 40px 0px 0px!important;
     }
-    .agreement {
+    .about,
+    .help {
         margin-top: 18px!important;
         padding-right: 40px!important;
-        width: 43%!important;
-        margin-top: 18px;
-        padding-right: 40px;
-        width: 43%;
+        width: 19%!important;
+    }
+    .agreement {
+        width: 39%!important;
+        margin-top: 18px!important;
     }
     .country {
         margin-top: 18px!important;
-        width: auto!important;
+        width: 19%!important;
     }
     .bottom {
         width: 1020px!important;
