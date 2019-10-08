@@ -89,12 +89,10 @@ header {
                     position: relative;
                     z-index: 3;
                     padding-right: 20px;
-                    -webkit-transition: all .5s;
-                    transition: all .5s;
-                    &:hover {
-                        top: 50px;
-                        visibility: visible;
-                        opacity: 1;
+                    &:hover ul.topbar__under__left__choice__example__list {
+                      top: 42px;
+                      visibility: visible;
+                      opacity: 1;
                     }
                     &__example {
                         height: 32px;
@@ -121,28 +119,88 @@ header {
                             margin-right: 4px;
                             font-size: 1em;
                         }
-                        &__category {
-                            visibility: hidden;
+                        &__list {
+                            position: absolute;
+                            box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+                            top: 40px;
                             opacity: 0;
                             z-index: 1;
-                            background-color: #fafafa;
-                            position: absolute;
-                            -webkit-transition: all .2s ease;
-                            transition: all .2s ease;
-                            height: 160px;
-                            top: 50px;
                             left: 0;
-                            z-index: 1;
-                            opacity: 1;
-                            width: 200px;
-                            height: 160px;
-                            &__list {
+                            width: 100%;
+                            background-color: white;
+                            &__type {
+                                position: relative;
+                                top: 0;
                                 margin-left: 0;
-                                height: 160px;
+                                height: 616px;
+                                font-size: 16px;
+                                font-weight: none;
+                                color: #222222;
+                                &:hover ul.topbar__under__left__choice__example__list__type__category {
+                                  top: 42px;
+                                  visibility: visible;
+                                  opacity: 1;
+                                }
                                 &:hover {
-                                    visibility: visible;
-                                    color: white;
-                                    background-color: red;
+                                  background-color: #FF0211;
+                                }
+                                .show {
+                                  opacity: 1;
+                                }
+                                &__category {
+                                  position: absolute;
+                                  opacity: 0;
+                                  top: 40px;
+                                  z-index: 1;
+                                  left: 100%;
+                                  width: 100%;
+                                  background-color: white;
+                                  &__menu {
+                                    position: relative;
+                                    top: 0;
+                                    margin-left: 0;
+                                    height: 616px;
+                                    font-size: 16px;
+                                    font-weight: none;
+                                    color: #222222;
+                                    .show {
+                                      opacity: 1;
+                                    }    
+                                    &:hover {
+                                      background-color: #EEEEEE;
+                                    }
+                                    &:hover ul.topbar__under__left__choice__example__list__type__category__menu__final {
+                                      top: 42px;
+                                      visibility: visible;
+                                      opacity: 1;
+                                    }
+                                    &__final {
+                                      position: absolute;
+                                      opacity: 0;
+                                      top: 40px;
+                                      left: 100%;
+                                      width: 100%;
+                                      height: 616px;
+                                      background-color: white;
+                                      &__page {
+                                        text-decoration: none;
+                                        position: relative;
+                                        top: 0;
+                                        margin-left: 0;
+                                        height: 616px;
+                                        font-size: 16px;
+                                        font-weight: none;
+                                        color: #222222;
+                                        visibility: visible;
+                                        .show {
+                                          opacity: 1;
+                                        }        
+                                        &:hover {
+                                          background-color: #EEEEEE;
+                                        }
+                                      }
+                                    }
+                                  }
                                 }
                             }
                         }
