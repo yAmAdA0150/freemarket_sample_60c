@@ -1,0 +1,49 @@
+.brand {
+  // background-color: antiquewhite;
+  // width: 224px;
+  list-style: none;
+  // left: 0;
+  // display: none;
+  right: 39px;
+  top: 100%;
+  // z-index: 1;
+  position: absolute;
+  margin: 0;
+  // padding: 0;
+  // padding-left: 15px;
+  // font-size: 14px;
+  &___menu {
+    overflow: hidden;
+    width: 224px;
+    height: 0;
+    color: antiquewhite;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    transition: .2s;
+    // display: inline-block;
+    // list-style: none;
+    // position: relative;
+    &:hover {
+      visibility: visible;
+      display: block;
+      // overflow: visible;
+      // height: 2em
+    }
+    .list {
+      display: block;
+      // background-color: antiquewhite;
+      // color: gray;
+      line-height: 30px;
+      // text-align: center;
+      // text-decoration: none;
+      // font-weight: none;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 10px;
+    }
+  }
+}
