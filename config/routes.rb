@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   # end
 
 
-  
+  resources :items do
+  end
 
   resources :signup ,only: [:index, :create] do
     collection do

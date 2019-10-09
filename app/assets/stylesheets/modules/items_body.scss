@@ -35,22 +35,9 @@ body {
     margin: 0 auto 50px;
 }
 
-.slider {
-    height: 170px!important;
-    left: 50%;
-    margin-left: -50vw;
-    position: relative;
-    top: 0;
-    overflow: hidden;
-    width: 100vw;
-    div {
-        height: 100%;
-    }
-}
-
 .slick-prev:before,
 .slick-next:before {
-    color: #000 !important;
+    color: #000;
 }
 
 .slide-arrow {
@@ -85,36 +72,109 @@ body {
 // .slick-prev:before,.slick-next:before{
 //     color:black;
 // }
-.image1 {
-    height: 100%;
-    background-size: cover;
-    background-image: url('https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg');
-    background-position: center, center;
+.slider {
+    height: 170px;
+    left: 50%;
+    margin-left: -50vw;
     position: relative;
+    top: 0;
+    overflow: hidden;
     width: 100vw;
-}
-
-.image2 {
-    background-size: cover;
-    background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg");
-    background-position: center center;
-    width: 100vw;
-}
-
-.image3 {
-    background-size: cover;
-    background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
-    background-position: center, center;
-    width: 100vw;
+    div {
+        height: 100%;
+        .image1 {
+            height: 100%;
+            background-size: cover;
+            background-image: url('https://web-jp-assets.mercdn.net/_next/static/images/top-banner-super-exhibition-fes-1354ceda34bd06081a45ee755e911f07.jpg');
+            background-position: center, center;
+            position: relative;
+            width: 100vw;
+            &__block {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .image2 {
+            background-size: cover;
+            background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-camp-4f3fd88c685e8932d7dde2ad3a8336ba.jpg");
+            background-position: center center;
+            width: 100vw;
+            &__block {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .image3 {
+            background-size: cover;
+            background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
+            background-position: center, center;
+            width: 100vw;
+            &__box {
+                -webkit-box-align: start;
+                align-items: start;
+                display: flex;
+                height: 100%;
+                position: relative;
+                margin: 0px auto;
+                img.top_phone {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    height: 100%;
+                    vertical-align: middle;
+                }
+                &__texts {
+                    height: 100px;
+                    width: 100%;
+                    padding: 10px 40px;
+                    &__title {
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 1.4;
+                        margin-bottom: 16px;
+                    }
+                    &__text {
+                        height: 40px;
+                        font-size: 16px;
+                        line-height: 1.77777;
+                    }
+                    &__logos {
+                        position: absolute;
+                        height: 40px;
+                        bottom: 0;
+                        text-align: center;
+                        width: 100vw;
+                        padding: 5px;
+                        left: 0px;
+                        background-color: rgba(255, 255, 255, 0.4);
+                        a {
+                            text-decoration: none;
+                        }
+                        img.apple_store {
+                            display: inline-block;
+                            height: 32px;
+                            width: 110px;
+                            vertical-align: middle;
+                        }
+                        img.google_store {
+                            vertical-align: middle;
+                            display: inline-block;
+                            height: 32px;
+                            width: 110px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // s
-.slider img {
-    width: 1140px;
-    height: 390px;
-    display: block;
-}
-
+// .slider img {
+//     width: 1140px;
+//     height: 390px;
+//     display: block;
+// }
 // .slide__contents {
 //     width: 100vw;
 //     height: 290px;
@@ -139,7 +199,7 @@ body {
 
 .slick-prev:before,
 .slick-next:before {
-    color: #000 !important;
+    color: #000;
 }
 
 .slider p {
@@ -296,6 +356,9 @@ body {
                     padding: 5px 14px 5px 5px;
                     text-decoration: none;
                 }
+                &__font {
+                    font-size: 20px;
+                }
             }
         }
         .items {
@@ -390,7 +453,52 @@ body {
     }
 }
 
-@media(min-width:768px) {
+@media screen and (min-width:768px) {
+    .image3__box {
+        -webkit-box-align: center!important;
+        align-items: center!important;
+        max-width: 860px!important;
+        img.top_phone {
+            height: 100%;
+        }
+        &__texts {
+            &__title {
+                font-size: 40px!important;
+                white-space: normal!important;
+                padding: 0px!important;
+                margin-top: 20px;
+                height: 100px!important;
+                position: relative!important;
+                bottom: 110px!important;
+            }
+            &__text {
+                height: 50px!important;
+                position: relative!important;
+                bottom: 90px!important;
+            }
+            &__logos {
+                margin-bottom: 20px;
+                left: initial!important;
+                text-align: left!important;
+                padding: 0px!important;
+                position: relative;
+                background-color: transparent!important;
+                img.apple_store {
+                    background-color: initial!important;
+                    position: initial!important;
+                    text-align: left!important;
+                    height: 38px!important;
+                    width: 128px!important;
+                    padding: 0px!important;
+                }
+                img.google_store {
+                    height: 38px!important;
+                    width: 128px!important;
+                    margin-left: 8px!important;
+                }
+            }
+        }
+    }
     .main__header {
         padding: 56px 0px 30px!important;
         &__name {
@@ -438,9 +546,38 @@ body {
     .slider {
         height: 390px!important;
     }
+    img.top_phone {
+        background-size: auto!important;
+        height: 100%;
+    }
+    .image3__box__texts {
+        &__title {
+            position: absolute!important;
+            font-size: 60px!important;
+            bottom: 230px!important;
+        }
+        &__text {
+            font-size: 18px!important;
+            height: 100px!important;
+            position: absolute!important;
+            bottom: 80px!important;
+        }
+        &__logos {
+            position: absolute!important;
+            bottom: 30px!important;
+            img.apple_store {
+                height: 50px!important;
+                width: 170px!important;
+            }
+            img.google_store {
+                height: 50px!important;
+                width: 170px!important;
+            }
+        }
+    }
 }
 
-@media (max-width: 767px) and (min-width: 375px) {
+@media screen and (max-width: 767px) and (min-width: 375px) {
     .item {
         &__box {
             &__text {
@@ -459,7 +596,13 @@ body {
     }
 }
 
-@media (max-width: 374px) {
+@media (min-width: 375px) {
+    .narrow-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 374px) {
     .item {
         &__box {
             &__text {
@@ -475,5 +618,14 @@ body {
                 }
             }
         }
+    }
+    .wide-title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .image3__box__texts__text {
+        display: none;
     }
 }
