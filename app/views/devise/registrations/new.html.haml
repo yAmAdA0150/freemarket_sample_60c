@@ -1,42 +1,42 @@
 .container
   %header
     %h1
-      = link_to image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/jp/logo_horizontal.png?2296184308", alt: "mercari")
-    %nav.progress-bar
-      %ol.progress-bar.clearfix
-        %li
-          %span.progress-bar.active
-            会員情報
-        %li
-          %span.progress-bar
-          電話番号認証
-        %li
-          %span.progress-bar
-          お届け先住所
-        %li
-        %span.progress-bar
-          支払い方法
-        %li
-          %span.progress-bar
-          完了
+      = link_to image_tag("", alt: "mercari")
+    -# %nav.progress-bar
+    -#   %ol.progress-bar.clearfix
+    -#     %li
+    -#       %span.progress-bar.active
+    -#         会員情報
+    -#     %li
+    -#       %span.progress-bar
+    -#       電話番号認証
+    -#     %li
+    -#       %span.progress-bar
+    -#       お届け先住所
+    -#     %li
+    -#     %span.progress-bar
+    -#       支払い方法
+    -#     %li
+    -#       %span.progress-bar
+    -#       完了
   %main
     %h2.main-header
-      .main-contents
+      .main-header__main-contents
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           = render "devise/shared/error_messages", resource: resource
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :name,"ニックネーム"
             %span.require
               必須
             %br/
             = f.text_field :name, autofocus: true
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :email, "メールアドレス"
             %span.require
               必須
             %br/
             = f.email_field :email, autofocus: true, autocomplete: "email"
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :password, "パスワード"
             - if @minimum_password_length
               %em
@@ -45,32 +45,32 @@
               必須
             %br/
             = f.password_field :password, autocomplete: "new-password"
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :password_confirmation, "パスワード確認"
             %span.require
               必須
             %br/
             = f.password_field :password_confirmation, autocomplete: "new-password"
-          .form-group
+          .main-header__main-contents__form-group
             %h3.idenfication
             本人確認
             %p.text
             安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :name,"お名前（全角）"
             %span.require
               必須
             %br/
             = f.text_field :first_name, autofocus: true
             = f.text_field :last_name, autofocus: true
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :name,"お名前カナ（全角）"
             %span.require
               必須
             %br/
             = f.text_field :first_name_kana, autofocus: true
             = f.text_field :last_name_kana, autofocus: true
-          .form-group
+          .main-header__main-contents__form-group
             = f.label :name,"生年月日"
             %span.require
               必須
@@ -78,9 +78,9 @@
               .wrap
                 .icon
                 != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-          .btn-next
+          .main-header__main-contents__form-group__btn-next
             = f.submit "次へ進む"
-          .about
+          .main-header__main-contents__about
             = link_to "本人情報の登録について", class: "information" 
             = fa_icon 'angle-right', class: 'icon'
   %footer
@@ -92,7 +92,7 @@
           =link_to "メルカリ利用規約"
         %li
           =link_to "特定商品に関する表記"
-      =link_to image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2296184308", alt:"mercari")
+      =link_to image_tag("", alt:"mercari")
 
 
         
