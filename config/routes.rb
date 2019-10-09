@@ -22,8 +22,8 @@ Rails.application.routes.draw do
 
   resources :signup ,only: [:index, :create] do
     collection do
+      get 'index'
       get 'registration'
-      get 'sms_confimation'
       get 'sms_confimation'
       get 'address'
       get 'creditcard'
