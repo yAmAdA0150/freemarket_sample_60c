@@ -1,16 +1,9 @@
 class SignupController < ApplicationController
 
-  def index
+  def registration
+    
   end
 
-  def create
-  end
-
-  def edit
-  end 
-
-  def show
-  end
 
   def sms_confimation
   end
@@ -23,9 +16,5 @@ class SignupController < ApplicationController
 
   def complete
   end
-
-
-
-
 
 end
