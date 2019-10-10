@@ -1,25 +1,31 @@
 # README
 
-#　DB設計
+# DB設計
 
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|e-mailaddress|string|null: false,unique:true|
+|e-mail|string|null: false,unique:true|
 |password|string|null: false,unique:true|
 |passwordconfirmation|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
+|birthday|integer|null: false|
 
 ### Association
 - has_many :comments
 - has_many :items
 - has_many :likes
-- has_many :sns_credentials
 - has_many :traders
-- has_many :news
 - has_many :notifications
 - has_many :to_do_lists
 - has_many :messages
+- has_one :sns_credentials
 - has_one  :address
 - has_one :credit_card
 - has_one :profile 
@@ -31,14 +37,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |mobile_number|integer|null: false,unique:true|
-|last_name|string|null: false|
-|first_name|string|null: false|
-|last_name_kana|string|null: false|
-|first_name_kana|string|null: false|
 |sales|integer||
 |point|integer||
 |image|string||
-|profile|text||
+|text|text||
+|user_id|references|null :false,FK :true|
 
 ### Association
 belongs_to :user
@@ -47,25 +50,21 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |postcode|integer|null: false|
-|prefecture|references|null: false,FK: true|
+|prefecture|integer|null: false|
 |city|string|null: false|
 |street|text||
 |building_name|text||
 |phone_number|integer||
-|birthyear|integer||
-|birthmonth|integer||
-|birthday|integer||
+|user_id|references|null :false,FK :true|
 
 ### Association
 belongs_to :user
 
-## credit_cardsテーブル
+## cardsテーブル 
 |Column|Type|Options|
 |------|----|-------|
-|cardnumber|integer|null :false|
-|month|integer|null :false|
-|year|integer|null :false|
-|security_code|integer|null :false|
+|customer_id|integer|null :false|
+|card_id|integer|null :false|
 |user_id|references|null :false,FK :true|
 
 ### Association
@@ -100,6 +99,7 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
+|user_id|references|null:flase,FK:true|
 
 ### Association
 - belongs_to  :user
@@ -109,6 +109,7 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
+|user_id|references|null:flase,FK:true|
 
 ### Association
 - belongs_to :user
@@ -124,8 +125,6 @@ belongs_to :user
 - belongs_to :item
 - belongs_to :user
 
-
-<!-- ## Featured -->
 
 ## Brandsテーブル
 |Column|Type|Options|
@@ -146,8 +145,8 @@ belongs_to :user
 |display|boolean|null: false|
 |size_id|references|null: false,FK: true|
 |brand_id|references|null: false,index: true,FK: true|
-|category_id|refernce|null: false,index: true,FK: true|
-|user_id|refernce|null: false,index: true,FK: true|
+|category_id|references|null: false,index: true,FK: true|
+|user_id|references|null: false,index: true,FK: true|
 
 ### Association
 - belongs_to :brand
@@ -164,7 +163,7 @@ belongs_to :user
 |Column|Type|Options|
 |------|----|-------|
 |genre|string|null: false,unique: true|
-|ancestry|integerstring||
+|ancestry|string||
 
 ### Association
 - has_many :items
@@ -231,7 +230,6 @@ belongs_to :user
 - belongs_to :seller_id, class_name: "User"
 - has_many :tradings
 - has_many :reviews
-- has_one  :trading
 
 
 ## Shippingsテーブル
@@ -241,6 +239,7 @@ belongs_to :user
 |delivery_method|string|null:false|
 |delivery_to|reference|null:false|
 |days_to_be_delivered|integer|null:false|
+|item_id|references|null:false,FK:true|
 
 ### Association
 - belongs_to :item
@@ -263,6 +262,7 @@ belongs_to :user
 |------|----|-------|
 |text|text|null :false|
 |user_id|reference|null :false|
+|trading_id|reference|null :false|
 
 ### Association
 
@@ -275,9 +275,6 @@ belongs_to :user
 |------|----|-------|
 |title|text|null:false|
 |text|text|null:false|
-
-### Association
-- belongs_to :user
 
 
 
