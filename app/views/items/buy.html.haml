@@ -1,0 +1,103 @@
+-# 商品購入ページ
+
+= render 'shared/grayheader'
+
+.buy
+  %section.center
+    %h2.center__title
+      購入内容の確認
+    %section.center__item
+      %h3.center__item__photo
+        = image_tag 'top_phone.png', alt: 'prpduct', class: 'center__item__photo--product'
+      %p.center__item__name
+        商品名
+      %form.center__item__form
+        .center__item__form__total
+          ¥1,000
+        .center__item__form__specified
+          着払い
+        %ul.center__item__form__point
+          %li.center__item__form__point__box
+            .center__item__form__point__box__attention
+              ポイントはありません
+        %ul.center__item__form__price
+          %li.center__item__form__price__pay
+            .center__item__form__price__pay__title
+              支払い金額
+            .center__item__form__price__pay__figure
+              %span.center__item__form__price__pay__figure__yen
+                ¥1,000
+        %p.center__item__form__announcement
+          配送先と支払い方法の入力を完了して下さい。
+        %button{class: 'center__item__form__finish'}
+          = link_to '#', class: 'center__item__form__finish--button' do
+            購入する
+    %section.center__address
+      .center__address__box
+        %h3.center__address__box__title
+          配送先
+        .center__address__box__content
+          住所詳細
+        .center__address__box__change
+          = link_to '#', class: 'center__address__box__change--alteration' do
+            変更する ＞
+    %section.center__cash
+      .center__cash__box
+        %h3.center__cash__box__title
+          支払い方法
+        .center__cash__box__content
+          クレジットカードなど
+        .center__cash__box__change
+          = link_to '#', class: 'center__cash__box__change--alteration' do
+            変更する ＞
+
+.buy-shrink
+  %section.center
+    %h2.center__title
+      購入内容の確認
+    %section.center__item
+      %h3.center__item__photo
+        = image_tag 'top_phone.png', alt: 'prpduct', class: 'center__item__photo--product'
+      %p.center__item__name
+        商品名
+      %form.center__item__form
+        .center__item__form__total
+          ¥1,000
+        .center__item__form__specified
+          着払い
+        %ul.center__item__form__point
+          %li.center__item__form__point__box
+            .center__item__form__point__box__attention
+              ポイントはありません
+        %ul.center__item__form__price
+          %li.center__item__form__price__pay
+            .center__item__form__price__pay__title
+              支払い金額
+            .center__item__form__price__pay__figure
+              %span.center__item__form__price__pay__figure__yen
+                ¥1,000
+        %p.center__item__form__announcement
+          配送先と支払い方法の入力を完了して下さい。
+        %button{class: 'center__item__form__finish'}
+          = link_to '#', class: 'center__item__form__finish--button' do
+            購入する
+    %section.center__address
+      .center__address__box
+        %h3.center__address__box__title
+          配送先
+        .center__address__box__content
+          住所詳細
+        .center__address__box__change
+          = link_to '#', class: 'center__address__box__change--alteration' do
+            変更する ＞
+    %section.center__cash
+      .center__cash__box
+        %h3.center__cash__box__title
+          支払い方法
+        .center__cash__box__content
+          クレジットカードなど
+        .center__cash__box__change
+          = link_to '#', class: 'center__cash__box__change--alteration' do
+            変更する ＞
+
+= render 'shared/grayfooter'
