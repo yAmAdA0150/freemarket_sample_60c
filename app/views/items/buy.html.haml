@@ -11,7 +11,7 @@
         = image_tag 'top_phone.png', alt: 'prpduct', class: 'center__item__photo--product'
       %p.center__item__name
         商品名
-      %form.center__item__form
+      %form{action: '#', class: 'center__item__form'}
         .center__item__form__total
           ¥1,000
         .center__item__form__specified
@@ -27,11 +27,8 @@
             .center__item__form__price__pay__figure
               %span.center__item__form__price__pay__figure__yen
                 ¥1,000
-        %p.center__item__form__announcement
-          配送先と支払い方法の入力を完了して下さい。
         %button{class: 'center__item__form__finish'}
-          = link_to '#', class: 'center__item__form__finish--button' do
-            購入する
+          購入する
     %section.center__address
       .center__address__box
         %h3.center__address__box__title
@@ -60,7 +57,7 @@
         = image_tag 'top_phone.png', alt: 'prpduct', class: 'center__item__photo--product'
       %p.center__item__name
         商品名
-      %form.center__item__form
+      %form{action: '#', class: 'center__item__form'}
         .center__item__form__total
           ¥1,000
         .center__item__form__specified
@@ -76,11 +73,8 @@
             .center__item__form__price__pay__figure
               %span.center__item__form__price__pay__figure__yen
                 ¥1,000
-        %p.center__item__form__announcement
-          配送先と支払い方法の入力を完了して下さい。
         %button{class: 'center__item__form__finish'}
-          = link_to '#', class: 'center__item__form__finish--button' do
-            購入する
+          購入する
     %section.center__address
       .center__address__box
         %h3.center__address__box__title
