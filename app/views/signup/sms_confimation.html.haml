@@ -1,1 +1,37 @@
-signup sms
+
+.registration-header
+  .registration-header__top
+    = link_to '#', class: "link" do
+      = image_tag "mercari_widelogo.png",class:"registration-header__top__image"
+  .wizard
+    %ul.wizard__texts
+      %li.wizard__texts__process
+        会員情報　
+      %li.wizard__texts__process.red
+        電話番号認証
+      %li.wizard__texts__process
+        お届け先住所入力
+      %li.wizard__texts__process
+        支払い方法　　　
+      %li.wizard__texts__process
+        完了
+    %ul.wizard__bar
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line
+      %li.wizard__bar__ball
+      %li.wizard__bar__line
+      %li.wizard__bar__ball
+      %li.wizard__bar__line
+      %li.wizard__bar__ball
+.sms-confirmation
+  .sms-confirmation__main
+    .sms-confirmation__main__header
+      電話番号の確認
+    .sms-cofirmation__main__form
+      .sms-cofirmation__main__form__content
+        .sms-confirmation__main__form__content__number
+        .sms-confirmation__main__form__content__sms
+        .sms-confirmation__main__form__content__text
+
