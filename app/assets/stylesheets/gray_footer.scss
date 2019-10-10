@@ -1,13 +1,110 @@
-// .announce {
-//   width: 
-//   &__top {
-//     &__middle {
-//       &--logo {
-//       }
-//     }
-//   }
-//   &__under {
-//     &__text {
-//     }
-//   }
-// }
+.gray-footer {
+  height: 220px;
+  margin: 0 auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 40px 0;
+  text-align: center;
+  &__top {
+    &__text {
+      font-size: 0;
+      list-style: none;
+      &__box {
+        margin: 0 0 0 16px;
+        display: inline-block;
+        font-size: 12px;  
+        &__link {
+          font-size: 12px;
+          text-decoration: none;
+          display: block;
+          color: #333;  
+        }
+      }
+    }
+  }
+  &__middle {
+    &__icon {
+      display: block;
+      color: #333;
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+      text-decoration: none;
+      &--logo {
+        vertical-align: middle;
+      }
+    }
+  }
+  &__under {
+    margin: 8px 0 0;
+    &__text {
+      font-size: 12px;
+    }
+  }
+}
+
+.gray-footer-shrink {
+  height: 250px;
+  margin: 0 auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 40px 0;
+  text-align: center;
+  &__top {
+    height: 68px;
+    position: relative;
+    &__text {
+      font-size: 0;
+      list-style: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform : translate(-50%,-50%);
+      transform : translate(-50%,-50%);
+      &__box {
+        margin: 7px 0 0;
+        font-size: 12px;  
+        &__link {
+          font-size: 12px;
+          text-decoration: none;
+          display: block;
+          color: #333;  
+        }
+      }
+    }
+  }
+  &__middle {
+    &__icon {
+      display: block;
+      color: #333;
+      width: 80px;
+      height: 65px;
+      margin: 40px auto 0;
+      text-decoration: none;
+      &--logo {
+        vertical-align: middle;
+      }
+    }
+  }
+  &__under {
+    margin: 8px 0 0;
+    &__text {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .gray-footer-shrink {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .gray-footer {
+    display: none;
+  }
+}

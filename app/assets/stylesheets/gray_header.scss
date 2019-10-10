@@ -1,4 +1,4 @@
-.products {
+.gray-header {
   height: 128px;
   text-align: center;
   display: block;
@@ -15,14 +15,14 @@
       display: inline-block;
       text-align: center;
       &--logo {
-        height: 70px;
+        height: 68px;
         vertical-align: middle;
       }
     }
   }
 }
 
-.shrink {
+.gray-header-shrink {
   height: 56px;
   text-align: center;
   display: block;
@@ -47,13 +47,13 @@
 }
 
 @media (min-width: 768px) {
-  .shrink {
+  .gray-header-shrink {
     display: none;
   }
 }
 
 @media (max-width: 767px) {
-  .products {
+  .gray-header {
     display: none;
   }
 }
