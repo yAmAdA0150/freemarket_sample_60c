@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
 
   resources :items do
+    collection do
+      get 'buy'
+      get 'show'
+    end
   end
 
   resources :signup ,only: [:index, :create] do
