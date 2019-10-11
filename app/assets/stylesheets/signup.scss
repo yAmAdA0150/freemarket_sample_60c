@@ -1,3 +1,73 @@
-// Place all the styles related to the signup controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+    .signup_index {
+        padding: 0 0 90px;
+        &__box {
+            width: 700px;
+            margin: 0 auto;
+            background: rgb(255, 255, 255);
+            &__top {
+                text-align: center;
+                font-size: 22px;
+                padding: 32px;
+                font-weight: 600;
+            }
+            &__sns {
+                margin: 0 auto;
+                max-width: 400px;
+                padding: 24px 32px;
+                border-top: 1px solid #eee;
+                button {
+                    border-radius: 4px;
+                    display: block;
+                    width: 100%;
+                    line-height: 48px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    text-align: center;
+                }
+                &__email {
+                    border-radius: 4px;
+                    border: 1px solid transparent;
+                    margin: 16px 0 0;
+                    background: #ea352d;
+                    display: block;
+                    width: 100%;
+                    line-height: 48px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    .icon {
+                        position: relative;
+                        left: -56px;
+                        top: 6px;
+                    }
+                }
+                &__facebook {
+                    border: 1px solid transparent;
+                    margin: 16px 0 0;
+                    background: #385185;
+                    color: #fff;
+                    .icon {
+                        position: relative;
+                        left: -73px;
+                        top: 6px;
+                    }
+                }
+                &__google {
+                    margin: 16px 0;
+                    background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+                    border: #979797 solid 1px;
+                    color: #333;
+                    display: flex;
+                    img.google_btn {
+                        position: relative;
+                        left: -80px;
+                        top: 6px;
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+            }
+        }
+    }

@@ -1,0 +1,37 @@
+.registration-header
+  .registration-header__top
+    = link_to root_path, class: "link" do
+      = image_tag "mercari_widelogo.png",class:"registration-header__top__image"
+  .wizard
+    %ul.wizard__texts
+      %li.wizard__texts__process
+        会員情報　
+      %li.wizard__texts__process
+        電話番号認証
+      %li.wizard__texts__process
+        お届け先住所入力
+      %li.wizard__texts__process
+        支払い方法　　　
+      %li.wizard__texts__process.red
+        完了
+    %ul.wizard__bar
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+.complete
+  .complete__box
+    .complete__box__top
+      会員登録完了
+    .complete__box__texts
+      ありがとうございます。
+      %br
+      会員登録が完了しました。
+      =link_to root_path, class:"complete__box__texts__start" do
+        メルカリをはじめる
+=render 'shared/grayfooter'

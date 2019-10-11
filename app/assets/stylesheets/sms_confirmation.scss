@@ -6,6 +6,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 5px;
+        color: #888;
         &__process {
             font-size: 12px;
         }
@@ -23,13 +24,13 @@
             height: 15px;
             width: 15px;
             border-radius: 50%;
-            background-color: grey;
+            background-color: #888;
         }
         &__line {
             margin-top: 7px;
             width: 100px;
             height: 1px;
-            border: 1px solid grey;
+            border: 1px solid #888;
         }
         .red {
             background-color: red;
@@ -57,7 +58,6 @@ display: flex;
 
 .sms-confirmation {
   display: block;
-  height: 471px;
   &__main {
   padding: 0;
   width: 700px;
@@ -68,19 +68,63 @@ display: flex;
       padding: 32px;
       text-align: center;
       background-color: #fff;
+      border-bottom:solid 1px #eee;
+      color: #000;
+      font-weight: 500;
+      font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' 
+    }
     &__form{
       padding: 24px 16px 40px;
       display: block;
-      height: 376px;
+      border-style: solid;
+      
       &__content{
-        max-width: 343px;
-      }
-        &__number{
-        
+        width: 343px;
+        margin: 0 auto;
+        &__title {
+          padding: 0;
+          font-weight: 600;
+          display: block;
         }
-        &__sms{}
-        &__text{}
+        &__input {
+          margin: 8px 0 0;
+          width: 100%;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px  solid #ccc;
+          background-color: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          }
+        p{
+          margin: 8px 0 0;
+          padding: 0%;
+          font-size: 14px;
+        }
+        &__button{
+          margin: 26px 0 0;
+          background-color: #ea352b;
+          border: 1px solid #ea352b;
+          color: #fff;
+          width: 100%;
+          padding: 15px 14px;
+          font-size: 14px;
+        }
+        p {
+          margin: 8px 0 0;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        }
+        &__text {
+          margin: 24px 0 0;
+          text-align: right;
+          padding: 0;
+        }
+          a{
+            background-color: #fff;
+            color: #0099e8;
+            text-decoration: none;
+        }
+        }
       }
     }
   }
-}

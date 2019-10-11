@@ -1,0 +1,43 @@
+    .complete {
+        padding: 0 0 90px;
+        margin-bottom: 30px;
+        &__box {
+            width: 700px;
+            margin: 0 auto;
+            background: rgb(255, 255, 255);
+            &__top {
+                text-align: center;
+                font-size: 22px;
+                padding: 32px;
+                font-weight: 600;
+            }
+            &__texts {
+                font-weight: 600;
+                text-align: center;
+                margin: 0 auto;
+                max-width: 400px;
+                padding: 50px 32px;
+                border-top: 1px solid #eee;
+                &__start {
+                    border: 1px solid transparent;
+                    margin: 40px 0 0;
+                    background: #ea352d;
+                    display: block;
+                    width: 100%;
+                    line-height: 48px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    text-align: center;
+                    color: #fff;
+                    text-decoration: none;
+                    font-weight: initial;
+                }
+            }
+        }
+    }
+    
+    @media (max-width:767px) {
+        .complete__box {
+            width: 100%;
+        }
+    }

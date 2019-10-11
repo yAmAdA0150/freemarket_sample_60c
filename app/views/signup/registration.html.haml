@@ -1,0 +1,95 @@
+.registoration-container
+  .registration-header
+    .registration-header__top
+      = link_to root_path, class: "link" do
+        = image_tag "mercari_widelogo.png",class:"registration-header__top__image"
+    .wizard
+      %ul.wizard__texts
+        %li.wizard__texts__process.red
+          会員情報　
+        %li.wizard__texts__process
+          電話番号認証
+        %li.wizard__texts__process
+          お届け先住所入力
+        %li.wizard__texts__process
+          支払い方法　　　
+        %li.wizard__texts__process
+          完了
+      %ul.wizard__bar
+        %li.wizard__bar__ball.red
+        %li.wizard__bar__line
+        %li.wizard__bar__ball
+        %li.wizard__bar__line
+        %li.wizard__bar__ball
+        %li.wizard__bar__line
+        %li.wizard__bar__ball
+        %li.wizard__bar__line
+        %li.wizard__bar__ball
+  .registration-main
+    .registration-main__box
+      .registration-main__box__header
+        会員情報入力
+        
+      .registration-main__box__contents
+        = form_for @user,:url => {:action => :create} do |f|
+          .registration-main__box__contents__form-group
+            = f.label :name, "ニックネーム"
+            %span.require 必須
+            %br  
+            = f.text_field :name,placeholder: "例）メルカリ太郎",class: 'textbox'
+          .registration-main__box__contents__form-group
+            = f.label :email, "メールアドレス"
+            %span.require 必須
+            %br  
+            = f.text_field :email,placeholder: "PC・携帯どちらでもか",class: 'textbox'
+          .registration-main__box__contents__form-group
+            = f.label :passward, "パスワード"
+            %span.require 必須
+            %br  
+            = f.text_field :passward,placeholder: "7文字以上",class: 'textbox'
+          .registration-main__box__contents__form-group
+            = f.label :password_confirmation, "パスワード（確認）"
+            %span.require 必須
+            %br  
+            = f.text_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
+          .registration-main__box__contents__form-group
+            %h3.idenfication
+              本人確認
+            %p.text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .registration-main__box__contents__form-group
+            = f.label :first_name, "お名前(全角)"
+            %span.require 必須
+            %br  
+            = f.text_field :first_name,placeholder: "例）山田",class: 'namebox'
+            = f.text_field :last_name,placeholder: "例）麻耶",class: 'namebox'
+          .registration-main__box__contents__form-group 
+            = f.label :first_name_kana, "お名前カナ(全角)"
+            %span.require 必須
+            %br  
+            = f.text_field :first_name_kana,placeholder: "例）ヤマダ",class: 'namebox'
+            = f.text_field :last_name_kana,placeholder: "例）マヤ",class: 'namebox'
+          .registration-main__box__contents__form-group
+            = f.label :birth, "生年月日"
+            %span.require 必須
+            %br
+            =raw sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s',class: 'use_icon'),'年','月')+'日'
+          %p.info
+            ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .registration-main__box__contents__form-group
+            = image_tag "reCAPTCHA.png",class:"recap"
+          .registration-main__box__contents__form-group
+            .registration-main__box__contents__form-group__agreement
+              「次へ進む」のボタンを押すことにより、
+              = link_to "#" ,class: "links" do
+                利用規約
+              に同意下ものとみなします
+              = f.submit "次へ進む", class: "btn"
+          .registration-main__box__contents__form-group__about
+            = link_to "#", class: "links" do
+              本人情報の登録について
+              %i.fa.fa-angle-right
+  =render 'shared/grayfooter'
+
+
+
