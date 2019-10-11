@@ -2,7 +2,7 @@
   .topbar
     .topbar__main
       %h1.topbar__main__icon
-        = link_to '#' do
+        = link_to root_path do
           = image_tag "mercari_widelogo.png", alt: "Mercari", class: "topbar__main__icon--logo"
       .topbar__main__search
         %form{class: 'topbar__main__search__form'}
@@ -61,20 +61,20 @@
         -#       マイページ
         -# - else
         %li.topbar__under__right__contents
-          = link_to '#', class: "link" do
+          = link_to signup_index_path, class: "link" do
             .topbar__under__right__contents__list
               .topbar__under__right__contents__list--text-red 新規会員登録
         %li.topbar__under__right__contents
-          = link_to '#', class: "login" do
+          = link_to new_user_session_path, class: "login" do
             ログイン
 .narrow
   .narrow__top
-    =link_to "/", class:"narrow__top__icon" do
+    =link_to root_path, class:"narrow__top__icon" do
       = image_tag "mercari_widelogo.png", alt: "Mercari", class: "narrow__top__icon--logo"
     .narrow__top__user
-      = link_to '#', class: "link" do
+      = link_to signup_index_path, class: "link" do
         %span 新規会員
-      = link_to '#', class: "login" do
+      = link_to new_user_session_path, class: "login" do
         %span ログイン
   .narrow__middle
     %form{class: 'narrow__middle__form'}
