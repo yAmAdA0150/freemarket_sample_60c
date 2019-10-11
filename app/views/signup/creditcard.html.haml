@@ -1,4 +1,91 @@
-.container
-  %header
-    %h1
-      = link_to image_tag("＃", alt: "mercari")
+.registration-header
+  .registration-header__top
+    = link_to root_path, class: "link" do
+      = image_tag "mercari_widelogo.png",class:"registration-header__top__image"
+  .wizard
+    %ul.wizard__texts
+      %li.wizard__texts__process
+        会員情報　
+      %li.wizard__texts__process
+        電話番号認証
+      %li.wizard__texts__process
+        お届け先住所入力
+      %li.wizard__texts__process.red
+        支払い方法　　　
+      %li.wizard__texts__process
+        完了
+    %ul.wizard__bar
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line.red
+      %li.wizard__bar__ball.red
+      %li.wizard__bar__line
+      %li.wizard__bar__ball
+.crec-main
+  .crec-main__box
+    .crec-main__box__header
+      支払い方法
+    .crec-main__box__body
+      = form_for @user,:url => {:action => :create} do |f|
+        .crec-main__box__body__form-group
+          = f.label :card_number, "カード番号"
+          %span.require 必須
+          %br  
+          = f.text_field :name,placeholder: "半角数字のみ",class: 'textbox'
+          .crec-main__box__body__form-group__image
+            =image_tag "visa.jpg", class:"bottom__link__logo"
+            =image_tag "saison.png", class:"bottom__link__logo"
+            =image_tag "jcb.gif", class:"bottom__link__logo"
+            =image_tag "amex.gif", class:"bottom__link__logo"
+            =image_tag "dinersclub.gif", class:"bottom__link__logo"
+            =image_tag "discover.gif", class:"bottom__link__logo"
+        .crec-main__box__body__form-group
+          = f.label :exp_month, "有効期限"
+          %span.require 必須
+          %br  
+            %select.limit#exp_month{name: "exp_month", type: "text"}
+              %option{value: ""} --
+              %option{value: "1"}01
+              %option{value: "2"}02
+              %option{value: "3"}03
+              %option{value: "4"}04
+              %option{value: "5"}05
+              %option{value: "6"}06
+              %option{value: "7"}07
+              %option{value: "8"}08
+              %option{value: "9"}09
+              %option{value: "10"}10
+              %option{value: "11"}11
+              %option{value: "12"}12
+            %span 月
+            %br
+            %select.limit#exp_year{name: "exp_year", type: "text"}
+              %option{value: ""} --
+              %option{value: "2019"}19
+              %option{value: "2020"}20
+              %option{value: "2021"}21
+              %option{value: "2022"}22
+              %option{value: "2023"}23
+              %option{value: "2024"}24
+              %option{value: "2025"}25
+              %option{value: "2026"}26
+              %option{value: "2027"}27
+              %option{value: "2028"}28
+              %option{value: "2029"}29
+            %span 年
+        .crec-main__box__body__form-group
+          = f.label :security_code, "セキュリティコード"
+          %span.require 必須
+          %br  
+          = f.text_field :name,placeholder: "カード裏面4桁または3桁の番号",class: 'textbox'
+          .crec-main__box__body__form-group__info
+            = link_to '#', class: 'links' do
+              %i.fa.fa-question-circle
+                記号カード裏面の番号とは？
+        .crec-main__box__body__form-group
+          = f.submit "次へ進む", class: "btn"
+=render 'shared/grayfooter'
+
