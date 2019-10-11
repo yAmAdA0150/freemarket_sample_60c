@@ -39,9 +39,7 @@
           =f.label :"都道府県", class:"address__box__main__form__label", for:"prefecture-field"
           %span.address__box__main__form__label__require
             必須
-          -# .arrow-box
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, id:"prefecture_field"
-          -# = fa_icon 'chevron-down', class:"arrow-icon fa-2x"
         .address__box__main__form
           =f.label :"市町村", class:"address__box__main__form__label", for:"city-field"
           %span.address__box__main__form__label__require
