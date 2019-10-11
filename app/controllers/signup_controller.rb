@@ -15,7 +15,7 @@ class SignupController < ApplicationController
   def address
     @prefectures = Prefecture.all
     @user = User.new
-s  end
+  end
 
   def creditcard
     @user = User.new
