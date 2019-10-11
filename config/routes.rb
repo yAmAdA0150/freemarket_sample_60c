@@ -1,26 +1,40 @@
 Rails.application.routes.draw do           
   devise_for :users
-
   root to: 'items#index'
 
-
-  # devise_scope :user do
-  #   get 'signin', to: 'devise/session#new', as: :new_user_session_signin
-  #   post 'signin', to: 'devises/session#create',as: :user_session_signin
-  #   delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session_signout
-
-    # get 'signup/registration', to: 'devise/registrations#new', as: :new_user_registration_signup
-    # patch 'users/password', to: 'devise/passwords#update'
-    # put 'users/password', to: 'devise/passwords#update'
-    # post 'users/password', to: 'devise/passwords#create'
-
+  # resources :items, only: [:index, :show,] do
+  #   resources :users do
+  #     member do
+  #       get 'buy'
+  #     end
+  #   end
   # end
+  resources :categories, only: [:show, :index]
+  resources :brands, only:[:show ,:index]
+  
+  
+  resources :users, only: [:show, :edit, :destroy, :update]
+  # resources :users do
 
-
+  #   resources :items , only:[:edit, :update, :destroy, :new ,:create] do
+  #     collection do
+  #       get 'search'
+  #     end
+  #   end
+    
+    resources :cards, only: [:new, :show, :create, :edit, :update, :destroy]
+    
+    resources :addresses, only: [:update, :edit]
+    
+  # end
+  
   resources :items do
     collection do
       get 'buy'
       get 'show'
+      get 'new'
+      get 'edit'
+      get 'search'
     end
   end
 
@@ -34,4 +48,5 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
+
 end
