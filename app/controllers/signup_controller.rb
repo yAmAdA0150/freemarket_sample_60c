@@ -21,12 +21,13 @@ class SignupController < ApplicationController
 
 
   def sms_confimation
-    # session[:phone_number] = profile_params[:phone_number]
-    # @user.build_profiles
-    # @user = User.new
+    session[:phone_number] = profile_params[:phone_number]
+    @user.build_profiles
+    @user = User.new
   end
 
   def address
+    @prefectures = Prefecture.all
     @user = User.new
     @user.build_address
   end

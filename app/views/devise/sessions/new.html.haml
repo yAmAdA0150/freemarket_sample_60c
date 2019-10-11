@@ -1,17 +1,24 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+= render 'shared/grayheader'
+.signin
+  .signin__box
+    .signin__box__top
+      =link_to signup_index_path, class:"signin__box__top__text__link" do
+        新規会員登録
+    .signin__box__sns
+      %button.signin__box__sns__facebook#facebook-login
+        = fa_icon 'facebook-square', class: 'icon fa-2x'
+        Facebookでログイン
+      %button.signin__box__sns__google#google-login
+        = image_tag "google_btn.jpg", class:"google_btn"
+        Googleでログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .signin__box__main
+        .signin__box__main__form
+          = f.email_field :email,autofocus: true, placeholder:"メールアドレス", class:"signin__box__main__form__emai"
+        .signin__box__main__form
+          = f.password_field :password, autocomplete:"off",placeholder:"パスワード", class:"signin__box__main__form__passowrd"
+          -# .login-input-text
+        = f.submit "ログイン", class:'signin__box__main__login'
+        =link_to "https://www.mercari.com/jp/password/reset/start/", class:"singin__box__main__pass-link" do
+          パスワードをお忘れの方
+= render 'shared/grayfooter'
