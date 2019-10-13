@@ -109,7 +109,8 @@ class SignupController < ApplicationController
       birthyear: session[:birthyear],
       birthmonth: session[:birthmonth],
       birthday: session[:birthday],
-      mobile_number: "12345678901"
+      mobile_number: "12345678901",
+      
     )
     render registration_signup_index_path unless @user.valid?
   end

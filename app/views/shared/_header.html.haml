@@ -38,35 +38,35 @@
                 -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
                 -# この下からifでログインしているかいないかで分岐する。
       %ul.topbar__under__right
-        -# - if user_signed_in?
-        -# %li.topbar__under__right__contents
-        -#   %h2.topbar__under__right__contents__user
-        -#     = link_to '#', class: 'link' do
-        -#       = fa_icon 'heart'
-        -#       いいね！一覧
-        -# %li.topbar__under__right__contents
-        -#   %h2.topbar__under__right__contents__user
-        -#     = link_to '#', class: 'link' do
-        -#       = fa_icon 'bell'
-        -#       お知らせ
-        -# %li.topbar__under__right__contents
-        -#   %h2.topbar__under__right__contents__user
-        -#     = link_to '#', class: 'link' do
-        -#       = fa_icon 'check'
-        -#       やることリスト
-        -# %li.topbar__under__right__contents
-        -#   %h2.topbar__under__right__contents__user
-        -#     = link_to '#', class: 'link' do
-        -#       = fa_icon 'user'
-        -#       マイページ
-        -# - else
-        %li.topbar__under__right__contents
-          = link_to signup_index_path, class: "link" do
-            .topbar__under__right__contents__list
-              .topbar__under__right__contents__list--text-red 新規会員登録
-        %li.topbar__under__right__contents
-          = link_to new_user_session_path, class: "login" do
-            ログイン
+        - if user_signed_in?
+          %li.topbar__under__right__contents
+            %h2.topbar__under__right__contents__user
+              = link_to '#', class: 'link' do
+                = fa_icon 'heart'
+                いいね！一覧
+          %li.topbar__under__right__contents
+            %h2.topbar__under__right__contents__user
+              = link_to '#', class: 'link' do
+                = fa_icon 'bell'
+                お知らせ
+          %li.topbar__under__right__contents
+            %h2.topbar__under__right__contents__user
+              = link_to '#', class: 'link' do
+                = fa_icon 'check'
+                やることリスト
+          %li.topbar__under__right__contents
+            %h2.topbar__under__right__contents__user
+              = link_to '#', class: 'link' do
+                = fa_icon 'user'
+                マイページ
+        - else
+          %li.topbar__under__right__contents
+            = link_to signup_index_path, class: "link" do
+              .topbar__under__right__contents__list
+                .topbar__under__right__contents__list--text-red 新規会員登録
+          %li.topbar__under__right__contents
+            = link_to new_user_session_path, class: "login" do
+              ログイン
 .narrow
   .narrow__top
     =link_to root_path, class:"narrow__top__icon" do

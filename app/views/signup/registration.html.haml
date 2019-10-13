@@ -36,7 +36,7 @@
             = f.label :name, "ニックネーム"
             %span.require 必須
             %br  
-            = f.text_field :name, value: "#{session[:name]}" , placeholder: "例）メルカリ太郎",class: 'textbox'
+            = f.text_field :name , placeholder: "例）メルカリ太郎",class: 'textbox'
           .registration-main__box__contents__form-group
             = f.label :email, "メールアドレス"
             %span.require 必須
@@ -48,12 +48,17 @@
               %span.require 必須
               %br  
               = f.password_field :password,placeholder: "7文字以上",class: 'textbox'
-          - if session[:password_confirmation] .blank?
+          - unless session[:provider].blank?
+            = f.hidden_field :password, value: session[:password]
+          - if session[:password] .blank?
             .registration-main__box__contents__form-group
               = f.label :password_confirmation, "パスワード（確認）"
               %span.require 必須
               %br  
               = f.password_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
+          - unless session[:provider].blank?
+            = f.hidden_field :password_confirmation, value: session[:password]
+            = session[:provider] = nil
           .registration-main__box__contents__form-group
             %h3.idenfication
               本人確認
