@@ -29,7 +29,7 @@
     .crec-main__box__header
       支払い方法
     .crec-main__box__body
-      = form_for :card, url: payment_signup_index_path, method: :post, html: {name: 'inputForm'} do |f|
+      = form_tag(payment_signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .crec-main__box__body__form-group
           %label :card_number, "カード番号"
           %span.require 必須
@@ -86,6 +86,7 @@
               %i.fa.fa-question-circle
                 記号カード裏面の番号とは？
         .crec-main__box__body__form-group
-          = f.submit "次へ進む", class: "btn", id: "token_submit"
+          #card_token
+          = submit_tag "次へ進む", class: "btn", id: "token_submit"
 =render 'shared/grayfooter'
 

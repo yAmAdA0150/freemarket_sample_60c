@@ -36,7 +36,6 @@ class SignupController < ApplicationController
   end
 
   def creditcard
-    card = Card.where(user_id: current_user.id)
   end
   
   # コンプリート ログイン状態となる

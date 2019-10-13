@@ -1,83 +1,91 @@
-.crec-main{
-  &__box{
-    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-    width: 700px;
-    background-color: white;
-    margin:0 auto;
-    font-weight: bold;
-    &__header{
-      font-size: 22px;
-      padding: 32px;
-      display: block;
-      text-align: center;
-      border-style: solid;
-      border-width: 0;
-      border-bottom: 1px solid #f5f5f5;
-    }
-    &__body{
-      width:343px;
-      font-size: 14px;
-      margin:0 auto;
-      padding: 40px 0px 64px;
-      &__form-group{
-        margin-top: 24px;
-      .textbox{
-        margin:8px 0 0 0;
-        padding: 10px 16px 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 16px;
-        width:343px;
-        height: 48px;
-        font-weight: normal;
-      }
-      .btn{
-        display: block;
-        margin-top:32px;
-        width:343px;
-        line-height: 48px;
-        font-size: 14px;
-        border: 1px solid transparent;
-        -webkit-transition: all ease-out .3s;
-        transition: all ease-out .3s;
-        cursor: pointer;
-        text-align: center;
-        background: #ea352d;
-        border: 1px solid #ea352d;
-        color: #fff;
-      }
-      .limit{
-          width: 120px;
-          height: 48px;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
-          touch-action: manipulation;
-          margin-top:8px;
-          font-weight: normal;
-      }
-      .bottom__link__logo{
-        height: 35px;
-        width: auto;
-        margin-top:8px;
-      }
-      &__info{
-        display: block;
-        font-weight: normal;
-        text-align: right;
-      .links{
-        color: #0099e8;
-        text-decoration: none;
+.crec-main {
+    &__box {
+        font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        width: 700px;
+        background-color: white;
+        margin: 0 auto;
+        font-weight: bold;
+        &__header {
+            font-size: 22px;
+            padding: 32px;
+            display: block;
+            text-align: center;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid #f5f5f5;
         }
-      }
-      
-      }
+        &__body {
+            width: 343px;
+            font-size: 14px;
+            margin: 0 auto;
+            padding: 40px 0px 64px;
+            &__form-group {
+                margin-top: 24px;
+                .textbox {
+                    margin: 8px 0 0 0;
+                    padding: 10px 16px 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    width: 343px;
+                    height: 48px;
+                    font-weight: normal;
+                }
+                .textbox:focus {
+                    border-radius: 4px;
+                    outline: none;
+                    border: 1px solid #0099e8;
+                }
+                .btn {
+                    display: block;
+                    margin-top: 32px;
+                    width: 343px;
+                    line-height: 48px;
+                    font-size: 14px;
+                    border: 1px solid transparent;
+                    -webkit-transition: all ease-out .3s;
+                    transition: all ease-out .3s;
+                    cursor: pointer;
+                    text-align: center;
+                    background: #ea352d;
+                    border: 1px solid #ea352d;
+                    color: #fff;
+                }
+                .limit {
+                    width: 120px;
+                    height: 48px;
+                    padding: 10px 16px 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    touch-action: manipulation;
+                    margin-top: 8px;
+                    font-weight: normal;
+                }
+                .bottom__link__logo {
+                    height: 35px;
+                    width: auto;
+                    margin-top: 8px;
+                }
+                select:focus {
+                    border-radius: 4px;
+                    outline: none;
+                    border: 1px solid #0099e8;
+                }
+                &__info {
+                    display: block;
+                    font-weight: normal;
+                    text-align: right;
+                    .links {
+                        color: #0099e8;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
     }
-  }
-} 
-
+}

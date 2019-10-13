@@ -1,173 +1,156 @@
- .registration-main{
-  .registration-main__box{
-    font-weight: bold;
-    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-    width: 700px;
-    background-color: white;
-    margin:0 auto;
-    padding-bottom:64px;
-    &__header{
-      font-size: 22px;
-      font-weight: bold;
-      padding: 32px;
-      display: block;
-      text-align: center;
-      border-style: solid;
-      border-width: 0;
-      border-bottom: 1px solid #f5f5f5;
-    }
-    &__contents{
-      width:343px;
-      font-size: 14px;
-      margin:0 auto;
-      padding: 40px 0px 64x;
-      &__form-group{
-        margin-top: 24px;
-        .textbox{
-          margin:8px 0 0 0;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
-          width:343px;
-          height: 48px;
-          font-weight: normal;
-        }
-        .namebox{
-          width: 165.5px;
-          height: 48px;
-          padding: 10px 16px 8px;
-          border-radius: 4px;
-          border: 1px solid #ccc;
-          background: #fff;
-          line-height: 1.5;
-          font-size: 16px;
-          touch-action: manipulation;
-          margin-top:8px;
-          font-weight: normal;
-        }
-        p.text{
-          font-weight: lighter;
-        }
-        .links{
-          color: #0099e8;
-          text-decoration: none;
-        }
-        .idenfication{
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .btn{
-          display: block;
-          margin-top:32px;
-          width: 100%;
-          line-height: 48px;
-          font-size: 14px;
-          border: 1px solid transparent;
-          -webkit-transition: all ease-out .3s;
-          transition: all ease-out .3s;
-          cursor: pointer;
-          text-align: center;
-          background: #ea352d;
-          border: 1px solid #ea352d;
-          color: #fff;
-        }
-        .recap{
-          display:block;
-          width: 300px;
-          height: 74px;
-        }
-        &__agreement{
-          font-weight: lighter;
-        }
-        &__about{
-          text-align: right;
-          padding-top:30px;
-          font-weight: normal;
-          .links{
-            color: #0099e8;
-            text-decoration: none;
-          }
-          .fa{
-            font-size: 1.5em;
+.registration-main {
+    .registration-main__box {
+        font-weight: bold;
+        font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        width: 700px;
+        background-color: white;
+        margin: 0 auto;
+        padding-bottom: 64px;
+        &__header {
+            font-size: 22px;
             font-weight: bold;
-
-          }
+            padding: 32px;
+            display: block;
+            text-align: center;
+            border-style: solid;
+            border-width: 0;
+            border-bottom: 1px solid #f5f5f5;
         }
-      }
+        &__contents {
+            width: 343px;
+            font-size: 14px;
+            margin: 0 auto;
+            padding: 40px 0px 64x;
+            &__form-group {
+                margin-top: 24px;
+                .textbox {
+                    margin: 8px 0 0 0;
+                    padding: 10px 16px 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    width: 343px;
+                    height: 48px;
+                    font-weight: normal;
+                }
+                .textbox:focus {
+                    border-radius: 4px;
+                    outline: none;
+                    border: 1px solid #0099e8;
+                }
+                .namebox {
+                    width: 165.5px;
+                    height: 48px;
+                    padding: 10px 16px 8px;
+                    border-radius: 4px;
+                    border: 1px solid #ccc;
+                    background: #fff;
+                    line-height: 1.5;
+                    font-size: 16px;
+                    touch-action: manipulation;
+                    margin-top: 8px;
+                    font-weight: normal;
+                }
+                .namebox:focus {
+                    border-radius: 4px;
+                    outline: none;
+                    border: 1px solid #0099e8;
+                }
+                p.text {
+                    font-weight: lighter;
+                }
+                .links {
+                    color: #0099e8;
+                    text-decoration: none;
+                }
+                .idenfication {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+                .btn {
+                    display: block;
+                    margin-top: 32px;
+                    width: 100%;
+                    line-height: 48px;
+                    font-size: 14px;
+                    border: 1px solid transparent;
+                    -webkit-transition: all ease-out .3s;
+                    transition: all ease-out .3s;
+                    cursor: pointer;
+                    text-align: center;
+                    background: #ea352d;
+                    border: 1px solid #ea352d;
+                    color: #fff;
+                }
+                .recap {
+                    display: block;
+                    width: 300px;
+                    height: 74px;
+                }
+                &__agreement {
+                    font-weight: lighter;
+                }
+                &__about {
+                    text-align: right;
+                    padding-top: 30px;
+                    font-weight: normal;
+                    .links {
+                        color: #0099e8;
+                        text-decoration: none;
+                    }
+                    .fa {
+                        font-size: 1.5em;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
     }
-  }
 }
 
-span.require{
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 12px;
-  padding: 1px 4px;
-  background-color: #ea352d;
-  color: #fff;
-  border-radius: 2px;
-  vertical-align: top;
-  font-weight: normal;
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-}   
-
-#birthday_birthday_1i{
-    margin-top:8px;
-
-    height: 48px;
-    width: 66px;
-
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background: 0;
-    font-size: 16px;
-    line-height: 1.5;
+span.require {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 12px;
+    padding: 1px 4px;
+    background-color: #ea352d;
+    color: #fff;
+    border-radius: 2px;
+    vertical-align: top;
     font-weight: normal;
-
-    font-family: FontAwesome;
+    font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
 
-#birthday_birthday_2i{
-    margin-top:8px;
-
+.default-select.select-day {
+    margin-top: 8px;
+    padding-left: 10px;
+    line-height: 48px;
     height: 48px;
-    width: 66px;
-
+    width: 26%;
     border-radius: 4px;
     border: 1px solid #ccc;
     background: 0;
     font-size: 16px;
     line-height: 1.5;
     cursor: pointer;
+    text-align: center;
     font-weight: normal;
-
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-#birthday_birthday_3i{
-  margin-top:8px;
-
-    height: 48px;
-    width: 66px;
-
+.default-select.select-day:focus {
     border-radius: 4px;
-    border: 1px solid #ccc;
-    background: 0;
-    font-size: 16px;
+    outline: none;
+    border: 1px solid #0099e8;
+}
+
+p.info {
+    margin: 8px 0 0;
     line-height: 1.5;
-    cursor: pointer;
+    color: #888;
     font-weight: normal;
-
 }
-
-p.info{
-  margin: 8px 0 0;
-  line-height: 1.5;
-  color: #888;
-  font-weight: normal;
-}
-
-
-
