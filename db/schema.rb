@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_065402) do
+ActiveRecord::Schema.define(version: 2019_10_13_022821) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postcode", null: false
+    t.string "postcode", null: false
     t.string "city", null: false
     t.text "street"
     t.text "building_name"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,15 +129,13 @@ ActiveRecord::Schema.define(version: 2019_10_09_065402) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "mobile_number", null: false
     t.integer "sales"
     t.integer "point"
     t.string "image"
     t.text "text"
-    t.bigint "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -218,20 +216,22 @@ ActiveRecord::Schema.define(version: 2019_10_09_065402) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.string "passward", null: false
-    t.string "password_confirmation", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
-    t.integer "birthyear"
-    t.integer "birthmonth"
-    t.integer "birthday"
+    t.integer "birthyear", null: false
+    t.integer "birthmonth", null: false
+    t.integer "birthday", null: false
+    t.string "mobile_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -250,7 +250,6 @@ ActiveRecord::Schema.define(version: 2019_10_09_065402) do
   add_foreign_key "messages", "tradings"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users"
-  add_foreign_key "profiles", "users"
   add_foreign_key "reviews", "traders"
   add_foreign_key "size_charts", "categories"
   add_foreign_key "size_charts", "sizes"

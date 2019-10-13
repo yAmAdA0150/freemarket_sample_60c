@@ -7,10 +7,10 @@
       =link_to registration_signup_index_path, class:"signup_index__box__sns__email" do
         = fa_icon 'envelope', class: 'far icon fa-2x'
         メールアドレスで登録する
-      %button.signup_index__box__sns__facebook#facebook-login
+      = button_to user_facebook_omniauth_authorize_path, class:"signup_index__box__sns__facebook" do
         = fa_icon 'facebook-square', class: 'icon fa-2x'
         Facebookで登録する
-      %button.signup_index__box__sns__google#google-login
+      = button_to user_google_oauth2_omniauth_authorize_path, class:"signup_index__box__sns__google" do
         = image_tag "google_btn.jpg", class:"google_btn"
         Googleで登録する
 = render 'shared/grayfooter'

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
         has_many :comments
         has_many :items
@@ -18,7 +18,6 @@ class User < ApplicationRecord
         has_one :card
 
         accepts_nested_attributes_for :address
-        accepts_nested_attributes_for :profile
 
 
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -26,5 +25,18 @@ class User < ApplicationRecord
         validates :password, length: { minimum: 7, maximum: 128}
         validates :password_confirmation, length: { minimum: 7, maximum: 128}
         validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-        validates :nickname, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, presence: true
-end
+        validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, presence: true
+
+        def self.from_omniauth(auth)
+          where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+            user.uid = auth.uid
+            user.provider = auth.provider
+            user.name = auth.info.name
+            user.email = auth.info.email
+            user.first_name = auth.info.first_name
+            user.last_name = auth.info.last_name
+            user.password = Devise.friendly_token[0, 20]
+          end
+
+      end
+    end

@@ -31,27 +31,29 @@
         会員情報入力
         
       .registration-main__box__contents
-        = form_for @user,:url => {:action => :create} do |f|
+        = form_for @user, url: sms_confirmation_signup_index_path, method: :get do |f|
           .registration-main__box__contents__form-group
             = f.label :name, "ニックネーム"
             %span.require 必須
             %br  
-            = f.text_field :name,placeholder: "例）メルカリ太郎",class: 'textbox'
+            = f.text_field :name, value: "#{session[:name]}" , placeholder: "例）メルカリ太郎",class: 'textbox'
           .registration-main__box__contents__form-group
             = f.label :email, "メールアドレス"
             %span.require 必須
             %br  
-            = f.text_field :email,placeholder: "PC・携帯どちらでもか",class: 'textbox'
-          .registration-main__box__contents__form-group
-            = f.label :passward, "パスワード"
-            %span.require 必須
-            %br  
-            = f.text_field :passward,placeholder: "7文字以上",class: 'textbox'
-          .registration-main__box__contents__form-group
-            = f.label :password_confirmation, "パスワード（確認）"
-            %span.require 必須
-            %br  
-            = f.text_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
+            = f.text_field :email, value: "#{session[:email]}",placeholder: "PC・携帯どちらでもか",class: 'textbox'
+          - if session[:password] .blank?
+            .registration-main__box__contents__form-group
+              = f.label :password, "パスワード"
+              %span.require 必須
+              %br  
+              = f.password_field :password,placeholder: "7文字以上",class: 'textbox'
+          - if session[:password_confirmation] .blank?
+            .registration-main__box__contents__form-group
+              = f.label :password_confirmation, "パスワード（確認）"
+              %span.require 必須
+              %br  
+              = f.password_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
           .registration-main__box__contents__form-group
             %h3.idenfication
               本人確認
@@ -73,7 +75,13 @@
             = f.label :birth, "生年月日"
             %span.require 必須
             %br
-            =raw sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s',class: 'use_icon'),'年','月')+'日'
+            = f.select :birthyear,(1950..2019).to_a,{include_blank: '--'},class: 'default-select select-day'
+            %i.select-arrow.fas.fa-chevron-down
+            %span 年
+            = f.select :birthmonth,(1..12).to_a,{include_blank: '--'},class: 'default-select select-day'
+            %i.select-arrow.fas.fa-chevron-down
+            %span 月
+            = f.select :birthday,(1..31).to_a,{include_blank: '--'},class: 'default-select select-day'
           %p.info
             ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .registration-main__box__contents__form-group

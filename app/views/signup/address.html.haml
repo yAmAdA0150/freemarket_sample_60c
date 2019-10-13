@@ -29,36 +29,38 @@
     .address__box__top
       住所入力
     .address__box__main
-      = form_for creditcard_signup_index_path, method: :post do |f|
-        .address__box__main__form
-          =f.label :'郵便番号', class: 'address__box__main__form__label', for: "postcode-field"
-          %span.address__box__main__form__label__require
-            必須
-          =f.text_field :postcode,class:"address__box__main__form__input", placeholder:"例）123-4567", id:"postcode-field"
-        .address__box__main__form
-          =f.label :"都道府県", class:"address__box__main__form__label", for:"prefecture-field"
-          %span.address__box__main__form__label__require
-            必須
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, id:"prefecture_field"
-        .address__box__main__form
-          =f.label :"市町村", class:"address__box__main__form__label", for:"city-field"
-          %span.address__box__main__form__label__require
-            必須
-          =f.text_field :city ,class:"address__box__main__form__input",placeholder:"例）横浜市緑区", id:"city-field"
-        .address__box__main__form
-          =f.label :"番地",class:"address__box__main__form__label", for:"street-field"
-          %span.address__box__main__form__label__require
-            必須
-          =f.text_field :street ,class:"address__box__main__form__input",placeholder:"例）青山1-1-1", id:"street-field"
-        .address__box__main__form
-          =f.label :"建物名", class:"address__box__main__form__label", for:"building-field"
-          %span.address__box__main__form__label__optional
-            任意
-          =f.text_field :buidling_name ,class:"address__box__main__form__input",placeholder:"例）柳ビル103", id:"building-field"
-        .address__box__main__form
-          =f.label :"電話番号" ,class:"address__box__main__form__label", for:"phone-number-field"
-          %span.address__box__main__form__label__optional
-            任意
-          =f.text_field :phone_number ,class:"address__box__main__form__input",placeholder:"例）09012345678", id:"phone-number-field"
-        =f.submit class: "address__box__main__next", value: ',次へ進む'
+      = form_for @user, url: signup_signup_index_path, method: :post, html: {class: 'form'} do |f|
+        = hidden_field_tag :current_step, 'address'
+        = f.fields_for :address, html: {class: 'form'} do |i| 
+          .address__box__main__form
+            =i.label :'郵便番号', class: 'address__box__main__form__label', for: "postcode-field"
+            %span.address__box__main__form__label__require
+              必須
+            =i.text_field :postcode,class:"address__box__main__form__input", placeholder:"例）123-4567"
+          .address__box__main__form
+            =i.label :"都道府県", class:"address__box__main__form__label"
+            %span.address__box__main__form__label__require
+              必須
+            = i.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .address__box__main__form
+            =i.label :"市町村", class:"address__box__main__form__label", for:"city-field"
+            %span.address__box__main__form__label__require
+              必須
+            =i.text_field :city ,class:"address__box__main__form__input",placeholder:"例）横浜市緑区", id:"city-field"
+          .address__box__main__form
+            =i.label :"番地",class:"address__box__main__form__label", for:"street-field"
+            %span.address__box__main__form__label__require
+              必須
+            =i.text_field :street ,class:"address__box__main__form__input",placeholder:"例）青山1-1-1", id:"street-field"
+          .address__box__main__form
+            =i.label :"建物名", class:"address__box__main__form__label", for:"building-field"
+            %span.address__box__main__form__label__optional
+              任意
+            =i.text_field :building_name ,class:"address__box__main__form__input",placeholder:"例）柳ビル103", id:"building-field"
+          .address__box__main__form
+            =i.label :"電話番号" ,class:"address__box__main__form__label", for:"phone-number-field"
+            %span.address__box__main__form__label__optional
+              任意
+            =i.text_field :phone_number ,class:"address__box__main__form__input",placeholder:"例）09012345678", id:"phone-number-field"
+          =f.submit class: "address__box__main__next", value: '次へ進む'
 =render 'shared/grayfooter'
