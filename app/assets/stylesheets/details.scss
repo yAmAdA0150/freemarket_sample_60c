@@ -1,1 +1,590 @@
 //商品詳細ページ
+.show {
+    margin: 40px auto 0;
+    padding: 24px 40px 40px;
+    width: 700px;
+
+    a {
+        color: #0099e8;
+        text-decoration: none;
+    }
+
+    // 商品詳細情報
+    .item__content {
+        padding: 24px 40px 40px;
+        bottom: 10px;
+        background-color: white;
+        width: 700px;
+        margin: 40px auto;
+        position: relative;
+
+        &__name {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            word-wrap: break-word;
+            line-height: 1.4;
+        }
+
+        &__main {
+            margin: 16px 0 0;
+            height: 420px;
+
+            &--large__photo {
+                float: left;
+                min-width: 300px;
+                max-width: 300px;
+                min-height: 375px;
+                margin: 0 auto;
+                background: #fafafa;
+
+                &__list {
+                    width: 360px;
+                    height: 60px;
+                    float: left;
+
+                    &-one {
+                        width: 60px;
+                        height: 60px;
+                        float: left;
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        // 商品画像写真とテーブル
+        .item__main__photo {
+            width: 300px;
+            height: 235.95px;
+            margin: 32.0156px 0 32.0312px;
+            background-color: #fafafa;
+        }
+
+        &__main__table {
+            float: right;
+            max-width: 300px;
+            height: 420px;
+            margin: 0 auto;
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #f5f5f5;
+            border-spacing: 0;
+
+            &__tbody {
+                display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;
+
+                &__tr {
+                    display: table-row;
+                    vertical-align: inherit;
+                    border-color: inherit;
+
+                    &__th {
+                        width: 39%;
+                        background: #fafafa;
+                        border-collapse: collapse;
+                        border: 1px solid #f5f5f5;
+                        text-align: left;
+                        display: table-cell;
+                        vertical-align: middle;
+                        padding-left: 5px;
+                    }
+
+                    &__td {
+                        width: 68%;
+                        background: #fff;
+                        border-collapse: collapse;
+                        border: 1px solid #f5f5f5;
+                        display: table-cell;
+                        padding: 8px;
+
+                        &__name {
+                            margin: 0;
+                            display: block;
+
+                            // vertical-align: middle;
+                            white-space: nowrap;
+                        }
+
+                        &__valuation {
+                            display: block;
+
+                            &__ratings:first-child {
+                                margin: 0;
+                            }
+
+                            &__ratings {
+                                display: inline-block;
+                                margin: 8px 0 0 16px;
+                            }
+
+                            &__number {
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // テーブル出品者評価 いいね
+        .rating-good {
+            font-size: 16px;
+            vertical-align: middle;
+            color: #FF3399;
+            margin: 0;
+        }
+
+        // テーブル出品者評価 普通
+        .rating-usual {
+            font-size: 16px;
+            vertical-align: middle;
+        }
+
+        // テーブル出品者評価 悪い
+        .rating-bad {
+            font-size: 16px;
+            vertical-align: middle;
+            color: #33CCFF;
+        }
+
+        // 商品の金額
+        &__price__box {
+            margin: 24px 0 0;
+            margin: 0 16px 0 0;
+            font-size: 50px;
+            text-align: center;
+
+            &__value {
+                font-weight: 600;
+            }
+
+            &__tax {
+                font-size: 10px;
+            }
+
+            &__fee {
+                display: inline-block;
+                font-size: 16px;
+            }
+
+            &__item__buy__btn {
+                display: block;
+                margin-top: 16px;
+                background: #ea352d;
+                color: #fff;
+                text-align: center;
+                font-weight: 600;
+                transition: all ease-out .3s;
+                font-size: 24px;
+                line-height: 60px;
+            }
+        }
+
+        // 商品の説明
+        &__description {
+            padding: 32px 0 0;
+            font-size: 18px;
+
+            &__inner {
+                white-space: pre-wrap;
+                margin-bottom: 0;
+            }
+        }
+
+        // 商品説明下部のボタン（いいね、不適切報告、あんしんあんぜん）
+        &__button__container {
+            margin: 16px 0 0;
+            font-size: 0;
+            height: 33px;
+
+            &__left {
+                float: left;
+
+                &__item {
+                    display: inline-block;
+                    padding: 8px 16px;
+                    border-radius: 40px;
+                    color: #333;
+                    border: 1px solid #f5f5f5;
+                    background: #f5f5f5;
+
+                    &__good {
+                        font-size: 14px;
+                        display: inline-block;
+                        margin: 1px 0 0 8px;
+                        vertical-align: middle;
+                    }
+                }
+
+                &__report {
+                    display: inline-block;
+                    padding: 8px 16px;
+                    margin: 0 0 0 16px;
+                    border-radius: 40px;
+                    color: #333;
+                    border: 1px solid #f5f5f5;
+                    background: #f5f5f5;
+
+                    &__not {
+                        margin: 1px 0 0 8px;
+                        vertical-align: middle;
+                        font-size: 14px;
+                        display: inline-block;
+                    }
+                }
+            }
+
+            &__right {
+                margin: 8px 0 0;
+                float: right;
+                width: 220px;
+                height: 40px;
+
+                &__effort {
+                    font-size: 14px;
+                    display: inline-block;
+                    margin: 1px;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        // いいねアイコンについて
+        .icon-link {
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        // 不適切商品の報告アイコンについて
+        .report-link {
+            display: inline-block;
+            color: black;
+        }
+
+        // あんしんあんぜん取り組みのアイコンについて
+        .right-link {
+            display: inline-block;
+            width: 220px;
+            height: 40px;
+        }
+
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+
+    //  コメント
+    .message {
+        width: 700px;
+
+        &__box__content {
+            background: white;
+            margin-top: 10px;
+            width: 100%;
+            height: auto;
+            padding: 24px;
+
+            &__announce {
+                display: block;
+                font-size: 14px;
+                background: #FFF6DE;
+                padding: 8px;
+            }
+
+            &__form {
+                margin: 8px 0 0;
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                min-height: 104px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                background: #fff;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            &__btn {
+                width: 100%;
+                height: 50px;
+                margin: 8px 0 0;
+                font-size: 0;
+                text-align: center;
+                background: #aaa;
+                border: 1px solid #aaa;
+
+                &__text {
+                    font-size: 14px;
+                    vertical-align: middle;
+                    color: white;
+                    margin: 40px 159.5px;
+                }
+            }
+        }
+    }
+
+    .nav__item__link {
+        width: 700px;
+        height: 14px;
+        margin: 24px auto 0;
+
+        &-prev {
+            float: left;
+            padding: 0;
+        }
+
+        &-next {
+            float: right;
+        }
+    }
+
+    // ソーシャルメディアリンク
+    li {
+        display: list-item;
+        display: inline;
+    }
+
+    .media__box {
+        margin: 24px auto;
+        padding: 32px 0 24px;
+        background: #fff;
+        width: 700px;
+        height: 138px;
+
+        &__center {
+            text-align: center;
+
+            &__icon {
+                margin: 16px 0 0;
+                text-align: center;
+
+                &__facebook {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 4px;
+                    line-height: 44px;
+                    font-size: 26px;
+                }
+
+                &__facebook-i {
+                    font-size: 2em;
+                    color: #385185;
+                }
+
+                &__twetter {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 4px;
+                    line-height: 44px;
+                    font-size: 26px;
+                }
+
+                &__twetter-i {
+                    font-size: 2em;
+                }
+
+                &__pinterest {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 4px;
+                    line-height: 44px;
+                    font-size: 26px;
+                }
+
+                &__pinterest-i {
+                    font-size: 2em;
+                    color: #dc143c;
+                }
+            }
+        }
+    }
+
+    // ユーザーで引っ張ってきたアイテム
+    .user-items--another {
+        &__items__content {
+            width: auto;
+            height: auto;
+
+            &__name {
+                font-size: 24px !important;
+                font-weight: 600;
+            }
+
+            &__block {
+                width: 700px;
+                margin-bottom: 16px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                &__box {
+                    width: 220px;
+                    height: 330px;
+                    margin: 0 20px 20px 0;
+                    position: relative;
+                    float: left;
+                    background-color: white;
+
+                    &__photo {
+                        width: 220px;
+                        height: 220px;
+                        padding: 0 0 100%;
+                    }
+
+                    &__text {
+                        padding: 16px;
+                        height: 110px;
+
+                        &__name {
+                            overflow: hidden;
+                            position: relative;
+                            font-weight: 400;
+                            height: 3em;
+                            line-height: 1.5;
+                            word-break: break-word;
+                            white-space: normal;
+                            font-size: 16px;
+                            color: black;
+                        }
+
+                        &__elements {
+                            display: inline-block;
+
+                            // -webkit-box-align: center;
+                            align-items: center;
+                            -webkit-box-pack: justify;
+                            margin: 8px 0 0;
+                            width: 188px;
+                            height: 16px;
+
+                            &__price {
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: #333;
+                            }
+
+                            &__value {
+                                display: flex;
+                                float: right;
+                                font-size: 16px;
+                                font-weight: 400;
+                                color: #333;
+
+                                &__like {}
+
+                                &__number {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .user-items--another__items__content__block__box:nth-child(3n) {
+            margin-right: 0;
+        }
+    }
+
+    // ユーザー商品出品情報の写真について
+    .user-items--another__photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    //  ブランド縛りの出品アイテム
+    .brand-items--another {
+        &__items__content {
+            width: auto;
+            height: auto;
+
+            &__name {
+                font-size: 24px !important;
+                font-weight: 600;
+            }
+
+            &__block {
+                width: 700px;
+                margin-bottom: 16px;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                &__box {
+                    width: 220px;
+                    height: 330px;
+                    margin: 0 20px 20px 0;
+                    position: relative;
+                    float: left;
+                    background-color: white;
+
+                    &__photo {
+                        width: 220px;
+                        height: 220px;
+                        padding: 0 0 100%;
+                    }
+
+                    &__text {
+                        padding: 16px;
+                        height: 110px;
+
+                        &__name {
+                            overflow: hidden;
+                            position: relative;
+                            font-weight: 400;
+                            height: 3em;
+                            line-height: 1.5;
+                            word-break: break-word;
+                            white-space: normal;
+                            font-size: 16px;
+                            color: black;
+                        }
+
+                        &__elements {
+                            display: inline-block;
+
+                            // -webkit-box-align: center;
+                            align-items: center;
+                            -webkit-box-pack: justify;
+                            margin: 8px 0 0;
+                            width: 188px;
+                            height: 16px;
+
+                            &__price {
+                                font-size: 16px;
+                                font-weight: 600;
+                                color: #333;
+                            }
+
+                            &__value {
+                                display: flex;
+                                float: right;
+                                font-size: 16px;
+                                font-weight: 400;
+                                color: #333;
+
+                                &__like {}
+
+                                &__number {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .brand-items--another__items__content__block__box:nth-child(3n) {
+            margin-right: 0;
+        }
+    }
+
+    // ブランド縛りの出品アイテムの写真
+    .brand-items--another__photo {
+        width: 220px;
+        height: 220px;
+    }
+}
