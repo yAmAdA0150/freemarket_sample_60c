@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       get 'new'
       get 'edit'
       get 'search'
+      get 'sell'
     end
   end
 
