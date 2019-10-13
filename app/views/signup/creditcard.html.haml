@@ -29,12 +29,12 @@
     .crec-main__box__header
       支払い方法
     .crec-main__box__body
-      = form_for @user,:url => {:action => :create} do |f|
+      = form_for :card, url: payment_signup_index_path, method: :post, html: {name: 'inputForm'} do |f|
         .crec-main__box__body__form-group
-          = f.label :card_number, "カード番号"
+          %label :card_number, "カード番号"
           %span.require 必須
           %br  
-          = f.text_field :name,placeholder: "半角数字のみ",class: 'textbox'
+          = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number",class: 'textbox'
           .crec-main__box__body__form-group__image
             =image_tag "visa.jpg", class:"bottom__link__logo"
             =image_tag "saison.png", class:"bottom__link__logo"
@@ -43,7 +43,7 @@
             =image_tag "dinersclub.gif", class:"bottom__link__logo"
             =image_tag "discover.gif", class:"bottom__link__logo"
         .crec-main__box__body__form-group
-          = f.label :exp_month, "有効期限"
+          %label :exp_month, "有効期限"
           %span.require 必須
           %br  
             %select.limit#exp_month{name: "exp_month", type: "text"}
@@ -77,15 +77,15 @@
               %option{value: "2029"}29
             %span 年
         .crec-main__box__body__form-group
-          = f.label :security_code, "セキュリティコード"
+          %label :security_code, "セキュリティコード"
           %span.require 必須
           %br  
-          = f.text_field :name,placeholder: "カード裏面4桁または3桁の番号",class: 'textbox'
+          = text_field_tag "cvc", "", class: "information-registration__base__main-box__click-area__input__information__text", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc", class:"textbox"
           .crec-main__box__body__form-group__info
             = link_to '#', class: 'links' do
               %i.fa.fa-question-circle
                 記号カード裏面の番号とは？
         .crec-main__box__body__form-group
-          = f.submit "次へ進む", class: "btn"
+          = f.submit "次へ進む", class: "btn", id: "token_submit"
 =render 'shared/grayfooter'
 

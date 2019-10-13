@@ -5,10 +5,10 @@
       =link_to signup_index_path, class:"signin__box__top__text__link" do
         新規会員登録
     .signin__box__sns
-      %button.signin__box__sns__facebook#facebook-login
+      = button_to user_facebook_omniauth_authorize_path, class:"signin__box__sns__facebook" do
         = fa_icon 'facebook-square', class: 'icon fa-2x'
         Facebookでログイン
-      %button.signin__box__sns__google#google-login
+      = button_to user_facebook_omniauth_authorize_path, class:"signin__box__sns__google" do
         = image_tag "google_btn.jpg", class:"google_btn"
         Googleでログイン
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

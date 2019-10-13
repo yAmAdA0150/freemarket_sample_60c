@@ -1,6 +1,8 @@
 Rails.application.routes.draw do           
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'items#index'
+
+  # まだテーブルにレコードがないが、ビューの作成のためにコメントアウトしてあります
 
   # resources :items, only: [:index, :show,] do
   #   resources :users do
@@ -47,13 +49,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :signup ,only: [:index, :create] do
+  resources :signup do 
     collection do
       get 'index'
       get 'registration'
-      get 'sms_confimation'
+      get 'sms_confirmation'
       get 'address'
+      post 'signup' => 'signup#create'
       get 'creditcard'
+      post 'payment' => 'signup#payment'
       get 'complete'
     end
   end
