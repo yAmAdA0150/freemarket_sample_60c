@@ -9,7 +9,7 @@
         text-decoration: none;
     }
 
-    // 商品詳細情報
+    // 商品詳細の情報
     .item__content {
         padding: 24px 40px 40px;
         bottom: 10px;
@@ -53,7 +53,7 @@
             }
         }
 
-        // 商品画像写真とテーブル
+        // 商品画像の写真とテーブル
         .item__main__photo {
             width: 300px;
             height: 235.95px;
@@ -129,7 +129,7 @@
             }
         }
 
-        // テーブル出品者評価 いいね
+        // テーブル出品者の評価 いいね
         .rating-good {
             font-size: 16px;
             vertical-align: middle;
@@ -137,13 +137,13 @@
             margin: 0;
         }
 
-        // テーブル出品者評価 普通
+        // テーブル出品者の評価 普通
         .rating-usual {
             font-size: 16px;
             vertical-align: middle;
         }
 
-        // テーブル出品者評価 悪い
+        // テーブル出品者の評価 悪い
         .rating-bad {
             font-size: 16px;
             vertical-align: middle;
@@ -343,7 +343,7 @@
         }
     }
 
-    // ソーシャルメディアリンク
+    // ソーシャルメディアのリンク
     li {
         display: list-item;
         display: inline;
@@ -404,7 +404,7 @@
         }
     }
 
-    // ユーザーで引っ張ってきたアイテム
+    // ”ユーザー”で引っ張ってきたアイテム
     .user-items--another {
         &__items__content {
             width: auto;
@@ -490,7 +490,7 @@
         }
     }
 
-    // ユーザー商品出品情報の写真について
+    // ”ユーザー商品出品情報”の写真について
     .user-items--another__photo {
         width: 220px;
         height: 220px;
