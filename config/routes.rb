@@ -15,9 +15,8 @@ Rails.application.routes.draw do
   resources :brands, only:[:show ,:index]
   
   
-  # resources :users, only: [:show, :edit, :destroy, :update]
+  resources :users, only: [:show, :edit, :destroy, :update]
   # resources :users do
-
   #   resources :items , only:[:edit, :update, :destroy, :new ,:create] do
   #     collection do
   #       get 'search'

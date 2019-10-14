@@ -1,9 +1,17 @@
 class ItemsController < ApplicationController
   
   def index
+    @user = current_user
   end 
 
   def show
+    @item = Item.find(params[:id])
+  end
+
+  def new
+  end
+
+  def create
   end
 
   def search
@@ -12,17 +20,9 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def destroy
-  end
-
-  def create
-  end
-
   def update
   end
 
-  def new
+  def destroy
   end
-
-
 end

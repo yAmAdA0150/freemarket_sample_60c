@@ -58,7 +58,6 @@
               = f.password_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
           - unless session[:provider].blank?
             = f.hidden_field :password_confirmation, value: session[:password]
-            = session[:provider] = nil
           .registration-main__box__contents__form-group
             %h3.idenfication
               本人確認

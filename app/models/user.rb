@@ -4,18 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
-        has_many :comments
-        has_many :items
+        has_many :comments, dependent: :destroy
+        has_many :items, dependent: :destroy
         has_many :likes
         has_many :sns_credentials
         has_many :traders
-        has_many :notifications
-        has_many :to_do_lists
+        has_many :notifications, dependent: :destroy
+        has_many :to_do_lists, dependent: :destroy
         has_many :messages
-        has_one  :address
-        has_one :credit_card
-        has_one :profile 
-        has_one :card
+        has_one  :address, dependent: :destroy
+        has_one :profile , dependent: :destroy
+        has_one :card, dependent: :destroy
 
         accepts_nested_attributes_for :address
 

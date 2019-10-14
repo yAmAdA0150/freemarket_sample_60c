@@ -31,7 +31,8 @@
     .crec-main__box__body
       = form_tag(payment_signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .crec-main__box__body__form-group
-          %label :card_number, "カード番号"
+          %label
+            カード番号
           %span.require 必須
           %br  
           = text_field_tag "number", "", class: "number", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number",class: 'textbox'
@@ -43,7 +44,8 @@
             =image_tag "dinersclub.gif", class:"bottom__link__logo"
             =image_tag "discover.gif", class:"bottom__link__logo"
         .crec-main__box__body__form-group
-          %label :exp_month, "有効期限"
+          %label 
+            有効期限
           %span.require 必須
           %br  
             %select.limit#exp_month{name: "exp_month", type: "text"}
@@ -77,7 +79,8 @@
               %option{value: "2029"}29
             %span 年
         .crec-main__box__body__form-group
-          %label :security_code, "セキュリティコード"
+          %label 
+            セキュリティコード
           %span.require 必須
           %br  
           = text_field_tag "cvc", "", class: "information-registration__base__main-box__click-area__input__information__text", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc", class:"textbox"
