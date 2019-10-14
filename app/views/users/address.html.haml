@@ -1,0 +1,173 @@
+-# ユーザー本人確認ページ
+
+
+= render 'shared/header'
+
+.identification
+  = render 'shared/user_sidebar'
+  %section.person
+    %h2.person__title
+      本人情報の登録
+    %form.person__flame
+      .person__inner
+        = form_for root_path, method: :post do |f|
+          .person__inner__announce
+            %p
+              お客さまの本人情報をご登録ください。
+            %p
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            = link_to '本人確認書類のアップデートについて＞', '#', class: 'update-link'
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前
+            %p.person__inner__name__user
+              大阪 太郎
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前カナ
+            %p.person__inner__name__user
+              オオサカ タロウ
+          .person__inner__name
+            %label.person__inner__name__title
+              生年月日
+            %p.person__inner__name__user
+              2001/01/01
+          .person__inner__city
+            %label.person__inner__city__title 郵便番号
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）1234567', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 都道府県
+            %span.person__inner__city__need 任意
+            .person__inner__city__box
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .person__inner__city
+            %label.person__inner__city__title 市区町村
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）横浜市緑区', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 番地
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）青山1-1-1', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 建物名
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）柳ビル103', class: 'person__inner__city--folder'}
+          %button{type: 'submit', class: 'person__inner__registration'} 登録する
+          .person__inner__about
+            = link_to '本人情報の登録について＞', '#', class: 'link'
+
+
+.identification-shrink
+  %section.person
+    %h2.person__title
+      本人情報の登録
+    %form.person__flame
+      .person__inner
+        = form_for root_path, method: :post do |f|
+          .person__inner__announce
+            %p
+              お客さまの本人情報をご登録ください。
+            %p
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            = link_to '本人確認書類のアップデートについて＞', '#', class: 'update-link'
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前
+            %p.person__inner__name__user
+              大阪 太郎
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前カナ
+            %p.person__inner__name__user
+              オオサカ タロウ
+          .person__inner__name
+            %label.person__inner__name__title
+              生年月日
+            %p.person__inner__name__user
+              2001/01/01
+          .person__inner__city
+            %label.person__inner__city__title 郵便番号
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）1234567', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 都道府県
+            %span.person__inner__city__need 任意
+            .person__inner__city__box
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .person__inner__city
+            %label.person__inner__city__title 市区町村
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）横浜市緑区', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 番地
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）青山1-1-1', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 建物名
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）柳ビル103', class: 'person__inner__city--folder'}
+          %button{type: 'submit', class: 'person__inner__registration'} 登録する
+          .person__inner__about
+            = link_to '本人情報の登録について＞', '#', class: 'link'
+  = render 'shared/user_sidebar'
+
+
+.identification-more-shrink
+  %section.person
+    %h2.person__title
+      本人情報の登録
+    %form.person__flame
+      .person__inner
+        = form_for root_path, method: :post do |f|
+          .person__inner__announce
+            %p
+              お客さまの本人情報をご登録ください。
+            %p
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            = link_to '本人確認書類のアップデートについて＞', '#', class: 'update-link'
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前
+            %p.person__inner__name__user
+              大阪 太郎
+          .person__inner__name
+            %label.person__inner__name__title
+              お名前カナ
+            %p.person__inner__name__user
+              オオサカ タロウ
+          .person__inner__name
+            %label.person__inner__name__title
+              生年月日
+            %p.person__inner__name__user
+              2001/01/01
+          .person__inner__city
+            %label.person__inner__city__title 郵便番号
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）1234567', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 都道府県
+            %span.person__inner__city__need 任意
+            .person__inner__city__box
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .person__inner__city
+            %label.person__inner__city__title 市区町村
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）横浜市緑区', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 番地
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）青山1-1-1', class: 'person__inner__city--folder'}
+          .person__inner__city
+            %label.person__inner__city__title 建物名
+            %span.person__inner__city__need 任意
+            %input{placeholder: '例）柳ビル103', class: 'person__inner__city--folder'}
+          %button{type: 'submit', class: 'person__inner__registration'} 登録する
+          .person__inner__about
+            = link_to '本人情報の登録について＞', '#', class: 'link'
+  = render 'shared/user_sidebar'
+
+= render 'shared/camera'
+
+= render 'shared/footer'
+
