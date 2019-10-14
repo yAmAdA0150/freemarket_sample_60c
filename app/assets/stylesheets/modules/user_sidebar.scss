@@ -1,21 +1,13 @@
-// マイページユーザーサイドバー
 .content-area{
-  background: rgb(245, 245, 245);
-  margin: auto  60px;
-  // width: 1020px;
-  // height: 1260px;
+  background: #fff;
+  margin: auto;
   display: block;
   background-repeat: no-repeat;
-  border-style: solid;
   border-width: 0;
-  font-size: inherit;
-  line-height: inherit;
-  text-decoration: none;
   .content__left{
     float: left;
     width: 280px;
-    margin: 0 40px 0 0;
-
+    margin-right: 80px;
     .content__left__list{
       background-repeat: no-repeat;
       margin: 0;
@@ -32,7 +24,6 @@
       line-height: inherit;
       box-sizing: inherit;
       display: block;
-      color: #333;
       cursor: auto;
       font: 66.66667% sans-serif;
       border-style: solid;
@@ -40,7 +31,6 @@
       box-sizing: inherit;
       border-style: solid;
       border-width: 0;
-      text-decoration: inherit;
     }
       .list__mypage{
         @extend .list__news;
@@ -48,13 +38,13 @@
       .list__news{
         position: relative;
         display: block;
-        height: 48px;
+        height: 50px;
         padding: 16px;
         margin: 1px;
         background: #fff;
         font-size: 14px;
         color: #333;
-        text-decoration: none;
+        // text-decoration: none;
         touch-action: manipulation;
         border-style: solid;
         line-height: inherit;
@@ -63,7 +53,14 @@
         list-style: none;
         display: flex;
         justify-content: space-between;
-
+        a{
+          text-decoration: none;
+          color: #333;
+        }
+        .icon {
+          position: relative;
+          font-size: 22px;
+        }
       }
       .list__todolist{
         @extend .list__news;
