@@ -1,0 +1,51 @@
+-# ユーザーのマイページ user.scss対応
+= render 'shared/header.html.haml'
+.mypage
+  .mypage__container
+    = render 'shared/user_sidebar.html.haml'
+    .mypage-content
+      .mypage-content__user
+        -# = image_tag 'mypage_background.jpg', class: 'user_background'
+        .mypage-content__user--profile
+          = link_to "", class: "user_link user_link--name" do
+            = image_tag "mercari_icon.png", class: "user_link__icon", size: "60x60"
+            .user_link__name.bold
+              たろちゃん
+        .mypage-content__user--rating
+          = link_to "", class: "user_link" do
+            .user_link__detail
+              .user-rate
+                評価
+                %span.num
+                  1 
+              .products-num
+                出品数
+                %span.num
+                  0
+      .mypage-content__tab
+        .mypage-tabs
+          %input#my-notification-tab{checked: "checked", name: "tab_item", type: "radio"}
+          %label.mypage-tabs__tab{for: "my-notification-tab"}
+            お知らせ
+          %input#my-todo-tab{name: "tab_item", type: "radio"}
+          %label.mypage-tabs__tab{for: "my-todo-tab"}
+            やることリスト
+        .tab-contents
+          .list-display
+            =link_to "", class: "link" do
+              .list-display__btn
+                一覧を見る
+      .mypage-product-container
+        .mypage-product-container__head
+          購入した商品
+        .mypage-product-container__tabs
+          %input#my-trading-tab{checked: "checked", name: "trade_item", type: "radio"}
+          %label.mypage-product-container__tabs__tab{for: "my-trading-tab"}
+            取引中
+          %input#my-traded-tab{name: "trade_item", type: "radio"}
+          %label.mypage-product-container__tabs__tab{for: "my-traded-tab"}
+            過去の取引
+        .mypage-product-container__content
+          取引中の商品はありません
+= render 'shared/footer.html.haml'
+= render 'shared/camera.html.haml'
