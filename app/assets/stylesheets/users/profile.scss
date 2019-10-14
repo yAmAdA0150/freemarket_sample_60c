@@ -1,1 +1,261 @@
 //ユーザープロフィール編集ページ アドレス編集 addresses/edit
+
+
+.edit {
+  width: 1020px;
+  box-sizing: border-box;
+  margin: 40px auto 0;
+  padding-bottom: 40px;
+  height: 1292px;
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  .edit {
+  &__box {
+    box-sizing: border-box;
+    background-color: #FFF;
+    margin-left: 320px;
+    &__title {
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 8px 24px;
+    }
+    &__inner {
+      box-sizing: border-box;
+      display: block;
+      &__top {
+        text-align: center;
+        z-index: 3;
+        display: block;
+        position: relative;
+        .back {
+          object-fit: cover;
+          width: 100%;
+          height: 156px;
+        }
+        &__icon {
+          margin-top: 70px;
+          left: 220px;
+          position: absolute;
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: #ccc;
+          vertical-align: middle;
+        }
+        &__name {
+          vertical-align: middle;
+          padding: 10px 16px 8px;
+          margin-top: 70px;
+          font-size: 15px;
+          left: 280px;
+          position: absolute;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          min-height: 50px;
+          width: 210px;
+          margin-left: 9px;
+        }
+      }
+      &__under {
+        width: 100%;
+        padding: 40px 15px;
+        &__introduction {
+          padding: 10px;
+          min-height: 216px;
+          width: 100%;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          font-weight: none;
+        }
+        &__push {
+          width: 100%;
+          background-color: #FF0211;
+          color: #FFF;
+          height: 50px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+}
+
+
+.edit-shrink {
+  width: 700px;
+  margin: 24px auto 0;
+  &__box {
+      background-color: #FFF;
+      &__title {
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 8px 24px;
+      }
+      &__inner {
+        display: block;
+        &__top {
+          text-align: center;
+          z-index: 3;
+          display: block;
+          position: relative;
+          .back {
+            object-fit: cover;
+            width: 100%;
+            height: 156px;
+          }
+          &__icon {
+            margin-top: 70px;
+            left: 220px;
+            position: absolute;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ccc;
+            vertical-align: middle;
+          }
+          &__name {
+            padding: 10px 16px 8px;
+            font-size: 15px;
+            vertical-align: middle;
+            margin-top: 70px;
+            left: 280px;
+            position: absolute;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 50px;
+            width: 210px;
+            margin-left: 9px;
+          }
+        }
+        &__under {
+          width: 100%;
+          padding: 40px 15px;
+          &__introduction {
+            min-height: 216px;
+            width: 100%;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            font-weight: none;
+          }
+          &__push {
+            width: 100%;
+            background-color: #FF0211;
+            color: #FFF;
+            height: 50px;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+.edit-more-shrink {
+  margin: 24px 0 0 0;
+  &__box {
+    width: 100%;
+    background-color: #FFF;
+    &__title {
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px 4px;
+    }
+    &__inner {
+      display: block;
+      &__top {
+        text-align: center;
+        z-index: 3;
+        display: block;
+        position: relative;
+        .back {
+          object-fit: cover;
+          width: 100%;
+          height: 156px;
+        }
+        &__icon {
+          margin-top: 70px;
+          left: 220px;
+          position: absolute;
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background-color: #ccc;
+          vertical-align: middle;
+        }
+        &__name {
+          padding: 10px 16px 8px;
+          font-size: 15px;
+          vertical-align: middle;
+          margin-top: 70px;
+          left: 280px;
+          position: absolute;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          min-height: 50px;
+          width: 210px;
+          margin-left: 9px;
+        }
+      }
+      &__under {
+        width: 100%;
+        padding: 40px 15px;
+        &__introduction {
+          min-height: 216px;
+          width: 100%;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          font-weight: none;
+        }
+        &__push {
+          width: 100%;
+          background-color: #FF0211;
+          color: #FFF;
+          height: 50px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1068px){
+  .edit-shrink {
+    display: none;
+  }
+  .edit-more-shrink {
+    display: none;
+  }
+}
+
+@media (max-width: 1067px) {
+  .edit {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-more-shrink {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .edit {
+    display: none;
+  }
+  .edit-shrink {
+    display: none;
+  }
+}
