@@ -163,19 +163,17 @@
               .content__price__right__box__title__price__yen
                 ¥
                 .content__price__right__box__title__price__yen__text
-                  %input{placeholder: "例） 300", class: 'content__price__right__box__title__price__yen__text--folder'}
+                  %input{placeholder: "例） 300", class: 'content__price__right__box__title__price__yen__text--folder', id:"price-field"}
           %li.content__price__right__box__fee
             .content__price__right__box__fee__left
               販売手数料(10%)
-            .content__price__right__box__fee__right
+            .content__price__right__box__fee__right#charge
               ー
           %li.content__price__right__box__profit
             .content__price__right__box__profit__left
               販売利益
-            .content__price__right__box__profit__right
+            .content__price__right__box__profit__right#benefit
               ー
-              -# 価格を入力すると自動で販売手数料を計算し販売利益も表示するようにする。
-              -# おそらくjsで手数料10%を計算できるように記述します。
     .content__choice
       .content__choice__top
         %p
@@ -197,8 +195,6 @@
       %button{class: 'content__choice__under'}
         = link_to '#', class: 'content__choice__under--push' do
           もどる
-
-
 .sell-shrink
   %section.content
     %h2.content__title
