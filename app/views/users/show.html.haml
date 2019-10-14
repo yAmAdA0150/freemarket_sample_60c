@@ -1,11 +1,9 @@
--# ユーザーのマイページ user.scss対応
 = render 'shared/header.html.haml'
 .mypage
   .mypage__container
     = render 'shared/user_sidebar.html.haml'
     .mypage-content
       .mypage-content__user
-        -# = image_tag 'mypage_background.jpg', class: 'user_background'
         .mypage-content__user--profile
           = link_to "", class: "user_link user_link--name" do
             = image_tag "mercari_icon.png", class: "user_link__icon", size: "60x60"
