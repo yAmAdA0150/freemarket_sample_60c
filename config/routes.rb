@@ -23,7 +23,13 @@ Rails.application.routes.draw do
   #     end
   #   end
     
-    resources :cards, only: [:new, :show, :create, :edit, :update, :destroy]
+    resources :cards, only: [:new, :show, :create, :edit, :update, :destroy] do
+      collection do
+
+        get 'create'
+        post 'payment' => 'card#payment'
+      end
+    end
     
     resources :addresses, only: [:update, :edit]
     
