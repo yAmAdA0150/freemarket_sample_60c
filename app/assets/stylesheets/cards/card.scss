@@ -1,1 +1,151 @@
-// ユーザークレジットカード登録ページ
+.create{
+  .card-wrapper{
+    height: 1292px;
+    display: block;
+    margin: 40px auto 0 auto;
+    .crec-main {
+      &__box {
+          font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+          width: 700px;
+          background-color: white;
+          margin: 0 auto;
+          font-weight: bold;
+          &__header {
+              height: 50px;
+              line-height: 50px;
+              font-size: 24px;
+              padding: 0;
+              display: block;
+              text-align: center;
+              border-style: solid;
+              border-width: 0;
+              border-bottom: 1px solid #f5f5f5;
+          }
+          &__body {
+              width: 343px;
+              font-size: 14px;
+              margin: 0 auto;
+              padding: 40px 0px 64px;
+              &__form-group {
+                  margin-top: 24px;
+                  position: relative;
+                  .textbox {
+                      margin: 8px 0 0 0;
+                      padding: 10px 16px 8px;
+                      border-radius: 4px;
+                      border: 1px solid #ccc;
+                      background: #fff;
+                      line-height: 1.5;
+                      font-size: 16px;
+                      width: 343px;
+                      height: 48px;
+                      font-weight: normal;
+                  }
+                  .textbox:focus {
+                      border-radius: 4px;
+                      outline: none;
+                      border: 1px solid #0099e8;
+                  }
+                  .btn {
+                      display: block;
+                      margin-top: 32px;
+                      width: 343px;
+                      line-height: 48px;
+                      font-size: 14px;
+                      border: 1px solid transparent;
+                      -webkit-transition: all ease-out .3s;
+                      transition: all ease-out .3s;
+                      cursor: pointer;
+                      text-align: center;
+                      background: #ea352d;
+                      border: 1px solid #ea352d;
+                      color: #fff;
+                  }
+                  .limit {
+                      width: 120px;
+                      height: 48px;
+                      padding: 10px 16px 8px;
+                      border-radius: 4px;
+                      border: 1px solid #ccc;
+                      background: #fff;
+                      line-height: 1.5;
+                      font-size: 16px;
+                      touch-action: manipulation;
+                      margin-top: 8px;
+                      font-weight: normal;
+                  }
+                  .bottom__link__logo {
+                      height: 35px;
+                      width: auto;
+                      margin-top: 8px;
+                  }
+                  select:focus {
+                      border-radius: 4px;
+                      outline: none;
+                      border: 1px solid #0099e8;
+                  }
+                  &__info {
+                      margin-top:8px;
+                      display: block;
+                      font-weight: normal;
+                      text-align: right;
+                      color: #0099e8;
+                      .hidden_box input {
+                        display: none;
+                      }
+                      .hidden_box .hidden_show {
+                          height: 0;
+                          padding: 0;
+                          overflow: hidden;
+                          opacity: 0;
+                          transition: 0.8s;
+                          position: absolute;
+                          right: 0;
+                      }
+                      .hidden_box input:checked ~ .hidden_show {
+                          padding: 5px 0;
+                          height: auto;
+                          opacity: 1;
+                      }
+                      .hidden-triangle{
+                        margin-left:280px;
+                        width: 10px;
+                        border-right: 10px solid transparent;
+                        border-bottom: 10px solid #eee;
+                        border-left: 10px solid transparent; 
+                      }
+                      .hidden-imgbox{
+                        width: 343px;
+                        background-color: #eee;
+                        padding:20px;
+                        border-radius: 10px;
+                        color: black;
+                        text-align: center;
+                        .hidden_image{
+                          margin-top:5px;
+                          height: 100px;
+                          width: auto;
+                          z-index: 1;
+                      }
+                      .hidden_show:checked ~ .hidden_show {
+                        padding: 5px 0;
+                        height: auto;
+                        opacity: 0;
+                    }
+
+                      
+                        
+
+                      }
+                  }
+              }
+          }
+      }
+    }
+  }
+  a{
+    color : #333333;
+    text-decoration: none;
+    
+  }
+}
