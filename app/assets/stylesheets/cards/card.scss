@@ -2,13 +2,19 @@
   .card-wrapper{
     height: 1292px;
     display: block;
-    margin: 40px auto 0 auto;
+  
     .crec-main {
+      margin: 40px auto 0;
+      width: 1020px;
+      .crec-render{
+        margin: 0 40px 0 0;
+      }
       &__box {
+
           font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
           width: 700px;
           background-color: white;
-          margin: 0 auto;
+          margin: 0 0 0 318px;
           font-weight: bold;
           &__header {
               height: 50px;
