@@ -55,8 +55,9 @@
 
                             &__text {
                                 text-align: center;
-                                &__p{
-                                  color:white;
+
+                                &__p {
+                                    color: white;
                                 }
                             }
                         }
@@ -67,7 +68,6 @@
                             width: 572px;
                             height: 16px;
                             text-align: right;
-                            color: #0099ee;
                         }
                     }
                 }
@@ -77,12 +77,11 @@
 
     a {
         text-decoration: none;
-        color: #333;
+        color: #0099ee;
         width: 572px;
         height: 16px;
         display: inline;
     }
-
 
     .card-icon {
         margin-left: 50px;
