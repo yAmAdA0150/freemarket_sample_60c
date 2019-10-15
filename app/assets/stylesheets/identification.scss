@@ -1,347 +1,343 @@
 // ユーザー本人確認ページ users/edit
-
 .identification {
-  width: 1020px;
-  a {
-    text-decoration: none;
-    color: #333;
-  }
-  margin: 38px auto 0;
-  padding-bottom: 80px;
-  .person {
-    background-color: #fff;
-    margin-left: 320px;
-    &__title {
-      padding: 8px 24px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 24px;
-      border-bottom: 2px solid #eee;
+    width: 1020px;
+    a {
+        text-decoration: none;
+        color: #333;
     }
-    &__inner {
-      padding: 65px;
-        &__announce {
-          height: 71px;
-          margin-top: 8px;
-          .update-link {
-            margin-top: 8px;
-            float: right;
-            text-decoration: none;
-            color: #0099e8;
-          }
-        }
-        &__name {
-          margin-top: 38px;
-          &__title {
+    margin: 38px auto 0;
+    padding-bottom: 80px;
+    .person {
+        background-color: #fff;
+        margin-left: 320px;
+        &__title {
+            padding: 8px 24px;
             font-weight: bold;
-          }
-          &__user {
-            margin-top: 6px;
-          }
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 2px solid #eee;
         }
-        &__city {
-          margin-top: 40px;
-          &__title {
-            font-weight: bold;
-            display: inline-block;
-          }
-          &__need {
-            font-size: 12px;
-            padding: 3px;
-            color: #FFF;
-            background-color: #ccc;
-            font-weight: none;
-            border-radius: 3px;
-          }
-          &--folder {
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-          &__box {
-          }
-          #_prefecture_id {
-            background-color: #FFF;
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-        }
-        &__registration {
-          margin-top: 40px;
-          background-color: #FF0211;
-          font-size: 14px;
-          text-align: center;
-          display: block;
-          width: 100%;
-          cursor: pointer;
-          line-height: 48px;
-          color: #FFF;
-          text-decoration: none;
-        }
-        &__about {
-          text-align: right;
-          margin-top: 40px;
-          .link {
-              text-align: right;
-              margin-top: 8px;
-              text-decoration: none;
-              color: #0099e8;
+        &__inner {
+            padding: 65px;
+            &__announce {
+                height: 71px;
+                margin-top: 8px;
+                .update-link {
+                    margin-top: 8px;
+                    float: right;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
+            }
+            &__name {
+                margin-top: 38px;
+                &__title {
+                    font-weight: bold;
+                }
+                &__user {
+                    margin-top: 6px;
+                }
+            }
+            &__city {
+                margin-top: 40px;
+                &__title {
+                    font-weight: bold;
+                    display: inline-block;
+                }
+                &__need {
+                    font-size: 12px;
+                    padding: 3px;
+                    color: #FFF;
+                    background-color: #ccc;
+                    font-weight: none;
+                    border-radius: 3px;
+                }
+                &--folder {
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+                &__box {}
+                #_prefecture_id {
+                    background-color: #FFF;
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+            }
+            &__registration {
+                margin-top: 40px;
+                background-color: #FF0211;
+                font-size: 14px;
+                text-align: center;
+                display: block;
+                width: 100%;
+                cursor: pointer;
+                line-height: 48px;
+                color: #FFF;
+                text-decoration: none;
+            }
+            &__about {
+                text-align: right;
+                margin-top: 40px;
+                .link {
+                    text-align: right;
+                    margin-top: 8px;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
             }
         }
     }
-  }
 }
 
 .identification-shrink {
-  margin: 24px auto 0;
-  width: 700px;
-  padding-bottom: 40px;
-  display: block;
-  a {
-    text-decoration: none;
-    color: #333;
-  }
-  .person {
+    margin: 24px auto 0;
+    width: 700px;
+    padding-bottom: 40px;
     display: block;
-    background-color: #fff;
-    &__title {
-      padding: 8px 24px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 24px;
-      border-bottom: 2px solid #eee;
+    a {
+        text-decoration: none;
+        color: #333;
     }
-    &__inner {
-      padding: 65px;
-        &__announce {
-          height: 71px;
-          margin-top: 8px;
-          .update-link {
-            margin-top: 8px;
-            float: right;
-            text-decoration: none;
-            color: #0099e8;
-          }
-        }
-        &__name {
-          margin-top: 38px;
-          &__title {
+    .person {
+        display: block;
+        background-color: #fff;
+        &__title {
+            padding: 8px 24px;
             font-weight: bold;
-          }
-          &__user {
-            margin-top: 6px;
-          }
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 2px solid #eee;
         }
-        &__city {
-          margin-top: 40px;
-          &__title {
-            font-weight: bold;
-            display: inline-block;
-          }
-          &__need {
-            font-size: 12px;
-            padding: 3px;
-            color: #FFF;
-            background-color: #ccc;
-            font-weight: none;
-            border-radius: 3px;
-          }
-          &--folder {
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-          &__box {
-          }
-          #_prefecture_id {
-            background-color: #FFF;
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-        }
-        &__registration {
-          margin-top: 40px;
-          background-color: #FF0211;
-          font-size: 14px;
-          text-align: center;
-          display: block;
-          width: 100%;
-          cursor: pointer;
-          line-height: 48px;
-          color: #FFF;
-          text-decoration: none;
-        }
-        &__about {
-          text-align: right;
-          margin-top: 40px;
-          .link {
-              text-align: right;
-              margin-top: 8px;
-              text-decoration: none;
-              color: #0099e8;
+        &__inner {
+            padding: 65px;
+            &__announce {
+                height: 71px;
+                margin-top: 8px;
+                .update-link {
+                    margin-top: 8px;
+                    float: right;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
+            }
+            &__name {
+                margin-top: 38px;
+                &__title {
+                    font-weight: bold;
+                }
+                &__user {
+                    margin-top: 6px;
+                }
+            }
+            &__city {
+                margin-top: 40px;
+                &__title {
+                    font-weight: bold;
+                    display: inline-block;
+                }
+                &__need {
+                    font-size: 12px;
+                    padding: 3px;
+                    color: #FFF;
+                    background-color: #ccc;
+                    font-weight: none;
+                    border-radius: 3px;
+                }
+                &--folder {
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+                &__box {}
+                #_prefecture_id {
+                    background-color: #FFF;
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+            }
+            &__registration {
+                margin-top: 40px;
+                background-color: #FF0211;
+                font-size: 14px;
+                text-align: center;
+                display: block;
+                width: 100%;
+                cursor: pointer;
+                line-height: 48px;
+                color: #FFF;
+                text-decoration: none;
+            }
+            &__about {
+                text-align: right;
+                margin-top: 40px;
+                .link {
+                    text-align: right;
+                    margin-top: 8px;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
             }
         }
     }
-  }
 }
 
 .identification-more-shrink {
-  margin-top: 24px;
-  padding-bottom: 40px;
-  a {
-    text-decoration: none;
-    color: #333;
-  }
-  .person {
-    width: 100%;
-    background-color: #fff;
-    &__title {
-      padding: 8px 24px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 18px;
-      border-bottom: 2px solid #eee;
+    margin-top: 24px;
+    padding-bottom: 40px;
+    a {
+        text-decoration: none;
+        color: #333;
     }
-    &__inner {
-      padding: 40px;
-        &__announce {
-          height: 71px;
-          margin-top: 8px;
-          .update-link {
-            margin-top: 8px;
-            float: right;
-            text-decoration: none;
-            color: #0099e8;
-          }
-        }
-        &__name {
-          margin-top: 38px;
-          &__title {
+    .person {
+        width: 100%;
+        background-color: #fff;
+        &__title {
+            padding: 8px 24px;
             font-weight: bold;
-          }
-          &__user {
-            margin-top: 6px;
-          }
+            text-align: center;
+            font-size: 18px;
+            border-bottom: 2px solid #eee;
         }
-        &__city {
-          margin-top: 40px;
-          &__title {
-            font-weight: bold;
-            display: inline-block;
-          }
-          &__need {
-            margin-left: 7px;
-            font-size: 12px;
-            padding: 3px;
-            color: #FFF;
-            background-color: #ccc;
-            font-weight: none;
-            border-radius: 3px;
-          }
-          &--folder {
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-          &__box {
-          }
-          #_prefecture_id {
-            background-color: #FFF;
-            height: 48px;
-            margin-top: 8px;
-            width: 100%;
-            position: relative;
-            font-weight: none;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            padding: 8px 14px;
-          }
-        }
-        &__registration {
-          margin-top: 40px;
-          background-color: #FF0211;
-          font-size: 14px;
-          text-align: center;
-          display: block;
-          width: 100%;
-          cursor: pointer;
-          line-height: 48px;
-          color: #FFF;
-          text-decoration: none;
-        }
-        &__about {
-          text-align: right;
-          margin-top: 40px;
-          .link {
-              text-align: right;
-              margin-top: 8px;
-              text-decoration: none;
-              color: #0099e8;
+        &__inner {
+            padding: 40px;
+            &__announce {
+                height: 71px;
+                margin-top: 8px;
+                .update-link {
+                    margin-top: 8px;
+                    float: right;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
+            }
+            &__name {
+                margin-top: 38px;
+                &__title {
+                    font-weight: bold;
+                }
+                &__user {
+                    margin-top: 6px;
+                }
+            }
+            &__city {
+                margin-top: 40px;
+                &__title {
+                    font-weight: bold;
+                    display: inline-block;
+                }
+                &__need {
+                    margin-left: 7px;
+                    font-size: 12px;
+                    padding: 3px;
+                    color: #FFF;
+                    background-color: #ccc;
+                    font-weight: none;
+                    border-radius: 3px;
+                }
+                &--folder {
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+                &__box {}
+                #_prefecture_id {
+                    background-color: #FFF;
+                    height: 48px;
+                    margin-top: 8px;
+                    width: 100%;
+                    position: relative;
+                    font-weight: none;
+                    border: 1px solid #ccc;
+                    border-radius: 6px;
+                    font-size: 15px;
+                    padding: 8px 14px;
+                }
+            }
+            &__registration {
+                margin-top: 40px;
+                background-color: #FF0211;
+                font-size: 14px;
+                text-align: center;
+                display: block;
+                width: 100%;
+                cursor: pointer;
+                line-height: 48px;
+                color: #FFF;
+                text-decoration: none;
+            }
+            &__about {
+                text-align: right;
+                margin-top: 40px;
+                .link {
+                    text-align: right;
+                    margin-top: 8px;
+                    text-decoration: none;
+                    color: #0099e8;
+                }
             }
         }
     }
-  }
 }
 
 @media (min-width: 1068px) {
-  .identification-shrink {
-    display: none;
-  }
-  .identification-more-shrink {
-    display: none;
-  }
+    .identification-shrink {
+        display: none;
+    }
+    .identification-more-shrink {
+        display: none;
+    }
 }
 
 @media (max-width: 1067px) {
-  .identification {
-    display: none;
-  }
+    .identification {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {
-  .identification-more-shrink {
-    display: none;
-  }
+    .identification-more-shrink {
+        display: none;
+    }
 }
 
 @media (max-width: 767px) {
-  .identification {
-    display: none;
-  }
-  .identification-shrink {
-    display: none;
-  }
+    .identification {
+        display: none;
+    }
+    .identification-shrink {
+        display: none;
+    }
 }

@@ -13,9 +13,7 @@ class ApplicationController < ActionController::Base
         :birthyear,
         :birthmonth,
         :birthday,
-        :mobile_number,
-        :uid,
-        :provider])
+        :mobile_number])
       end
       private
     

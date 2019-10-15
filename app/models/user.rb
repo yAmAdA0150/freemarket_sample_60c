@@ -7,7 +7,7 @@ class User < ApplicationRecord
         has_many :comments, dependent: :destroy
         has_many :items, dependent: :destroy
         has_many :likes
-        has_many :sns_credentials
+        has_many :sns_credentials, dependent: :destroy
         has_many :traders
         has_many :notifications, dependent: :destroy
         has_many :to_do_lists, dependent: :destroy
@@ -18,7 +18,6 @@ class User < ApplicationRecord
 
         accepts_nested_attributes_for :address
 
-
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
         validates :password, length: { minimum: 7, maximum: 128}
@@ -26,16 +25,53 @@ class User < ApplicationRecord
         validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
         validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, presence: true
 
-        def self.from_omniauth(auth)
-          where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-            user.uid = auth.uid
-            user.provider = auth.provider
-            user.name = auth.info.name
-            user.email = auth.info.email
-            user.first_name = auth.info.first_name
-            user.last_name = auth.info.last_name
-            user.password = Devise.friendly_token[0, 20]
-          end
+      @pass = Devise.friendly_token[0, 7]
+  def self.without_sns_data(auth)
+    user = User.where(email: auth.info.email).first
+    if user.present?
+      sns = SnsCredential.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        user_id: user.id
+      )
+    else
+      user = User.new(
+        email: auth.info.email,
+        password: @pass,
+        password_confirmation: @pass,
+      )
+      sns = SnsCredential.new(
+        uid: auth.uid,
+        provider: auth.provider
+      )
+    end
+    return { user: user ,sns: sns}
+  end
 
-      end
+  def self.with_sns_data(auth, snscredential)
+    user = User.where(id: snscredential.user_id).first
+    unless user.present?
+      user = User.new(
+        email: auth.info.email,
+        password: @pass,
+        password_confirmation: @pass,
+      )
+    end
+    return {user: user}
+  end
+
+  def self.find_oauth(auth)
+    uid = auth.uid
+    provider = auth.provider
+    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    if snscredential.present?
+      user = with_sns_data(auth, snscredential)[:user]
+      sns = snscredential
+    else
+      user = without_sns_data(auth)[:user]
+      sns = without_sns_data(auth)[:sns]
+    end
+    return { user: user ,sns: sns}
+  end
+
     end

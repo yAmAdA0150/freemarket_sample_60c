@@ -55,13 +55,18 @@ class SignupController < ApplicationController
       birthyear: session[:birthyear],
       birthmonth: session[:birthmonth],
       birthday: session[:birthday],
-      mobile_number: session[:mobile_number],
-      uid: session[:uid],
-      provider: session[:provider]
+      mobile_number: session[:mobile_number]
         )
     @user.build_address(user_params[:address_attributes])
     if @user.save
       sign_in @user unless user_signed_in?
+      if session[:uid].present? && session[:provider].present?
+        SnsCredential.create(
+          user_id: current_user.id,
+          uid: session[:uid],
+          provider: session[:provider]
+        )
+      end
       redirect_to creditcard_signup_index_path
     else
       render signup_index_path
@@ -169,8 +174,6 @@ class SignupController < ApplicationController
       :birthmonth,
       :birthday,
       :mobile_number,
-      :uid,
-      :provider,
       address_attributes:[:id,:postcode,:city,:street,:building_name,:phone_number,:prefecture_id]
     )
   end
