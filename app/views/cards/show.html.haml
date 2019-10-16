@@ -1,9 +1,9 @@
 %section.show
 =render 'shared/header'
 .bread_crumbs
-  .bread_crumbs__line
-    - breadcrumb :user
-    = breadcrumbs separator: " > ", class: "breadcrumbs-list"
+  -# .bread_crumbs__line
+  -#   - breadcrumb :user
+  -#   = breadcrumbs separator: " > ", class: "breadcrumbs-list"
 .show__main__section
   =render 'shared/user_sidebar'
   .show__main__section__content
@@ -20,7 +20,7 @@
               %li.show__main__section__content__box__card__list__content__type__name
                 -# ここからform使用予定
                 .show__main__section__content__box__card__list__content__type__name__form
-                  -# =form_with url: card_path(@card.id), method:delete, local:true, id: 'charge-form' do |f|
+                  
                   %figure.show__main__section__content__box__card__list__content__type__name__form__icon--a
                     -# = image_tag "amex.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-a"
                     -# = image_tag "visa.jpg", class:"show__main__section__content__box__card__list__content__type__name__form__icon-v"
@@ -35,15 +35,16 @@
                     -# ="**** **** **** " + @customer_card.last4
                   .show__main__section__content__box__card__list__content__type__name__form__date
                     10 / 25
-                    -# - exp_month = @customer_card.exp_month.to_s
-                    -# - exp_year =  @customer_card.exp_year.to_s.slice(2,3)
-                    -# = exp_month + " / " + exp_year
-                  %input{type: "hidden", name: "card_id", value: ""}
-                  %button{type:"submit", class: "show__main__section__content__box__card__list__content__type__name__form__button"}
-                    =link_to new_user_card_path , class: "delete-link" do
-                      削除する
+                    - exp_month = @customer_card.exp_month.to_s
+                    - exp_year =  @customer_card.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                        -# =form_tag(user_path, method: :post, id: 'charge-form', name:"inputForm") do
+                        -#   %input{type: "hidden", name: "card_id", value: ""}
+                        -#   %button{type:"submit", class: "show__main__section__content__box__card__list__content__type__name__form__button"}
+                        =link_to delete_user_card_path(current_user) , class: "delete-link" do
+                          削除する
         .show__main__section__content__box__card__pay
-          =link_to new_user_card_path ,class:"pay-link" do 
+          -# =link_to new_user_card_path ,class: "pay-link" do 
             %span.show__main__section__content__box__card__pay__text
               支払方法について
               =fa_icon 'angle-right' , class:'prev-icon'

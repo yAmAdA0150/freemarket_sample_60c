@@ -1,11 +1,9 @@
 class CardsController < ApplicationController
-
+  
+  require 'payjp'
 
   def new
-    @user = User.new
-  end
-
-  def show 
+   @card = Card.new
   end
 
   def create
@@ -25,7 +23,7 @@ class CardsController < ApplicationController
   def payment
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
-      redirect_to cards_path
+      redirect_to new_user_card_path
     else
       customer = Payjp::Customer.create(
       email: current_user.email,
@@ -34,17 +32,36 @@ class CardsController < ApplicationController
       ) 
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to new_card_path
         flash.now[:notice] = '登録が完了しました'
+        redirect_to action: 'show'
+        
       else
-        redirect_to cards_path
+        redirect_to action: 'new'
       end
     end
   end
 
-  private
-
-  def user_params
-    params.require(:card).permit(:card_id, :customer_id).marge(user_id: current_user.id)
+  def delete
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer.delete
+      card.delete
+    end
+      redirect_to action: "new"
   end
+
+  def show
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
+
 end
