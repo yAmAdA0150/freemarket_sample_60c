@@ -1,5 +1,9 @@
 %section.show
 =render 'shared/header'
+.bread_crumbs
+  .bread_crumbs__line
+    - breadcrumb :user
+    = breadcrumbs separator: " > ", class: "breadcrumbs-list"
 .show__main__section
   =render 'shared/user_sidebar'
   .show__main__section__content
