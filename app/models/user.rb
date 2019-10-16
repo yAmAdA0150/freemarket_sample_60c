@@ -13,8 +13,8 @@ class User < ApplicationRecord
         has_many :to_do_lists, dependent: :destroy
         has_many :messages
         has_one  :address, dependent: :destroy
-        has_one :profile , dependent: :destroy
-        has_one :card, dependent: :destroy
+        has_one  :profile , dependent: :destroy
+        has_one  :card, dependent: :destroy
 
         accepts_nested_attributes_for :address
 

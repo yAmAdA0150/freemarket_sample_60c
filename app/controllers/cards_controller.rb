@@ -2,6 +2,7 @@ class CardsController < ApplicationController
 
 
   def new
+    @user = User.new
   end
 
   def show 
@@ -41,4 +42,9 @@ class CardsController < ApplicationController
     end
   end
 
+  private
+
+  def user_params
+    params.require(:card).permit(:card_id, :customer_id).marge(user_id: current_user.id)
+  end
 end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'items#index'
 
+  # resource :user, only: [:destroy]
   # まだテーブルにレコードがないが、ビューの作成のためにコメントアウトしてあります
 
   # resources :items, only: [:index, :show,] do
@@ -15,7 +16,15 @@ Rails.application.routes.draw do
   resources :brands, only:[:show ,:index]
   
   
-  resources :users, only: [:show, :edit, :destroy, :update]
+  resources :users, only: [:show, :edit, :destroy, :update] do
+    resource :card, only: [:new, :show, :create, :edit, :update, :destroy] do
+      get 'create'
+      post 'payment' => 'card#payment'
+    end
+  end
+  
+  
+  
   # resources :users do
   #   resources :items , only:[:edit, :update, :destroy, :new ,:create] do
   #     collection do
@@ -23,13 +32,7 @@ Rails.application.routes.draw do
   #     end
   #   end
     
-    resources :cards, only: [:new, :show, :create, :edit, :update, :destroy] do
-      collection do
-
-        get 'create'
-        post 'payment' => 'card#payment'
-      end
-    end
+    
     
     resources :addresses, only: [:update, :edit]
     

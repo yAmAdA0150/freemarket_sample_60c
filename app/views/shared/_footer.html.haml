@@ -111,9 +111,8 @@
         国
       %ul.country__menu
         %li.country__menu__list
-          -if user_signed_in?
-            =link_to user_path(@user), method: :delete, class:"about__menu__list__link" do 
-              日本
+          =link_to '/', method: :delete, class:"about__menu__list__link" do
+            日本
         %li.country__menu__list
           =link_to destroy_user_session_path, method: :delete, class:"about__menu__list__link" do
             United States
