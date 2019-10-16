@@ -1,0 +1,41 @@
+%section.sohw
+=render 'shared/header'
+.show__main__section
+  =render 'shared/user_sidebar'
+  .show__main__section__content
+    .show__main__section__content__box
+      .show__main__section__content__box__title
+        %h2.show__main__section__content__box__title__text
+          支払い方法
+      .show__main__section__content__box__card
+        .show__main__section__content__box__card__list
+          .show__main__section__content__box__card__list__content
+            %h3.show__main__section__content__box__card__list__content__text
+              クレジットカード一覧
+            %ul.show__main__section__content__box__card__list__content__type
+              %li.show__main__section__content__box__card__list__content__type__name
+                -# ここからform使用予定
+                .show__main__section__content__box__card__list__content__type__name__form
+                  %figure.show__main__section__content__box__card__list__content__type__name__form__icon--a
+                    -# = image_tag "amex.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-a"
+                    -# = image_tag "visa.jpg", class:"show__main__section__content__box__card__list__content__type__name__form__icon-v"
+                    -# = image_tag "saison.png", class:"show__main__section__content__box__card__list__content__type__name__form__icon-s"
+                    -# = image_tag "jcb.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-j"
+                    -# = image_tag "dinersclub.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-dine"
+                    = image_tag "discover.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-d"
+
+                  .show__main__section__content__box__card__list__content__type__name__form__number
+                    **********0000
+                  .show__main__section__content__box__card__list__content__type__name__form__date
+                    10 / 25
+                  %button.show__main__section__content__box__card__list__content__type__name__form__button
+                    =link_to 'l' , class: "delete-link" do
+                      削除する
+        .show__main__section__content__box__card__pay
+          =link_to "#" , class:"pay-link"do 
+            %span.show__main__section__content__box__card__pay__text
+              支払方法について
+              =fa_icon 'angle-right' , class:'prev-icon'
+
+=render 'shared/camera'
+=render 'shared/footer'
