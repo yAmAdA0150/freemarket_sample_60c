@@ -1,6 +1,3 @@
-# crumb :root do
-#   link "Home", root_path
-# end
 
 # 親
 crumb :root do
@@ -57,3 +54,8 @@ crumb :item do
   parent :mypage
 end
 
+
+crumb :credit do 
+  link "クレジットカード情報入力", creditcard_signup_index_path
+  parent :cradit
+end
