@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   #   end
     
     
+
     
     resources :addresses, only: [:update, :edit]
     
@@ -45,6 +46,10 @@ Rails.application.routes.draw do
   #     post 'delete', to: 'card#delete'
   #   end
   # end
+
+  namespace :api do
+    resources :categories, only: :index, defaults: { format: 'json' }
+  end
 
   
   resources :items do
