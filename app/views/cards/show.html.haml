@@ -15,7 +15,7 @@
             %ul.show__main__section__content__box__card__list__content__type
               %li.show__main__section__content__box__card__list__content__type__name
                 -# ここからform使用予定
-                .show__main__section__content__box__card__list__content__type__name__form
+                %form.show__main__section__content__box__card__list__content__type__name__form
                   %figure.show__main__section__content__box__card__list__content__type__name__form__icon--a
                     -# = image_tag "amex.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-a"
                     -# = image_tag "visa.jpg", class:"show__main__section__content__box__card__list__content__type__name__form__icon-v"
@@ -24,13 +24,17 @@
                     -# = image_tag "dinersclub.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-dine"
                     = image_tag "discover.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-d"
 
-                  .show__main__section__content__box__card__list__content__type__name__form__number
+                  .show__main__section__content__box__card__list__content__type__name__form__number.form_space
                     **********0000
-                  .show__main__section__content__box__card__list__content__type__name__form__date
+                    -# ="**** **** **** " + @customer_card.last4
+                  .show__main__section__content__box__card__list__content__type__name__form__date.form_space
                     10 / 25
+                    -# - exp_month = @customer_card.exp_month.to_s
+                    -# - exp_year =  @customer_card.exp_year.to_s.slice(2,3)
+                      -# = exp_month + " / " + exp_year
                   %button.show__main__section__content__box__card__list__content__type__name__form__button
-                    =link_to 'l' , class: "delete-link" do
-                      削除する
+                    -# =link_to 'delete_user_card' , method::delete, class: "delete-link" do
+                    削除する
         .show__main__section__content__box__card__pay
           =link_to "#" , class:"pay-link"do 
             %span.show__main__section__content__box__card__pay__text
