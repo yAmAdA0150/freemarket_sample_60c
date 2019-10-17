@@ -1,3 +1,5 @@
+-# 幅が一番広い場合
+
 %header
   .topbar
     .topbar__main
@@ -17,26 +19,69 @@
             = link_to categories_path, class: "link" do
               = fa_icon 'list-ul', class: 'icons'
               カテゴリーから探す
-            -# %ul.topbar__under__left__choice__example__list
-            -#   %li.topbar__under__left__choice__example__list__type
-            -#     一段目
-            -#     %ul.topbar__under__left__choice__example__list__type__category
-            -#       %li.topbar__under__left__choice__example__list__type__category__menu
-            -#         二段目
-            -#         %ul.topbar__under__left__choice__example__list__type__category__menu__final
-            -#           %li.topbar__under__left__choice__example__list__type__category__menu__final__page
-            -#             三段目
-                -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
+          %ul.topbar__under__left__choice__example__list
+            //２つのブロックでドロップダウンのズレを修正中なので、eachの部分はコメントアウトにしています。
+            -# %li.topbar__under__left__choice__example__list__type
+            -#   = link_to '#', class: 'category_first' do
+            -#     - @parents.each do |child|
+            -#       %ul.topbar__under__left__choice__example__list__type__category
+            -#         %li.topbar__under__left__choice__example__list__type__category__menu
+            -#           = link_to '#', class: 'category_second' do
+            -#             - @children.each do |gchild|
+            -#               %ul.topbar__under__left__choice__example__list__type__category__menu__final
+            -#                 %li.topbar__under__left__choice__example__list__type__category__menu__final__page
+            -#                   = link_to '#', class: 'category_third' do
+                                -# - @gchild.each do |gchild|
+            %li.topbar__under__left__choice__example__list__type
+              = link_to '#', class: 'category_first' do
+                レディース
+                %ul.topbar__under__left__choice__example__list__type__category
+                  %li.topbar__under__left__choice__example__list__type__category__menu
+                    = link_to '#', class: 'category_second' do
+                      トップス
+                  %li.topbar__under__left__choice__example__list__type__category__menu
+                    = link_to '#', class: 'category_second' do
+                      ジャケット/アウター
+            %li.topbar__under__left__choice__example__list__type
+              = link_to '#', class: 'category_first' do
+                メンズ
+                %ul.topbar__under__left__choice__example__list__type__category
+                  %li.topbar__under__left__choice__example__list__type__category__menu
+                    = link_to '#', class: 'category_second' do
+                      トップス
+                  %li.topbar__under__left__choice__example__list__type__category__menu
+                    = link_to '#', class: 'category_second' do
+                      ジャケット/アウター
         %li.topbar__under__left__choice
           %h2.topbar__under__left__choice__example
             = link_to '#', class: "link" do
               = fa_icon 'tag', class: 'icons'
               ブランドから探す
-            -# %ul.topbar__under__left__choice__example__list
-            -#   %li.topbar__under__left__choice__example__list__type
-            -#     ブランド一段目
-                -# 上の記述は、カーソルを合わせた際にカテゴリー一覧を表示するためのもの。
-                -# この下からifでログインしているかいないかで分岐する。
+          %ul.topbar__under__left__choice__example__list
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  シャネル
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  ナイキ
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  ルイ ヴィトン
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  シュプリーム
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  アディダス
+            %li.topbar__under__left__choice__example__list__type
+              .brand-list
+                = link_to '#', class: 'category_first' do
+                  ブランド一覧
       %ul.topbar__under__right
         - if user_signed_in?
           %li.topbar__under__right__contents
@@ -67,6 +112,13 @@
           %li.topbar__under__right__contents
             = link_to new_user_session_path, class: "login" do
               ログイン
+
+-# 幅が少し狭くなった場合
+
+
+
+-# 幅が一番狭い場合
+
 .narrow
   .narrow__top
     =link_to root_path, class:"narrow__top__icon" do
