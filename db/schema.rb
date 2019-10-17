@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_022821) do
+ActiveRecord::Schema.define(version: 2019_10_09_065402) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postcode", null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "url", null: false
+    t.string "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "text", null: false
-    t.integer "condition", null: false
-    t.boolean "display", null: false
+    t.integer "condition_id", null: false
+    t.integer "display_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "size_id", null: false
@@ -148,12 +148,14 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
   end
 
   create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "charge"
-    t.string "delivery_method", null: false
-    t.integer "days_to_be_delivered", null: false
-    t.string "delivery_to", null: false
+    t.integer "charge", null: false
+    t.integer "delivery_method_id", null: false
+    t.integer "term_id", null: false
+    t.integer "prefecture_id", null: false
+    t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_shippings_on_item_id"
   end
 
   create_table "size_charts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -172,7 +174,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "uid"
+    t.string "uid", null: false
     t.string "provider", null: false
     t.text "token"
     t.datetime "created_at", null: false
@@ -230,8 +232,6 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_022821) do
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "reviews", "traders"
+  add_foreign_key "shippings", "items"
   add_foreign_key "size_charts", "categories"
   add_foreign_key "size_charts", "sizes"
   add_foreign_key "sns_credentials", "users"

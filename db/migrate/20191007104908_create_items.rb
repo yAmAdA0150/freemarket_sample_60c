@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name, null: false, index: true
       t.integer :price, null: false
       t.text :text, null: false
-      t.integer :condition, null: false
-      t.boolean :display, null: false
+      t.integer :condition_id, null: false
+      t.integer :display_id, null: false
       t.timestamps
 
       t.references :size, null: false, foreign_key: true

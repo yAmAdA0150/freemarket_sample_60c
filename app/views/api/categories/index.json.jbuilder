@@ -13,3 +13,8 @@ json.array! @sizes do |size|
   json.id size.id
   json.name size.name
 end
+
+json.array! @brands do |brand|
+  json.id brand.id
+  json.name brand.name
+end
