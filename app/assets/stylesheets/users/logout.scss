@@ -1,62 +1,219 @@
 // // ユーザーログアウトページ
 .signout {
-  .main__section {
-    margin: 40px auto 0;
-    width: 1020px;
-    height: 1300px;
-    padding: 0 0 40px;
-    background-color: #f5f5f5;
-    display: flex;
-
-    &__content {
-        width: 700px;
-        height: 173px;
-        padding: 0px;
-        display: flex;
+    .main__section {
+        margin: 40px auto 24px;
+        width: 1020px;
+        height: 1300px;
+        padding: 0 0 40px;
+        background-color: #f5f5f5;
         display: flex;
 
-      &__box {
-          width: 700px;
-          background-color: white;
-          height: 173px;
-          padding: 64px;
+        &__content {
+            width: 700px;
+            height: 173px;
+            padding: 0px;
+            display: flex;
 
-        &__form {
-          &__logout {
-              margin: 0 auto;
-              width: 320px;
-              height: 50px;
-              background-color: #ea352d;
-              color: white;
-              font-size: 14px;
-              text-align: center;
-              line-height: 50px;
+            &__box {
+                width: 700px;
+                background-color: white;
+                height: 173px;
+                padding: 64px;
 
-              &__button {
-                  margin: 0 auto;
-                  width: 320px;
-                  height: 50px;
-                  background-color: #ea352d;
-                  color: white;
-                  font-size: 14px;
-                  text-align: center;
-                  cursor: pointer;
-                  line-height: 50px;
+                &__form {
+                    &__logout {
+                        margin: 0 auto;
+                        width: 320px;
+                        height: 50px;
+                        background-color: #ea352d;
+                        color: white;
+                        font-size: 14px;
+                        text-align: center;
+                        line-height: 50px;
+
+                        &__button {
+                            margin: 0 auto;
+                            width: 320px;
+                            height: 50px;
+                            background-color: #ea352d;
+                            color: white;
+                            font-size: 14px;
+                            text-align: center;
+                            cursor: pointer;
+                            line-height: 50px;
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
+    }
 
-  logout-link {
-      width: 320px;
-      height: 50px;
-      display: block;
-  }
+    logout-link {
+        width: 320px;
+        height: 50px;
+        display: block;
+    }
 
-  a {
-      text-decoration: none;
-      color: #333333;
-  }
+    a {
+        text-decoration: none;
+        color: #333333;
+    }
+}
+
+.signout__shrink {
+    width: 700px;
+    margin: 24px auto 0;
+    height: 1540px;
+
+    .main__section {
+        &__content {
+            width: 700px;
+            height: 173px;
+            padding: 0px;
+            margin-bottom: 24px;
+
+            &__box {
+                width: 700px;
+                background-color: white;
+                height: 173px;
+                padding: 64px;
+
+                &__form {
+                    &__logout {
+                        margin: 0 auto;
+                        width: 320px;
+                        height: 50px;
+                        background-color: #ea352d;
+                        color: white;
+                        font-size: 14px;
+                        text-align: center;
+                        line-height: 50px;
+
+                        &__button {
+                            margin: 0 auto;
+                            width: 320px;
+                            height: 50px;
+                            background-color: #ea352d;
+                            color: white;
+                            font-size: 14px;
+                            text-align: center;
+                            cursor: pointer;
+                            line-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    logout-link {
+        width: 320px;
+        height: 50px;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333333;
+    }
+
+    .content__left__list {
+        width: 700px;
+    }
+}
+
+.signout__more__shrink {
+    .main__section {
+        margin: 20px 0 auto;
+        height: 1540px;
+        padding: 0 0 40px;
+        background-color: #f5f5f5;
+
+        &__content {
+            width: 100%;
+            height: 173px;
+            padding: 0px;
+            display: flex;
+            margin-bottom: 24px;
+
+            &__box {
+                width: 700px;
+                background-color: white;
+                height: 173px;
+                padding: 64px;
+
+                &__form {
+                    &__logout {
+                        margin: 0 auto;
+                        width: 320px;
+                        height: 50px;
+                        background-color: #ea352d;
+                        color: white;
+                        font-size: 14px;
+                        text-align: center;
+                        line-height: 50px;
+
+                        &__button {
+                            margin: 0 auto;
+                            width: 320px;
+                            height: 50px;
+                            background-color: #ea352d;
+                            color: white;
+                            font-size: 14px;
+                            text-align: center;
+                            cursor: pointer;
+                            line-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    logout-link {
+        width: 320px;
+        height: 50px;
+        display: block;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333333;
+    }
+
+    .content__left__list {
+        width: 700px;
+    }
+}
+
+@media (min-width: 1068px) {
+    .signout__shrink {
+        display: none;
+    }
+
+    .signout__more__shrink {
+        display: none;
+    }
+}
+
+@media (max-width: 1067px) {
+    .signout {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .signout__more__shrink {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .signout {
+        display: none;
+    }
+
+    .signout__shrink {
+        display: none;
+    }
 }
