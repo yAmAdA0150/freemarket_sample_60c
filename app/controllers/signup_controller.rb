@@ -7,6 +7,7 @@ class SignupController < ApplicationController
   before_action :third_validation, only: :create
 
   def index
+    reset_session
   end
 
   def registration

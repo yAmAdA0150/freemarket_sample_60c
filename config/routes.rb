@@ -48,18 +48,17 @@ Rails.application.routes.draw do
   # end
 
   namespace :api do
-    resources :categories, only: :index, defaults: { format: 'json' }
+    resources :categories, only: :index
   end
 
   
-  resources :items do
+  resources :items, only: [:new, :create] do
     collection do
       get 'buy'
-      get 'show'
-      get 'new'
+      # get 'show'
+      # get 'new'
       get 'edit'
       get 'search'
-      get 'sell'
     end
   end
 
