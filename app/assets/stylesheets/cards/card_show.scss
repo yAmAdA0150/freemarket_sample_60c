@@ -1,13 +1,162 @@
-.show {
+// .show {
+.show__main__section {
+    width: 1020px;
+    height: 1292px;
+    margin: 40px auto;
+    display: flex;
+
+    &__content {
+        width: 700px;
+        height: 364.19px;
+        background-color: white;
+
+        &__box {
+            &__title {
+                height: 50px;
+                border-bottom: 1px solid #f5f5f5;
+                padding: 8px 24px;
+                text-align: center;
+
+                &__text {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+            }
+
+            &__card {
+                padding: 64px;
+                border-top: 1px solid #f5f5f5;
+                width: 700px;
+                height: 314px;
+
+                &__list {
+                    &__content {
+                        &__text {
+                            font-size: 16px;
+                            font-weight: bold;
+                            width: 320px;
+                            height: 16px;
+                            margin: 0 auto;
+                        }
+
+                        &__type {
+                            // padding: 24px;
+                            margin-bottom: 1px solid #f5f5f5;
+                            width: 572px;
+                            height: 129px;
+                            border-bottom: 1px solid #eee;
+
+                            // background-color: red;
+
+                            &__name {
+                                width: 320px;
+                                height: 113px;
+                                margin: 0 auto;
+                                padding: 24px 0;
+
+                                &__form {
+                                    position: relative;
+
+                                    &__icon-a {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                    &__icon-v {
+                                        width: 70px;
+                                        height: 35px;
+                                    }
+
+                                    &__icon-s {
+                                        width: 40px;
+                                        height: 35px;
+                                    }
+
+                                    &__icon-j {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                    &__icon-dine {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                    &__icon-d {
+                                        width: 35px;
+                                        height: 35px;
+                                    }
+
+                                    &__number {
+                                        font-size: 16px;
+                                        width: 320px;
+                                        height: 16px;
+                                        margin: 8px 0px;
+                                    }
+
+                                    &__date {
+                                        font-size: 14px;
+                                        width: 320px;
+                                        height: 16px;
+                                    }
+
+                                    button {
+                                        color: #ea352d;
+                                        padding: 4px 6px;
+                                        padding-bottom: 10px;
+                                        height: 24px;
+                                        background: #fff;
+                                        border-radius: 3px;
+                                        border: 1px solid #ea352d;
+                                        top: 0;
+                                        right: 0;
+                                        position: absolute;
+                                        cursor: pointer;
+
+                                        .delete-link {
+                                            color: red;
+                                            text-decoration: none;
+                                            line-height: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &__pay {
+                    height: 16px;
+                    text-align: right;
+                    margin: 40px 0 0;
+
+                    .pay-link {
+                        color: #0099eb;
+                        text-decoration: none;
+                    }
+
+                    &__text {
+                        font: 14px;
+                    }
+
+                    .prev-icon {
+                        font-weight: bold;
+                        color: #0099eb;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shrink__show {
     &__main__section {
-        width: 1020px;
-        height: 1292px;
-        margin: 40px auto;
-        display: flex;
+        width: 700px;
+        height: 1540px;
+        margin: 24px auto;
+        margin-bottom: 24px;
 
         &__content {
-            width: 700px;
-            height: 364.19px;
             background-color: white;
 
             &__box {
@@ -40,13 +189,10 @@
                             }
 
                             &__type {
-                                // padding: 24px;
                                 margin-bottom: 1px solid #f5f5f5;
                                 width: 572px;
                                 height: 129px;
                                 border-bottom: 1px solid #eee;
-
-                                // background-color: red;
 
                                 &__name {
                                     width: 320px;
@@ -100,7 +246,7 @@
                                             height: 16px;
                                         }
 
-                                        &__button {
+                                        button {
                                             color: #ea352d;
                                             padding: 4px 6px;
                                             padding-bottom: 10px;
@@ -141,10 +287,202 @@
 
                         .prev-icon {
                             font-weight: bold;
+                            color: #0099eb;
                         }
                     }
                 }
             }
         }
+
+        .content__left__list {
+            width: 700px;
+            margin-top: 24px;
+        }
+    }
+}
+
+.more__shrink__show {
+    &__main__section {
+        width: 1020px;
+        height: 1292px;
+        margin: 40px auto;
+        display: flex;
+
+        &__content {
+            width: 700px;
+            height: 364.19px;
+            background-color: white;
+
+            &__box {
+                &__title {
+                    height: 50px;
+                    border-bottom: 1px solid #f5f5f5;
+                    padding: 8px 24px;
+                    text-align: center;
+
+                    &__text {
+                        font-size: 24px;
+                        font-weight: bold;
+                    }
+                }
+
+                &__card {
+                    padding: 64px;
+                    border-top: 1px solid #f5f5f5;
+                    width: 700px;
+                    height: 314px;
+
+                    &__list {
+                        &__content {
+                            &__text {
+                                font-size: 16px;
+                                font-weight: bold;
+                                width: 320px;
+                                height: 16px;
+                                margin: 0 auto;
+                            }
+
+                            &__type {
+                                margin-bottom: 1px solid #f5f5f5;
+                                width: 572px;
+                                height: 129px;
+                                border-bottom: 1px solid #eee;
+
+                                &__name {
+                                    width: 320px;
+                                    height: 113px;
+                                    margin: 0 auto;
+                                    padding: 24px 0;
+
+                                    &__form {
+                                        position: relative;
+
+                                        &__icon-a {
+                                            width: 35px;
+                                            height: 35px;
+                                        }
+
+                                        &__icon-v {
+                                            width: 70px;
+                                            height: 35px;
+                                        }
+
+                                        &__icon-s {
+                                            width: 40px;
+                                            height: 35px;
+                                        }
+
+                                        &__icon-j {
+                                            width: 35px;
+                                            height: 35px;
+                                        }
+
+                                        &__icon-dine {
+                                            width: 35px;
+                                            height: 35px;
+                                        }
+
+                                        &__icon-d {
+                                            width: 35px;
+                                            height: 35px;
+                                        }
+
+                                        &__number {
+                                            font-size: 16px;
+                                            width: 320px;
+                                            height: 16px;
+                                            margin: 8px 0px;
+                                        }
+
+                                        &__date {
+                                            font-size: 14px;
+                                            width: 320px;
+                                            height: 16px;
+                                        }
+
+                                        button {
+                                            color: #ea352d;
+                                            padding: 4px 6px;
+                                            padding-bottom: 10px;
+                                            height: 24px;
+                                            background: #fff;
+                                            border-radius: 3px;
+                                            border: 1px solid #ea352d;
+                                            top: 0;
+                                            right: 0;
+                                            position: absolute;
+                                            cursor: pointer;
+
+                                            .delete-link {
+                                                color: red;
+                                                text-decoration: none;
+                                                line-height: 2px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &__pay {
+                        height: 16px;
+                        text-align: right;
+                        margin: 40px 0 0;
+
+                        .pay-link {
+                            color: #0099eb;
+                            text-decoration: none;
+                        }
+
+                        &__text {
+                            font: 14px;
+                        }
+
+                        .prev-icon {
+                            font-weight: bold;
+                            color: #0099eb;
+                        }
+                    }
+                }
+            }
+        }
+
+        .content__left__list {
+            width: 700px;
+            margin-top: 24px;
+        }
+    }
+}
+
+@media (min-width: 1068px) {
+    .shrink__show__main__section {
+        display: none;
+    }
+
+    .more__shrink__show__main__section {
+        display: none;
+    }
+}
+
+@media (max-width: 1067px) {
+    .show__main__section {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .more__shrink__show__main__section {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .show__main__section {
+        display: none;
+    }
+
+    .shrink__show__main__section {
+        display: none;
     }
 }
