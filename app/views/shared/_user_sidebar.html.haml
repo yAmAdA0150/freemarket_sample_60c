@@ -4,7 +4,7 @@
       .content__left__list
         .content__left__mypage
           .list__mypage
-            = link_to 'マイページ'
+            = link_to 'マイページ', user_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon fa-2x ' 
           .list__news
             = link_to 'お知らせ'
@@ -58,23 +58,23 @@
           設定
         .config__lisut
           .config__profile
-            = link_to 'プロフィール'
+            = link_to 'プロフィール',   edit_user_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon fa-2x'
           .config__address
             = link_to '発送元・お届け先住所変更'
             = fa_icon 'angle-right', class: 'icon fa-2x'
           .config__payment
-            = link_to '支払い方法', new_user_card_path(current_user.id)
+            = link_to '支払い方法', new_user_cards_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon fa-2x '
           .config__passmail
             = link_to 'メール/パスワード'
             = fa_icon 'angle-right', class: 'icon fa-2x'
           .config__person
-            = link_to '本人情報'
+            = link_to '本人情報',  address_users_path(current_user.id)
             = fa_icon 'angle-right', class: 'icon fa-2x'
           .config__tell
             = link_to '電話番号の確認'
             = fa_icon 'angle-right', class: 'icon fa-2x'
           .config__logout
-            = link_to "ログアウト"
+            = link_to "ログアウト", signout_users_path
             = fa_icon 'angle-right', class: 'icon fa-2x'

@@ -17,13 +17,13 @@ class CardsController < ApplicationController
 
   def destroy
     card.destroy
-    redirect_to new_card_path
+    redirect_to new_cards_path
   end
 
   def payment
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
-      redirect_to new_user_card_path
+      redirect_to new_user_cards_path
     else
       customer = Payjp::Customer.create(
       email: current_user.email,
@@ -42,13 +42,14 @@ class CardsController < ApplicationController
   end
 
   def delete
-    card = Card.where(user_id: current_user.id).first
+    card = Card.where(user_id: current_user.id)
     if card.blank?
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        customer.delete
+        card.delete
+        card.destroy
     end
       redirect_to action: "new"
   end

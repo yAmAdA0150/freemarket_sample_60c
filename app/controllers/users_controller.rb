@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.new
   end
 
   def edit
@@ -22,4 +23,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+  end
+
+  def address
+    @prefectures = Prefecture.all
+  end
+  def signout
+  end
 end

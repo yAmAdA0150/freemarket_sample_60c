@@ -15,11 +15,11 @@ crumb :brand do
   parent :root
 end
 
-crumb :user do |user|
-  @user=User.find(params[:id])
-  link "マイページ", user_path(@user)
-  parent :root
-end
+# crumb :user do |user|
+#   @user=User.find(params[:id])
+#   link "マイページ", user_path(@user)
+#   parent :root
+# end
 
 
 crumb :cradit do

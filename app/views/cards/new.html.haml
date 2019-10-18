@@ -2,8 +2,8 @@
   =render 'shared/header'
   .bread_crumbs
   .bread_crumbs__line
-    - breadcrumb :user
-    = breadcrumbs separator: " > ", class: "breadcrumbs-list"
+    -# - breadcrumb :user
+    -# = breadcrumbs separator: " > ", class: "breadcrumbs-list"
   .new__main__section
     .new__main__section__side
       =render 'shared/user_sidebar'
@@ -16,7 +16,7 @@
           %h3.new__main__section__content__box__card__text
             クレジットカード一覧
           .new__main__section__content__box__card__add
-            =link_to user_card_path   do
+            =link_to user_cards_path   do
               %button.new__main__section__content__box__card__add__button
                 =fa_icon 'credit-card',  class:"card-icon"
                 %p.new__main__section__content__box__card__add__button__text

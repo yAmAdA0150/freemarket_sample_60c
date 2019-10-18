@@ -17,10 +17,21 @@ Rails.application.routes.draw do
   
   
   resources :users, only: [:show, :edit, :destroy, :update] do
-    resource :card, only: [:new, :show, :create, :edit, :update, :destroy] do
-      get 'create'
-      post 'payment' => 'card#payment'
+    collection do
+      get 'profile'
+      get 'address'
+      get 'signout'
     end
+    resource :cards, only: [:new, :show, :create, :edit, :update, :destroy] do
+      collection do
+
+        get 'create'
+        get 'payment' => 'cards#payment'
+        get 'delete'
+      end
+    end
+    resource :address, only: [:edit, :update]
+
   end
   
   
@@ -55,7 +66,7 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :create] do
     collection do
       get 'buy'
-      # get 'show'
+      get 'show'
       # get 'new'
       get 'edit'
       get 'search'
