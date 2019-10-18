@@ -4,6 +4,8 @@
     box-sizing: border-box;
     margin: 40px auto 0;
     padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
     a {
         text-decoration: none;
         color: #333;
@@ -11,7 +13,8 @@
     &__box {
         box-sizing: border-box;
         background-color: #FFF;
-        margin-left: 320px;
+        height: 570px;
+        width: 100%;
         &__title {
             text-align: center;
             border-bottom: 1px solid #eee;
@@ -20,22 +23,18 @@
             padding: 8px 24px;
         }
         &__inner {
-            box-sizing: border-box;
-            display: block;
+            // box-sizing: border-box;
+            // display: block;
             &__top {
                 text-align: center;
                 z-index: 3;
                 display: block;
-                position: relative;
-                .back {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 156px;
-                }
+                background: image-url('mypage_background.jpg');
+                height: 150px;
                 &__icon {
-                    margin-top: 70px;
+                    margin-top: 40px;
+                    // position: relative;
                     left: 220px;
-                    position: absolute;
                     display: inline-block;
                     width: 60px;
                     height: 60px;
@@ -46,10 +45,9 @@
                 &__name {
                     vertical-align: middle;
                     padding: 10px 16px 8px;
-                    margin-top: 70px;
+                    margin-top: 40px;
                     font-size: 15px;
                     left: 280px;
-                    position: absolute;
                     border: 1px solid #ccc;
                     border-radius: 5px;
                     min-height: 50px;

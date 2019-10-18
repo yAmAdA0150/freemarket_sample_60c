@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   has_one :trading
   has_one :shipping
 
+  validates :images, associated: true, presence: true
+
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :shipping
 

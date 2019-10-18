@@ -1,13 +1,12 @@
 .content-area {
     background: #fff;
-    margin: auto;
     display: block;
     background-repeat: no-repeat;
     border-width: 0;
+    width: 280px;
+    margin-right: 80px;
     .content__left {
-        float: left;
         width: 280px;
-        margin-right: 80px;
         .content__left__list {
             background-repeat: no-repeat;
             margin: 0;
