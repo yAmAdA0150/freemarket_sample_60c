@@ -63,11 +63,9 @@ Rails.application.routes.draw do
   end
 
   
-  resources :items, only: [:new, :create] do
+  resources :items, only: [:new, :create, :show] do
     collection do
       get 'buy'
-      get 'show'
-      # get 'new'
       get 'edit'
       get 'search'
     end
