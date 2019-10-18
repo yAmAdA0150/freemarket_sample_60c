@@ -88,8 +88,9 @@ $(function() {
         }
 
         count -= 1
-        if (count == 4) {
-            var width = 615 - 115 * 4
+        maxspace = 4
+        if (count == maxspace) {
+            var width = 615 - 115 * maxspace
             $(".contents-item__container__uploadbox__zone-item__dropbox").show()
             $(".contents-item__container__uploadbox__zone-item__dropbox").css("width", `${width}px`)
         } else {
