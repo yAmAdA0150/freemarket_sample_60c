@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to 
+      redirect_to root_path
     else
       @item.images = []
       @item.images.build
