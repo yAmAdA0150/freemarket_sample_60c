@@ -161,7 +161,7 @@ $(function() {
 
         });
     });
-    var chargeChoice = $('#charge-choice');
+    var chargeChoice = $('#item_shipping_attributes_charge');
     chargeChoice.on("change", function() {
         var deliveryMethod = $('#delivery-method')
         deliveryMethod.css({

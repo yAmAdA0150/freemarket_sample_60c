@@ -9,9 +9,21 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @parents = Category.all.where(ancestry: nil)
+    @item = Item.new
+    @item.images.build
+    @item.build_shipping
   end
 
   def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to 
+    else
+      @item.images = []
+      @item.images.build
+      render :new
+    end
   end
 
   def search
@@ -24,5 +36,22 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(
+      :name,
+      :price,
+      :text,
+      :category_id,
+      :brand_id,
+      :size_id,
+      :condition_id,
+      :display_id,
+      shipping_attributes: [:id,:delivery_method_id,:prefecture_id, :charge, :term_id],
+      images_attributes: [:url]
+      )
+      .merge(user_id: current_user.id)
   end
 end

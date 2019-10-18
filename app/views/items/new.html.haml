@@ -8,32 +8,27 @@
 
 .sell
   %section.content
-    = form_for @item, method: :post do |f|
-      %h2.content__title
+    = form_with model: @item, local: true do |f|
+      = f.hidden_field :display_id, value:1
+      .contents-item__message
         商品の情報を入力
-      .content__photo
-        %h3.content__photo__title
-          出品画像
-          %span.content__photo__title__need
-            必須
-        .content__photo__announce
-          最大10枚までアップロードできます
-        -# = f.fields_for :images do |i|
-        .content__photo__upload
-          .preview
-          .content__photo__upload__box
-          = f.fields_for :images do |i|
-            .content__photo__upload__box__image.clearfix
-              #image-box
-              .content__photo__upload__box__image__item#imagearea1
-                = i.label :image, class: "upload_label", for: "upload-image" do
-                  .input_area
-                    = i.file_field :image, multiple: true, type: 'file', name: "images[image][]", id: "upload-image", class: "upload-image", 'data-image': 0
-                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              #image-box2
-              .content__photo__upload__box__image__item2#imagearea2
-                = i.label :image, class: "upload_label", for: "upload-image" do
-                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+      .contents-item__container
+        .contents-item__container__uploadbox
+          .contentsitem__container__uploadbox__text.label
+            出品画像
+            %span.hissu 必須
+          .contents-item__container__uploadbox__info.info
+            最大5枚までアップロードできます
+          .contents-item__container__uploadbox__zone-item
+            .contents-item__container__uploadbox__zone-item__have-item.clearfix
+              %ul{id: "item-append-target"}
+              = f.fields_for :images do |f_image|
+                = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix" do
+                  %br
+                  ドラッグアンドドロップ
+                  %br
+                  またはクリックしてファイルをアップロード
+                  = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
       .content__product
         %h3.content__product__name
           商品名
@@ -54,35 +49,30 @@
               カテゴリー
               %span.content__details__right__category__name__need
                 必須
-            .content__details__right__category__box
-              .content__details__right__category__box__top
-                %select.content__details__right__category__box__top__choice
-                  -@parents.each do |p|
-                    %option{class:"",value:"#{p.id}"}
-                      =p.genre
-                -# カテゴリを選択した時点で下記の中から必要な項目が表示される
-            -# .content__details__right__category__box
-            -#   .content__details__right__category__box__top
-            -#     %select.content__details__right__category__box__top__choice
-            -# .content__details__right__category__box
-            -#   .content__details__right__category__box__top
-            -#     %select.content__details__right__category__box__top__choice
-          -# .content__details__right__size
-          -#   .content__details__right__size__name
-          -#     サイズ
-          -#     %span.content__details__right__size__name__need
-          -#       必須
-          -#   .content__details__right__size__box
-          -#     .content__details__right__size__box__top
-          -#       %select.content__details__right__size__box__top__choice
-          -# .content__details__right__brand
-          -#   .content__details__right__brand__name
-          -#     ブランド
-          -#     %span.content__details__right__brand__name__need
-          -#       任意
-          -#   .content__details__right__brand__box
-          -#     .content__details__right__brand__box__top
-          -#       %select.content__details__right__brand__box__top__choice
+            .content__details__right__category__box#category_parent
+              %select.content__details__right__category__box__top#parent_select
+                %option ---
+                -@parents.each do |p|
+                  %option{value:"#{p.id}"}
+                    =p.genre
+          .content__details__right__size#size_box
+            .content__details__right__size__name
+              サイズ
+              %span.content__details__right__size__name__need
+                必須
+            .content__details__right__size__box
+              .content__details__right__size__box__top
+                %select{name:"item[size_id]",class:"content__details__right__size__box__top__choice", id:"select_size"}
+          .content__details__right__brand#brand_box
+            .content__details__right__brand__name
+              ブランド
+              %span.content__details__right__brand__name__need
+                任意
+            .content__details__right__brand__box
+              .content__details__right__brand__box__top
+                %input{type:"text", class:"content__details__right__brand__box__top__choice", id:"brand_input", autocomplete:"off"}
+                .content__details__right__brand__box__top__search-result#search-result
+                = f.hidden_field :brand_id, id:"hidden-field"
           .content__details__right__status
             .content__details__right__status__name
               商品の状態
@@ -90,18 +80,12 @@
                 必須
             .content__details__right__status__box
               .content__details__right__status__box__bottom
-                %select.content__details__right__status__box__bottom__choice
-                  %option{value: '1'}---
-                  %option{value: '2'}新品、未使用
-                  %option{value: '3'}未使用に近い
-                  %option{value: '4'}目立った傷や汚れなし
-                  %option{value: '5'}やや傷や汚れあり
-                  %option{value: '6'}傷や汚れあり
-                  %option{value: '7'}全体的に状態が悪い
+                = f.collection_select :condition_id, Condition.all, :id, :name, class:"content__details__right__status__box__bottom__choice"
       .content__delivery
-        %h3.content__delivery__left 配送について
-        = link_to '#', class: 'content__delivery__mark' do
-          ?
+        .flex
+          %h3.content__delivery__left 配送について
+          = link_to '#', class: 'content__delivery__mark' do
+            ?
         .content__delivery__right
           = f.fields_for :shipping do |s|
             .content__delivery__right__burden
@@ -110,50 +94,33 @@
                 %span.content__delivery__right__burden__name__need
                   必須
               .content__delivery__right__burden__box
-                %select.content__delivery__right__burden__box__choice
-                  %option{value: '1'}---
-                  %option{value: '2'}送料込み(出品者負担)
-                  %option{value: '3'}着払い(購入者負担)
-                  -# 配送料の負担を選択後に「配送の方法」のプルダウンが表示されます。
-            -# .content__delivery__right__way
-            -#   %label.content__delivery__right__way__name
-            -#     配送の方法
-            -#     %span.content__delivery__right__way__name__need
-            -#       必須
-            -#   .content__delivery__right__way__box
-            -#     %select.content__delivery__right__way__box__choice
-            -#       %option{value: '1'}---
-            -#       %option{value: '2'}未定
-            -#       %option{value: '3'}らくらくメルカリ便
-            -#       %option{value: '4'}ゆうメール
-            -#       %option{value: '5'}レターパック
-            -#       %option{value: '6'}普通郵便(定形、定形外)
-            -#       %option{value: '7'}クロネコヤマト
-            -#       %option{value: '8'}ゆうパック
-            -#       %option{value: '9'}クリックポスト
-            -#       %option{value: '10'}ゆうパケッt
+                = s.select :charge,[["--", 0],["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]]
+            .content__delivery__right__way#delivery-method
+              %label.content__delivery__right__way__name
+                配送の方法
+                %span.content__delivery__right__way__name__need
+                  必須
+              .content__delivery__right__way__box
+                = s.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, class:"content__delivery__right__way__box__choice"
             .content__delivery__right__area
               %label.content__delivery__right__area__name
                 発送元の地域
                 %span.content__delivery__right__area__name__need
                   必須
                 .content__delivery__right__area__box
-                  = s.collection_select :delivery_to, Prefecture.all, :id, :name
-          .content__delivery__right__days
-            %label.content__delivery__right__days__name
-              発送までの日数
-              %span.content__delivery__right__days__name__need
-                必須
-            .content__delivery__right__days__box
-              %select.content__delivery__right__days__box__choice
-                %option{value: '1'}---
-                %option{value: '2'}1~2日で発送
-                %option{value: '3'}2~3日で発送
-                %option{value: '4'}4~7日で発送
+                  = s.collection_select :prefecture_id, Prefecture.all, :id, :name
+            .content__delivery__right__days
+              %label.content__delivery__right__days__name
+                発送までの日数
+                %span.content__delivery__right__days__name__need
+                  必須
+              .content__delivery__right__days__box
+                = s.collection_select :term_id, Term.all, :id, :name, class:"content__delivery__right__days__box__choice"
       .content__price
-        %h3.content__price__left  販売価格(300〜9,999,999)
-        = link_to '#', class: 'content__price__mark' do
-          ?
+        .flex
+          %h3.content__price__left  販売価格(300〜9,999,999)
+          = link_to '#', class: 'content__price__mark' do
+            ?
         .content__price__right
           %ul.content__price__right__box
             %li.content__price__right__box__title
