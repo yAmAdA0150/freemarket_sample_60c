@@ -27,8 +27,9 @@
             .center__item__form__price__pay__figure
               %span.center__item__form__price__pay__figure__yen
                 ¥1,000
-        %button{class: 'center__item__form__finish'}
-          購入する
+          =form_tag(action: :pay, method: :get) do
+            %button{class: 'center__item__form__finish'}
+              購入する
     %section.center__address
       .center__address__box
         %h3.center__address__box__title
@@ -43,7 +44,16 @@
         %h3.center__cash__box__title
           支払い方法
         .center__cash__box__content
-          クレジットカードなど
+          -# 以下カード情報表示
+          .center__cash__box__content__number
+            **** **** **** 0000
+            -# = "**** **** **** " + @default_card_information.last4
+          .center__cash__box__content__date
+            -# - exp_month = @default_card_information.exp_month.to_s
+            -# - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            -# =exp_month + " / " + exp_year
+            10/ 29
+          .center__cash__box__content__card__type
         .center__cash__box__change
           = link_to '#', class: 'center__cash__box__change--alteration' do
             変更する ＞
@@ -73,8 +83,9 @@
             .center__item__form__price__pay__figure
               %span.center__item__form__price__pay__figure__yen
                 ¥1,000
-        %button{class: 'center__item__form__finish'}
-          購入する
+        = link_to done_items_path do
+          %button{class: 'center__item__form__finish'}
+            購入する
     %section.center__address
       .center__address__box
         %h3.center__address__box__title
@@ -89,7 +100,17 @@
         %h3.center__cash__box__title
           支払い方法
         .center__cash__box__content
-          クレジットカードなど
+          -# 以下カード情報表示
+          .center__cash__box__content__number
+            **** **** **** 0000
+            -# = "**** **** **** " + @default_card_information.last4
+          .center__cash__box__content__date
+            -# - exp_month = @default_card_information.exp_month.to_s
+            -# - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            -# =exp_month + " / " + exp_year
+            10/ 29
+          .center__cash__box__content__card__type
+
         .center__cash__box__change
           = link_to '#', class: 'center__cash__box__change--alteration' do
             変更する ＞

@@ -41,6 +41,32 @@ class ItemsController < ApplicationController
   def destroy
   end
 
+  # def index
+  #   card = Card.where(user_id: current_user.id).first
+  #   if card.blank?
+  #     redirect_to controller: "card", action: "new"
+  #   else
+  #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+  #     customer = Payjp::Customer.retrieve(card.customer_id)
+  #     @default_card_information = customer.cards.retrieve(card.card_id)
+  #   end
+  # end
+
+  def pay
+    @item = Item.find(params[:id])
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    charge = Payjp::Charge.create(
+      amount: @item.price,
+      card: params['payjp-token'],
+      currency: 'jpy'
+    )
+    # 購入完了画面に遷移
+    redirect_to action: :done
+  end
+
+  def done
+  end
+
   private
   def item_params
     params.require(:item).permit(
