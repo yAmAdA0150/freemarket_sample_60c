@@ -23,7 +23,7 @@ class User < ApplicationRecord
         validates :password, length: { minimum: 7, maximum: 128}
         validates :password_confirmation, length: { minimum: 7, maximum: 128}
         validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-        validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, presence: true
+        validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number,:birthday,:birthmonth ,:birthyear, presence: true
 
       @pass = Devise.friendly_token[0, 7]
   def self.without_sns_data(auth)
@@ -35,7 +35,6 @@ class User < ApplicationRecord
         provider: auth.provider,
         user_id: user.id
       )
-      binding.pry
     else
       user = User.new(
         email: auth.info.email,
@@ -72,7 +71,6 @@ class User < ApplicationRecord
     else
       user = without_sns_data(auth)[:user]
       sns = without_sns_data(auth)[:sns]
-      # binding.pry
     end
     return { user: user ,sns: sns}
   end
