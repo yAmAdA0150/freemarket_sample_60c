@@ -1,20 +1,15 @@
-%ul.brand
-  %li.brand__menu
-    = link_to 'https://www.mercari.com/jp/', class: 'list' do
-      シャネル
-
-  -# %li.brand__menu
-  -# 　　= link_to 'https://www.mercari.com/jp/' class: 'list' do
-  -#     ナイキ
-  -# %li.brand__menu
-  -# 　　= link_to 'https://www.mercari.com/jp/' class: 'list' do
-  -#     ルイヴィトン
-  -# %li.brand__menu
-  -# 　　= link_to 'https://www.mercari.com/jp/' class: 'list' do
-  -#     シュプリーム
-  -# %li.brand__menu
-  -# 　　= link_to 'https://www.mercari.com/jp/' class: 'list' do
-  -#     アディダス
-  -# %li.brand__menu
-  -# 　　= link_to 'https://www.mercari.com/jp/' class: 'list' do
-  -#     ブランド一覧
+.main-items{id:"brand-#{brand.id}"}
+  .items__content
+    .items__content__block
+      %h3.items__content__block__name
+        =brand.name
+        新着アイテム
+      .items__content__block__description
+        =link_to "#",class:"more-link" do
+          もっと見る
+          %span.items__content__block__description__font
+            = fa_icon 'angle-right'
+    .item_all
+      .items
+        -@items.where(brand_id: brand.id).each do |item|
+          = render partial:"shared/item", locals: { item: item }
