@@ -2,21 +2,34 @@
 %section.show
   %section.item__content
     %h1.item__content__name
-      ブランド 空箱 5個セット 
+      = @item.name
     .item__content__main.clearfix
-      .item__content__main--large__photo
-        = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__main__photo'
+      .item__content__main__text
+        =@item.name
+        は
+        =@item.user.items.length
+        回の取引実績を持つ
+        =@item.user.name
+        さんから出品されました。
+        =@item.brand.name
+        （
+        =@item.category.genre 
+        \/
+        =@item.category.parent.genre
+        \/
+        =@item.category.root.genre
+        ）の商品で、
+        =@item.shipping.prefecture.name
+        から
+        =@item.shipping.term.name
+        されます。
+      .item__content__main--large__photo.clearfix
+        .item__content__main--large__photo__box.clearfix
+          = image_tag "#{@item.images.first.url}", alt: "#{@item.name}", class: 'item__main__photo'
         %ui.item__content__main--large__photo__list
-          %li.item__content__main--large__photo__list-one
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__content__main--large__photo__list-one'
-          %li.item__content__main--large__photo__list-one
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__content__main--large__photo__list-one'
-          %li.item__content__main--large__photo__list-one
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__content__main--large__photo__list-one'
-          %li.item__content__main--large__photo__list-one
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__content__main--large__photo__list-one'
-          %li.item__content__main--large__photo__list-one
-            = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m15053644537_1.jpg?1568604414', alt: '商品画像', class: 'item__content__main--large__photo__list-one'
+          -@item.images.each do |image|
+            %li.item__content__main--large__photo__list-one
+              = image_tag "#{image.url}", alt: "#{@item.name}", class: 'item__content__main--large__photo__list-one'
       %table.item__content__main__table
         %tbody.item__content__main__table__tbody
           %tr.item__content__main__table__tbody__tr
@@ -24,13 +37,13 @@
               出品者
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
-              =link_to "#" do
-                断捨離決行中！！※プロフ確認下さい※
+                =link_to "#" do
+                  =@item.user.name
               .item__content__main__table__tbody__tr__td__valuation
                 .item__content__main__table__tbody__tr__td__valuation__ratings
                   =fa_icon 'thumbs-up', class:"rating-good"
                   %span.item__content__main__table__tbody__tr__td__valuation__number
-                  199
+                  0
                 .item__content__main__table__tbody__tr__td__valuation__ratings
                   =fa_icon 'meh-blank', class:"rating-usual"
                   %span.item__content__main__table__tbody__tr__td__valuation__number
@@ -38,85 +51,80 @@
                 .item__content__main__table__tbody__tr__td__valuation__ratings
                   =fa_icon 'thumbs-down', class:"rating-bad"
                   %span.item__content__main__table__tbody__tr__td__valuation__number
-                  500
+                  0
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               カテゴリー
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
                 .item__content__main__table__tbody__tr__td__name__category
-                =link_to "#" do
-                  レディース
+                =link_to category_path(@item.category.root_id) do
+                  =@item.category.root.genre
                 .item__content__main__table__tbody__tr__td__name__genre
-                =link_to "#" do
+                =link_to category_path(@item.category.parent.id) do
                   =fa_icon 'angle-right', class:"nav__item__link-next-icon"
-                  バッグ
+                  =@item.category.parent.genre
                 .item__content__main__table__tbody__tr__td__name__ancestry
-                =link_to "#" do
+                =link_to category_path(@item.category.id) do
                   =fa_icon 'angle-right', class:"nav__item__link-next-icon"
-                  ショップ袋
+                  =@item.category.genre
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               ブランド
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
               =link_to "#" do
-                シャネル
+                =@item.brand.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               商品の状態
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
-              未使用に近い
+                =@item.condition.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               配送料の負担
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
-              送料込み（出品者負担）
+                -if @item.shipping.charge == 1
+                  送料込み(出品者負担)
+                - else
+                  着払い(購入者負担))
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               配送の方法
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
-                普通郵便（定形、定形外）
+                =@item.shipping.delivery_method.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               配送元地域
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
               =link_to "#" do
-                東京都
+                =@item.shipping.prefecture.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
-              配送びの目安
+              配送日の目安
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
-                ２〜３日で発送
+                =@item.shipping.term.name
           
     .item__content__price__box.visible-sp
-      %span.item__content__price__box__value ¥1,222
+      %span.item__content__price__box__value
+        = "¥" + @item.price.to_s(:delimited, delimiter: ',')
       %span.item__content__price__box__tax (税金)
-      %span.item__content__price__box__fee 送料込み
+      %span.item__content__price__box__fee
+        -if @item.shipping.charge == 1
+          送料込み
+        - else
+          着払い
     =link_to "https://www.mercari.com/jp/transaction/buy/m15053644537/" do
       .item__content__price__box__item__buy__btn
         購入画面に進む
     .item__content__description
       %p.item__content__description__inner 
-        COACH 2箱
-        CHANEL 1箱
-        TIFFANY2箱
-        
-        サングラスやアクセサリー、食器などが入っていた箱です。すべてセットでのお譲りです。中身を取り出した後は未使用です。  
-
-        内側はキレイですが、裏側にはシールがあったり、箱の表面に押し傷の跡があったりします。  
-
-        画像を参照頂き、中古品とご理解頂ける方でお願い致します。重さの関係で送料がかかるため簡易包装にて発送させて頂きますのでご了承下さい。  
-
-        ＃コーチ
-        ＃シャネル
-        ＃ティファニー
-        ＃ショップ箱
+        =simple_format(@item.text)
     .item__content__button__container
       .item__content__button__container__left
         %button.item__content__button__container__left__item
@@ -124,36 +132,38 @@
           %span.item__content__button__container__left__item__good 
             いいね
           %span.item__content__button__container__left__item__good 
-            1
+            0
         .item__content__button__container__left__report
           = link_to "#", class:"report-link" do
             = fa_icon 'flag', class: "icon-link"
             %span.item__content__button__container__left__report__not 
               不適切な商品の報告
-      .item__content__button__container__right
+      .item__content__button__container__right.clearfix
         =link_to "https://www.mercari.com/jp/safe/description/", class:"right-link" do
           =fa_icon 'lock', class: "icon-link"
           %span.item__content__button__container__right__effort
             あんしん・あんぜんへの取り組み
             
-    -# コメント
-  %section.message
-    .message__box__content
-      %p.message__box__content__announce
-        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea-default.message__box__content__form
-      %button.message__box__content__btn 
-        %span.message__box__content__btn__text 
-          コメントする
+  -if user_signed_in?
+    %section.message
+      .message__box__content
+        %p.message__box__content__announce
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea.message__box__content__form
+        %button.message__box__content__btn 
+          %span.message__box__content__btn__text 
+            コメントする
   %ul.nav__item__link
     %li.nav__item__link-prev
-      =link_to "https://item.mercari.com/jp/m97608861642/" do
-        =fa_icon 'angle-left', class:"nav__item__link-prev-icon"
-        七種茨四周年感謝祭缶バッジあんスタ   
+      -if @items.where(id: "#{@item.id + 1}").present?
+        =link_to item_path(@item.id + 1) do
+          =fa_icon 'angle-left', class:"nav__item__link-prev-icon"
+          =@items.find("#{@item.id + 1}").name
     %li.nav__item__link-next
-      =link_to "https://item.mercai.com/jp/m97608861642/" do
-        ジェニィキラキララメ入りロンT120cm
-        =fa_icon 'angle-right', class:"nav__item__link-next-icon"
+      -if @items.where(id: "#{@item.id - 1}").present?
+        =link_to item_path(@item.id - 1) do
+          =@items.find("#{@item.id - 1}").name
+          =fa_icon 'angle-right', class:"nav__item__link-next-icon"
   .media__box
     .media__box__center
       .media__box___center__text
@@ -171,210 +181,28 @@
         -# %li.media__box__center__icon__Line
           =link_to "https://line.com/" , class: "media__box__icon__line" do
             = fa_icon 'line-square',  class: "media__box__center__icon__line-i"
-  
   -# 他のアイテム出品情報
   -# ユーザー縛りの出品アイテム
   .user-items--another
-    -# ここでrender
     .user-items--another__items__content
       %h3.user-items--another__items__content__name
-        =link_to "https://www.mercari.com/jp/u/854607360/" do
-          断捨離決行中！！※プロフ確認下さい※
+        =link_to user_path(@item.user.id) do
+          =@item.user.name
+          さんのその他の商品
       .user-items--another__items__content__block
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱フードコンテナー ☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱フードコンテナー ☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱フードコンテナー ☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱フードコンテナー ☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
-        .user-items--another__items__content__block__box
-          =link_to "#" do
-            .user-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m47555915236_1.jpg?1570423840', alt: 'ユーザー商品出品情報', class: 'user-items--another__photo'
-            .user-items--another__items__content__block__box__text
-              .user-items--another__items__content__block__box__text__name
-                ★☆ miffy THERMOS 真空断熱フードコンテナー ☆★
-              .user-items--another__items__content__block__box__text__elements
-                .user-items--another__items__content__block__box__text__elements__price
-                  ¥2,222
-                  .user-items--another__items__content__block__box__text__elements__value
-                    .user-items--another__items__content__block__box__text__elements__value__like
-                    =fa_icon "heart", class:"user-items--another__icon-link"
-                    .user-items--another__items__content__block__box__text__elements__value__number
-                      1
+        -@item.user.items.limit(6).each do |item|
+          = render partial:"detail", locals: { item: item } unless (item == @item)
+
   
   //  ブランド縛りの出品アイテム
-  .brand-items--another
-    -# ここでrender
-    .brand-items--another__items__content
+  .user-items--another
+    .user-items--another__items__content
       %h3.user-items--another__items__content__name
-        =link_to "https://www.mercari.com/jp/u/854607360/" do
-          シャネルのショップ袋その他の商品
-      .brand-items--another__items__content__block
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: ' ブランド縛りの出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                新品 CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: 'ユーザー商品出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: 'ユーザー商品出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                新品 CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: 'ユーザー商品出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                新品 CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: 'ユーザー商品出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                新品 CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
-        .brand-items--another__items__content__block__box
-          =link_to "#" do
-            .brand-items--another__items__content__block__box__photo
-              = image_tag 'https://static.mercdn.net/thumb/photos/m74613891843_1.jpg?1570937556', alt: 'ユーザー商品出品情報', class: 'brand-items--another__photo'
-            .brand-items--another__items__content__block__box__text
-              .brand-items--another__items__content__block__box__text__name
-                新品 CHANEL 空き箱
-              .brand-items--another__items__content__block__box__text__elements
-                .brand-items--another__items__content__block__box__text__elements__price
-                  ¥600
-                  -# いいねと数
-                  -# .brand-items--another__items__content__block__box__text__elements__value
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__like
-                  -#   =fa_icon "heart", class:"user-items--another__icon-link"
-                  -#   .brand-items--another__items__content__block__box__text__elements__value__number
-                  -#     1
+        =link_to category_path(@item.category.id) do
+          =@item.category.genre
+          のその他の商品
+      .user-items--another__items__content__block
+        -@item.category.items.limit(6).each do |item|
+          = render partial:"detail", locals: { item: item } unless (item == @item)
                       
 =render 'shared/footer'
