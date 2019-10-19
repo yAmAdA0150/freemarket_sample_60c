@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   
   def index
     @user = current_user
-    @items = Item.all
+    @items = Item.all.order("created_at DESC") 
     @category = Category.all.where(id: [1,2,8,6])
     @brand = Brand.all.where(id: [168,197,1625,6541])
   end 
