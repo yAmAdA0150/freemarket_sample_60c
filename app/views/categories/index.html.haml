@@ -1,0 +1,30 @@
+= render 'shared/header'
+.category
+  .category-index
+    .category-index__title
+      カテゴリー一覧
+    .category-index__parents.clearfix
+      -@parents.each do |p|
+        =link_to "#category-#{p.id}",class:"parents-link" do
+          =p.genre
+    -@parents.each do |p|
+      .category-index__box{id:"category-#{p.id}"}
+        .category-index__box__name
+          =p.genre
+        .category-index__box__all
+          =link_to category_path(p.id) do
+            %p.all-category
+              すべて
+          - @categories.order('created_at DESC').where(ancestry: p.id ).each do |c|
+            .category-index__box__all__child
+              =c.genre
+              .category-index__box__all__child__inner.clearfix
+                =link_to category_path(c.id) do
+                  %p.g-genre
+                    すべて
+                -c.children.each do |g|
+                  =link_to category_path(g.id) do
+                    %p.g-genre
+                      =g.genre
+= render 'shared/camera'
+= render 'shared/footer'
