@@ -1,20 +1,15 @@
-.items__content
-  -# ここでrender
-  .items__content__block
-  %h3.items__content__block__name
-    =category.name 新着アイテム
-  .items__content__block__description
-    =link_to category_path(category) do
-      もっと見る
-    =link_to category_path(category) do
-      %i.fas.fa-angle-right
-  -# ここは_item.html.hamlをrenderします
-  =link_to item_path(item), class:"item-link" do
-    .item
-      =image_tag itemimage.url, alt:"item.text", class:""
-      .item__price
-        -# ¥と,をつけるメソッドが必要
-        =item.price 
-      .item__imag 
-        =item.name
-  
+.main-items{id:"category-#{category.id}"}
+  .items__content
+    .items__content__block
+      %h3.items__content__block__name
+        =category.genre
+        新着アイテム
+      .items__content__block__description
+        =link_to category_path(category.id),class:"more-link" do
+          もっと見る
+          %span.items__content__block__description__font
+            = fa_icon 'angle-right'
+    .item_all
+      .items
+        -@items.where(category_id: category.descendant_ids).each do |item|
+          = render partial:"shared/item", locals: { item: item }

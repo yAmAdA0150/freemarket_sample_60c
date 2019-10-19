@@ -2,12 +2,13 @@ class ItemsController < ApplicationController
   
   def index
     @user = current_user
-    @item = Item.order('id ASC').limit(20)
+    @items = Item.all
+    @category = Category.all.where(id: [1,2,8,6])
+    @brand = Brand.all.where(id: [168,197,1625,6541])
   end 
 
   def show
-    # @item = Item.find(params[:id])
-    @item = Item.new
+    @item = Item.find(params[:id])
   end
 
   def new
