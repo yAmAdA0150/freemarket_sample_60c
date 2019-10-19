@@ -1,0 +1,15 @@
+.detail
+  =link_to item_path(item.id) do
+    .detail__photo
+      = image_tag "#{item.images.first.url}", alt: "#{item.name}", class: 'detail_photo'
+    .detail__text
+      .detail__text__name
+        =item.name
+      .detail__text__elements
+        .detail__text__elements__price
+          = "¥" + item.price.to_s(:delimited, delimiter: ',')
+          .detail__text__elements__value
+            .detail__text__elements__value__like
+            =fa_icon "heart", class:"user-items--another__icon-link"
+            .detail__text__elements__value__number
+              =item.likes.length

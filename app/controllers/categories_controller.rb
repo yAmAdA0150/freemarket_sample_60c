@@ -11,15 +11,5 @@ class CategoriesController < ApplicationController
     else
       @items = @category.items
     end
-    # if @category.ancestry == nil
-    #   @children = @category.children
-    #   @items = []
-      
-    # elsif @cateogry.ancestry =< 13
-    #   @children = @category.children
-    #   @items = 
-    # else
-    #   @siblings = Category.all.where(ancestry: @category.ancestry)
-    # end
   end
 end
