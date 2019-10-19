@@ -1,0 +1,21 @@
+= render 'shared/header'
+.category-show
+  .category-show__list
+    -if @category.has_children?
+      -@category.children.each do |c|
+        =link_to category_path(c.id), class:"category-links" do
+          =c.genre
+    -else
+      -@category.siblings.each do |s|
+        =link_to category_path(s.id), class:"category-links" do
+          =s.genre
+  .category-show__all
+    .category-show__all__title
+      =@category.genre
+      の一覧
+    .category-show__all__cards
+      .category-show__all__cards__item
+        -@items.each do |item|
+          = render partial:"shared/item", locals: { item: item }
+= render 'shared/camera'
+= render 'shared/footer'

@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     else
       @item.images = []
       @item.images.build
-      render :new
+      redirect_to new_item_path
     end
   end
 

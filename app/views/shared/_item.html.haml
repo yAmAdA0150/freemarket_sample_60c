@@ -3,8 +3,8 @@
     .item__box
       .item__box__image
         %span.item__box__image__price
-          =item.price
-        =image_tag item.image.url, alt:"item.text", class:"item__box__image__photo"
+          = "¥" + item.price.to_s(:delimited, delimiter: ',')
+        = image_tag "#{item.images.first.url}", alt:"#{item.text}", class:"item__box__image__photo"
       .item__box__text
         %span.item__box__text__title
           =item.text
