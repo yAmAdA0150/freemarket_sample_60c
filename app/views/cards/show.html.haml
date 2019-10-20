@@ -25,23 +25,17 @@
                     -# = image_tag "amex.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-a"
                     -# = image_tag "visa.jpg", class:"show__main__section__content__box__card__list__content__type__name__form__icon-v"
                     -# = image_tag "saison.png", class:"show__main__section__content__box__card__list__content__type__name__form__icon-s"
-                    -# = image_tag "jcb.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-j"
+                    = image_tag "jcb.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-j"
                     -# = image_tag "dinersclub.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-dine"
-                    = image_tag "discover.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-d"
+                    -# = image_tag "discover.gif", class:"show__main__section__content__box__card__list__content__type__name__form__icon-d"
                     -# = image_tag "credit-cards/#{@card_src}", width: '26', height: '20', alt: @card_brand, id: "card_image"
                   .show__main__section__content__box__card__list__content__type__name__form__number
-                    **********0000
-                    -# = "**** **** **** " + @card_information.last4
-                    -# ="**** **** **** " + @customer_card.last4
+                    ="**** **** **** " + @customer_card.last4
                   .show__main__section__content__box__card__list__content__type__name__form__date
-                    10 / 25
-                    -# - exp_month = @customer_card.exp_month.to_s
-                    -# - exp_year =  @customer_card.exp_year.to_s.slice(2,3)
-                    -# = exp_month + " / " + exp_year
-                      -# =form_tag(user_path, method: :post, id: 'charge-form', name:"inputForm") do
-                      -#   %input{type: "hidden", name: "card_id", value: ""}
-                      -#   %button{type:"submit", class: "show__main__section__content__box__card__list__content__type__name__form__button"}
-                    =link_to delete_user_cards_path(1) , class: "delete-link" do
+                    - exp_month = @customer_card.exp_month.to_s
+                    - exp_year =  @customer_card.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
+                    =link_to delete_user_cards_path, class: "delete-link" do
                       %button.show__main__section__content__box__card__list__content__type__name__form__button
                         削除する
         .show__main__section__content__box__card__pay

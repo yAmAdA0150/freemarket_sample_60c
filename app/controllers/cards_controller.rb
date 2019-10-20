@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :load_payjp, only: [:payment, :delete, :show]
   
   require 'payjp'
 
@@ -21,7 +22,6 @@ class CardsController < ApplicationController
   end
 
   def payment
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to new_user_cards_path
     else
@@ -36,33 +36,36 @@ class CardsController < ApplicationController
         redirect_to action: 'show'
         
       else
-        redirect_to action: 'new'
+        redirect_to action: 'show'
       end
     end
   end
 
   def delete
-    card = Card.where(user_id: current_user.id)
+    card = Card.find(user_id: current_user.id).first
     if card.blank?
     else
-        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
         customer = Payjp::Customer.retrieve(card.customer_id)
         customer.delete
         card.delete
         card.destroy
     end
-      redirect_to action: "new"
+      redirect_to action: "show"
   end
 
   def show
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find(user_id:current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      @customer_card= customer.cards.retrieve(card.card_id)
     end
+  end
+
+  private
+  def load_payjp
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
   end
 
 end
