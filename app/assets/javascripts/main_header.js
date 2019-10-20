@@ -1,31 +1,117 @@
+$(function () {
 
-$(document).on('turbolinks:load', function () {
-  
-  $('topbar__under__left__choice').hover(function () {
-    $(this).addClass('active');
-    var children = $('.active').children('.topbar__under__left__choice__example__list');
-    children.show();
-  }, function () {
-      $(this).removeClass('.active');
-      $(this).hide('.topbar__under__left__choice__example__list');
+  var categorySearch = $("#search");
+  categorySearch.on("mouseover", function () {
+    $(".all-category").css({
+      'display': `block`
+    });
+    $("#left").css({
+      'display': `block`
+    });
+      // (function () {
+      //   $(".all-category", "#left").css({
+      //     'display': 'none'
+      //   })
+      // });
+    
   });
 
-
-  $('.topbar__under__left__choice__example__list__type').hover(function () {
-    $(this).addClass('action');
-    var gchildren = ('.action').gchildren('.topbar__under__left__choice__example__list__type__category');
-    gchildren.show();
-  }, function () {
-      $(this).removeClass('.action');
-      $(this).hide('.topbar__under__left__choice__example__list__type__category');
+  var categoryParent = $("#center");
+  // var liCategory = $('.all-category__first__type');
+  var categoryAll = $('.all-category__first__type')
+  categoryAll.on("mouseover", function () {
+      var parent = $(this).val();
+      // debugger
+      $.ajax({
+        type: 'GET',
+        url: '/api/categories',
+        data: { parent: parent },
+        dataType: 'json'
+      })
+        .done(function (children) {
+          var childCategory = $('#center')
+          childCategory.css({
+            'display': `block`
+          });
+          children.forEach(function (child) {
+            var selectChild = $(`<li class="all-category__second__menu" value="${child.ancestry}/${child.id}">${child.name}</li>`);
+            categoryParent.append(selectChild)
+          });
+        });
+ 
   });
 
-  $('.topbar__under__left__choice__example__list__type__category__menu').hover(function () {
-    $(this).addClass('ready');
-    var gchildren = ('.ready');
-    gchildren.show();
-  }, function () {
-      $(this).removeClass('.ready');
-      $(this).hide('.topbar__under__left__choice__example__list__type__category__menu__final').hide;
+  $(function () {
+    var categoryChild = $("#third")
+    var listChild = $("#second")
+    listChild.on("mouseover", function () {
+      var child = $(this).val();
+      $.ajax({
+        type: 'GET',
+        url: '/api/categories',
+        data: { child: child },
+        dataType: 'json'
+      })
+        .done(function (children) {
+          var gchildCategory = ('#right')
+          gchildCategory.css({
+            'display': `block`
+          })
+          children.forEach(function (child) {
+          var selectGchild = $(`<li class="all-category__third__list" value="${gchild.ancestry}/${gchild.id}">${gchild.name}</li>`);
+          categoryChild.append(selectGchild)
+          });
+        });
+    });
+  });
+
+  $(function () {
+    var listGchild = $("right")
+    listGchild.on("mouseremove", function () {
+      var gchild = $(this).val();
+      $.ajax({
+        type: 'GET',
+        url: '/api/categories',
+        data: { gchild: gchild },
+        dataType: 'json'
+      })
+        .done(function () {
+          var allList = $('.all-category')
+          allList.css({
+            'display': 'block'
+          });
+        });
+    });
   });
 });
+
+
+
+// $(function () {
+//   $('#search').hover(function () {   //htmlで指定したid:searchにカーソルを合わせた際の動き
+//     $($(this).children('#left'))     //idがleftを指定
+//       .css('display', 'block')       //displayをnoneからblockへ変更
+//   },
+//     function () {                    //上のhover以外の動作をした時と指定
+//       $($(this).children('#left'))   //idがleftを指定
+//         .css('display', 'none')      //didplayをnoneへ変更
+//     });
+  
+//   $('#parent').hover(function () {    //htmlで指定したid:parentにカーソルを合わせた際の動き
+//     $($(this).children('#center'))    //id:centerを指定
+//       .css('display', 'block')        //displayをnoneからblockへ変更
+//   },
+//     function () {                     //上のhover以外の動作をした時と指定
+//       $($(this).children('#center'))  //id:centerを指定
+//         .css('display', 'none')       //didplayをnoneへ変更
+//     });
+  
+//   $('#child').hover(function () {     //htmlで指定したid:childにカーソルを合わせた際の動き
+//     $($(this).children('#right'))     //id:rightrを指定
+//       .css('display', 'block')        //displayをnoneからblockへ変更
+//   },
+//     function () {                     //上のhover以外の動作をした時と指定
+//       $($(this).children('#right'))   //id:rightを指定
+//         .css('display', 'none')       //didplayをnoneへ変更
+//     });
+// });
