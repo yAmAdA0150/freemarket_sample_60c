@@ -599,6 +599,7 @@
 }
 
 .sell-shrink {
+    display: none;
     .content {
         width: 100%;
         background-color: #FFF;
@@ -1151,33 +1152,13 @@
     padding-bottom: 10px;
 }
 
-// .btn_edit {
-//     color: #209DE9;
-//     background-color: #F5F5F5;
-//     padding: 4px 15px 4px 15px;
-//     border: solid 1px #EEEEEE;
-//     font-size: 14px;
-//     z-index: 70;
-//     cursor: pointer;
-//     bottom: 0;
+// @media (min-width: 768px) {
+//     .sell-shrink {
+//         display: none;
+//     }
 // }
-// .btn_delete {
-//     color: #209DE9;
-//     border: solid 1px #EEEEEE;
-//     background-color: #F5F5F5;
-//     padding: 4px 15px 4px 15px;
-//     font-size: 14px;
-//     z-index: 70;
-//     cursor: pointer;
+// @media (max-width: 767px) {
+//     .sell {
+//         display: none;
+//     }
 // }
-@media (min-width: 768px) {
-    .sell-shrink {
-        display: none;
-    }
-}
-
-@media (max-width: 767px) {
-    .sell {
-        display: none;
-    }
-}

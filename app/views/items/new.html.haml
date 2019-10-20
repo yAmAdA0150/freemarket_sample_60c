@@ -163,194 +163,194 @@
           = link_to '#', class: 'content__choice__under--push' do
             もどる
 
-.sell-shrink
-  %section.content
-    %h2.content__title
-      商品の情報を入力
-    .content__photo
-      %h3.content__photo__title
-        出品画像
-        %span.content__photo__title__need
-          必須
-      .content__photo__announce
-        最大10枚までアップロードできます
-      .content__photo__upload
-        -# 下記の部分は画像を選択した際に表示される部分。最大10個。
-        -#   .content__photo__upload__choice
-        -#     .content__photo__upload__choice__item
-        -#       %ul
-        -#         %li.content__photo__upload__choice__item__icon
-        -#           %figure.content__photo__upload__choice__item__icon__top
-        -#           .content__photo__upload__choice__item__icon__under
-        -#           = link_to '#', class: 'icon' do
-        -#             編集
-        -#           = link_to '#', class: 'icon' do
-        -#             削除
-        .content__photo__upload__space
-          %input{type: "file", multiple: 'multiple', class: 'content__photo__upload__space__folder'}
-          %pre.content__photo__upload__space__name
-            = fa_icon 'camera'
-    .content__product
-      %h3.content__product__name
-        商品名
-        %span.content__product__name__need
-          必須
-      .content__product__text
-        %input{placeholder: "商品名（必須40文字まで）", class: 'content__product__text--folder'}
-      %h3.content__product__explanation
-        商品の説明
-        %span.content__product__explanation__need
-          必須
-      %textarea{placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、低下、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', class: "content__product__inner"}
-    .content__details
-      %h3.content__details__left  商品の詳細
-      .content__details__right
-        .content__details__right__category
-          .content__details__right__category__name
-            カテゴリー
-            %span.content__details__right__category__name__need
-              必須
-          .content__details__right__category__box
-            .content__details__right__category__box__top
-              %select.content__details__right__category__box__top__choice
-              -# カテゴリを選択した時点で下記の中から必要な項目が表示される
-          -# .content__details__right__category__box
-          -#   .content__details__right__category__box__top
-          -#     %select.content__details__right__category__box__top__choice
-          -# .content__details__right__category__box
-          -#   .content__details__right__category__box__top
-          -#     %select.content__details__right__category__box__top__choice
-        .content__details__right__size
-          .content__details__right__size__name
-            サイズ
-            %span.content__details__right__size__name__need
-              必須
-          .content__details__right__size__box
-            .content__details__right__size__box__top
-              %select.content__details__right__size__box__top__choice
-        .content__details__right__brand
-          .content__details__right__brand__name
-            ブランド
-            %span.content__details__right__brand__name__need
-              任意
-          .content__details__right__brand__box
-            .content__details__right__brand__box__top
-              %select.content__details__right__brand__box__top__choice
-        .content__details__right__status
-          .content__details__right__status__name
-            商品の状態
-            %span.content__details__right__status__name__need
-              必須
-          .content__details__right__status__box
-            .content__details__right__status__box__bottom
-              %select.content__details__right__status__box__bottom__choice
-                %option{value: '1'}---
-                %option{value: '2'}新品、未使用
-                %option{value: '3'}未使用に近い
-                %option{value: '4'}目立った傷や汚れなし
-                %option{value: '5'}やや傷や汚れあり
-                %option{value: '6'}傷や汚れあり
-                %option{value: '7'}全体的に状態が悪い
-    .content__delivery
-      %h3.content__delivery__left 配送について
-      = link_to '#', class: 'content__delivery__mark' do
-        ?
-      .content__delivery__right
-        = form_for root_path, method: :post do |f|
-          .content__delivery__right__burden
-            %label.content__delivery__right__burden__name
-              配送料の負担
-              %span.content__delivery__right__burden__name__need
-                必須
-            .content__delivery__right__burden__box
-              %select.content__delivery__right__burden__box__choice
-                %option{value: '1'}---
-                %option{value: '2'}送料込み(出品者負担)
-                %option{value: '3'}着払い(購入者負担)
-                -# 配送料の負担を選択後に「配送の方法」のプルダウンが表示されます。
-          -# .content__delivery__right__way
-          -#   %label.content__delivery__right__way__name
-          -#     配送の方法
-          -#     %span.content__delivery__right__way__name__need
-          -#       必須
-          -#   .content__delivery__right__way__box
-          -#     %select.content__delivery__right__way__box__choice
-          -#       %option{value: '1'}---
-          -#       %option{value: '2'}未定
-          -#       %option{value: '3'}らくらくメルカリ便
-          -#       %option{value: '4'}ゆうメール
-          -#       %option{value: '5'}レターパック
-          -#       %option{value: '6'}普通郵便(定形、定形外)
-          -#       %option{value: '7'}クロネコヤマト
-          -#       %option{value: '8'}ゆうパック
-          -#       %option{value: '9'}クリックポスト
-          -#       %option{value: '10'}ゆうパケッt
-          .content__delivery__right__area
-            %label.content__delivery__right__area__name
-              発送元の地域
-              %span.content__delivery__right__area__name__need
-                必須
-              .content__delivery__right__area__box
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-        .content__delivery__right__days
-          %label.content__delivery__right__days__name
-            発送までの日数
-            %span.content__delivery__right__days__name__need
-              必須
-          .content__delivery__right__days__box
-            %select.content__delivery__right__days__box__choice
-              %option{value: '1'}---
-              %option{value: '2'}1~2日で発送
-              %option{value: '3'}2~3日で発送
-              %option{value: '4'}4~7日で発送
-    .content__price
-      %h3.content__price__left  販売価格(300〜9,999,999)
-      = link_to '#', class: 'content__price__mark' do
-        ?
-      .content__price__right
-        %ul.content__price__right__box
-          %li.content__price__right__box__title
-            .content__price__right__box__title__price
-              .content__price__right__box__title__price__name
-                価格
-                %span.content__price__right__box__title__price__name__need
-                  必須
-              .content__price__right__box__title__price__yen
-                ¥
-                .content__price__right__box__title__price__yen__text
-                  %input{placeholder: "例） 300", class: 'content__price__right__box__title__price__yen__text--folder'}
-          %li.content__price__right__box__fee
-            .content__price__right__box__fee__left
-              販売手数料(10%)
-            .content__price__right__box__fee__right
-              ー
-          %li.content__price__right__box__profit
-            .content__price__right__box__profit__left
-              販売利益
-            .content__price__right__box__profit__right
-              ー
-              -# 価格を入力すると自動で販売手数料を計算し販売利益も表示するようにする。
-              -# おそらくjsで手数料10%を計算できるように記述します。
-    .content__choice
-      .content__choice__top
-        %p
-          = link_to '禁止されている出品', '#', class: 'choice-link'
-          、
-          = link_to '行為', '#', class: 'choice-link'
-          を必ずご確認ください。
-        %p 
-          またブランド品でシリアルナンバー等がある場合はご記載ください。
-          = link_to '偽ブランドの販売', '#', class: 'choice-link'
-          は犯罪であり処罰される可能性があります。
-        %p 
-          また、出品をもちまして
-          = link_to '加盟店規約', '#', class: 'choice-link'
-          に同意したことになります。
-      %button{class: 'content__choice__middle'}
-        -# = link_to '#', class: 'content__choice__middle--push' do
-        -#   出品する
-      %button{class: 'content__choice__under'}
-        = link_to '#', class: 'content__choice__under--push' do
-          もどる
+-# .sell-shrink
+-#   %section.content
+-#     %h2.content__title
+-#       商品の情報を入力
+-#     .content__photo
+-#       %h3.content__photo__title
+-#         出品画像
+-#         %span.content__photo__title__need
+-#           必須
+-#       .content__photo__announce
+-#         最大10枚までアップロードできます
+-#       .content__photo__upload
+-#         -# 下記の部分は画像を選択した際に表示される部分。最大10個。
+-#         -#   .content__photo__upload__choice
+-#         -#     .content__photo__upload__choice__item
+-#         -#       %ul
+-#         -#         %li.content__photo__upload__choice__item__icon
+-#         -#           %figure.content__photo__upload__choice__item__icon__top
+-#         -#           .content__photo__upload__choice__item__icon__under
+-#         -#           = link_to '#', class: 'icon' do
+-#         -#             編集
+-#         -#           = link_to '#', class: 'icon' do
+-#         -#             削除
+-#         .content__photo__upload__space
+-#           %input{type: "file", multiple: 'multiple', class: 'content__photo__upload__space__folder'}
+-#           %pre.content__photo__upload__space__name
+-#             = fa_icon 'camera'
+-#     .content__product
+-#       %h3.content__product__name
+-#         商品名
+-#         %span.content__product__name__need
+-#           必須
+-#       .content__product__text
+-#         %input{placeholder: "商品名（必須40文字まで）", class: 'content__product__text--folder'}
+-#       %h3.content__product__explanation
+-#         商品の説明
+-#         %span.content__product__explanation__need
+-#           必須
+-#       %textarea{placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、低下、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', class: "content__product__inner"}
+-#     .content__details
+-#       %h3.content__details__left  商品の詳細
+-#       .content__details__right
+-#         .content__details__right__category
+-#           .content__details__right__category__name
+-#             カテゴリー
+-#             %span.content__details__right__category__name__need
+-#               必須
+-#           .content__details__right__category__box
+-#             .content__details__right__category__box__top
+-#               %select.content__details__right__category__box__top__choice
+-#               -# カテゴリを選択した時点で下記の中から必要な項目が表示される
+-#           -# .content__details__right__category__box
+-#           -#   .content__details__right__category__box__top
+-#           -#     %select.content__details__right__category__box__top__choice
+-#           -# .content__details__right__category__box
+-#           -#   .content__details__right__category__box__top
+-#           -#     %select.content__details__right__category__box__top__choice
+-#         .content__details__right__size
+-#           .content__details__right__size__name
+-#             サイズ
+-#             %span.content__details__right__size__name__need
+-#               必須
+-#           .content__details__right__size__box
+-#             .content__details__right__size__box__top
+-#               %select.content__details__right__size__box__top__choice
+-#         .content__details__right__brand
+-#           .content__details__right__brand__name
+-#             ブランド
+-#             %span.content__details__right__brand__name__need
+-#               任意
+-#           .content__details__right__brand__box
+-#             .content__details__right__brand__box__top
+-#               %select.content__details__right__brand__box__top__choice
+-#         .content__details__right__status
+-#           .content__details__right__status__name
+-#             商品の状態
+-#             %span.content__details__right__status__name__need
+-#               必須
+-#           .content__details__right__status__box
+-#             .content__details__right__status__box__bottom
+-#               %select.content__details__right__status__box__bottom__choice
+-#                 %option{value: '1'}---
+-#                 %option{value: '2'}新品、未使用
+-#                 %option{value: '3'}未使用に近い
+-#                 %option{value: '4'}目立った傷や汚れなし
+-#                 %option{value: '5'}やや傷や汚れあり
+-#                 %option{value: '6'}傷や汚れあり
+-#                 %option{value: '7'}全体的に状態が悪い
+-#     .content__delivery
+-#       %h3.content__delivery__left 配送について
+-#       = link_to '#', class: 'content__delivery__mark' do
+-#         ?
+-#       .content__delivery__right
+-#         = form_for root_path, method: :post do |f|
+-#           .content__delivery__right__burden
+-#             %label.content__delivery__right__burden__name
+-#               配送料の負担
+-#               %span.content__delivery__right__burden__name__need
+-#                 必須
+-#             .content__delivery__right__burden__box
+-#               %select.content__delivery__right__burden__box__choice
+-#                 %option{value: '1'}---
+-#                 %option{value: '2'}送料込み(出品者負担)
+-#                 %option{value: '3'}着払い(購入者負担)
+-#                 -# 配送料の負担を選択後に「配送の方法」のプルダウンが表示されます。
+-#           -# .content__delivery__right__way
+-#           -#   %label.content__delivery__right__way__name
+-#           -#     配送の方法
+-#           -#     %span.content__delivery__right__way__name__need
+-#           -#       必須
+-#           -#   .content__delivery__right__way__box
+-#           -#     %select.content__delivery__right__way__box__choice
+-#           -#       %option{value: '1'}---
+-#           -#       %option{value: '2'}未定
+-#           -#       %option{value: '3'}らくらくメルカリ便
+-#           -#       %option{value: '4'}ゆうメール
+-#           -#       %option{value: '5'}レターパック
+-#           -#       %option{value: '6'}普通郵便(定形、定形外)
+-#           -#       %option{value: '7'}クロネコヤマト
+-#           -#       %option{value: '8'}ゆうパック
+-#           -#       %option{value: '9'}クリックポスト
+-#           -#       %option{value: '10'}ゆうパケッt
+-#           .content__delivery__right__area
+-#             %label.content__delivery__right__area__name
+-#               発送元の地域
+-#               %span.content__delivery__right__area__name__need
+-#                 必須
+-#               .content__delivery__right__area__box
+-#                 = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+-#         .content__delivery__right__days
+-#           %label.content__delivery__right__days__name
+-#             発送までの日数
+-#             %span.content__delivery__right__days__name__need
+-#               必須
+-#           .content__delivery__right__days__box
+-#             %select.content__delivery__right__days__box__choice
+-#               %option{value: '1'}---
+-#               %option{value: '2'}1~2日で発送
+-#               %option{value: '3'}2~3日で発送
+-#               %option{value: '4'}4~7日で発送
+-#     .content__price
+-#       %h3.content__price__left  販売価格(300〜9,999,999)
+-#       = link_to '#', class: 'content__price__mark' do
+-#         ?
+-#       .content__price__right
+-#         %ul.content__price__right__box
+-#           %li.content__price__right__box__title
+-#             .content__price__right__box__title__price
+-#               .content__price__right__box__title__price__name
+-#                 価格
+-#                 %span.content__price__right__box__title__price__name__need
+-#                   必須
+-#               .content__price__right__box__title__price__yen
+-#                 ¥
+-#                 .content__price__right__box__title__price__yen__text
+-#                   %input{placeholder: "例） 300", class: 'content__price__right__box__title__price__yen__text--folder'}
+-#           %li.content__price__right__box__fee
+-#             .content__price__right__box__fee__left
+-#               販売手数料(10%)
+-#             .content__price__right__box__fee__right
+-#               ー
+-#           %li.content__price__right__box__profit
+-#             .content__price__right__box__profit__left
+-#               販売利益
+-#             .content__price__right__box__profit__right
+-#               ー
+-#               -# 価格を入力すると自動で販売手数料を計算し販売利益も表示するようにする。
+-#               -# おそらくjsで手数料10%を計算できるように記述します。
+-#     .content__choice
+-#       .content__choice__top
+-#         %p
+-#           = link_to '禁止されている出品', '#', class: 'choice-link'
+-#           、
+-#           = link_to '行為', '#', class: 'choice-link'
+-#           を必ずご確認ください。
+-#         %p 
+-#           またブランド品でシリアルナンバー等がある場合はご記載ください。
+-#           = link_to '偽ブランドの販売', '#', class: 'choice-link'
+-#           は犯罪であり処罰される可能性があります。
+-#         %p 
+-#           また、出品をもちまして
+-#           = link_to '加盟店規約', '#', class: 'choice-link'
+-#           に同意したことになります。
+-#       %button{class: 'content__choice__middle'}
+-#         -# = link_to '#', class: 'content__choice__middle--push' do
+-#         -#   出品する
+-#       %button{class: 'content__choice__under'}
+-#         = link_to '#', class: 'content__choice__under--push' do
+-#           もどる
 
 = render 'shared/grayfooter'
