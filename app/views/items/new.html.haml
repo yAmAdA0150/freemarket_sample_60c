@@ -14,9 +14,9 @@
         商品の情報を入力
       .contents-item__container
         .contents-item__container__uploadbox
-          .contentsitem__container__uploadbox__text.label
+          .contents-item__container__uploadbox__text.label
             出品画像
-            %span.hissu 必須
+            %span.content__product__name__need 必須
           .contents-item__container__uploadbox__info.info
             最大5枚までアップロードできます
           .contents-item__container__uploadbox__zone-item
@@ -30,7 +30,7 @@
                   またはクリックしてファイルをアップロード
                   = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
       .content__product
-        %h3.content__product__name
+        %h3.content__product__name.clearfix
           商品名
           %span.content__product__name__need
             必須

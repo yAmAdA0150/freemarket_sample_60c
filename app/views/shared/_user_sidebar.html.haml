@@ -1,80 +1,103 @@
-.content.clearfix
+.content
   .content-area
     .content__left
       .content__left__list
         .content__left__mypage
-          .list__mypage
-            = link_to 'マイページ', user_path(current_user.id)
-            = fa_icon 'angle-right', class: 'icon fa-2x ' 
-          .list__news
-            = link_to 'お知らせ'
-            = fa_icon 'angle-right', class: 'icon fa-2x '
-          .list__todolist
-            = link_to 'やることリスト'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__goodjob
-            = link_to 'いいね！一覧'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__exhibit
-            = link_to '出品する'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__exhibitnow
-            = link_to '出品した商品 - 出品中'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .clist__transactionnow
-            = link_to '出品した商品 - 取引中'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__transactionend
-            = link_to '出品した商品 - 売却済み'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__buynow
-            = link_to '購入した商品 - 取引中'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__buyend
-            = link_to '購入した商品 - 過去の取引'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .clist__newslist
-            = link_to 'ニュース一覧'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__evaluation
-            = link_to '評価一覧'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__guide
-            = link_to 'ガイド'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .list__contact
-            = link_to 'お問い合わせ'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to user_path(current_user.id) do
+            .list__mypage
+              マイページ
+              = fa_icon 'angle-right', class: 'icon fa-2x ' 
+          = link_to '/' do
+            .list__news
+              お知らせ
+              = fa_icon 'angle-right', class: 'icon fa-2x '
+          = link_to '/' do
+            .list__todolist
+              やることリスト
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__goodjob
+              いいね！一覧
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to new_item_path do
+            .list__exhibit
+              出品する
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__exhibitnow
+              出品した表品 - 出品中
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__transactionnow
+              出品した商品 - 取引中
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__transactionend
+              出品した商品 - 売却済み
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__buynow
+              購入した商品 - 取引中
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__buyend
+              購入した商品 - 過去の取引
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__newslist
+              ニュース一覧
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__evaluation
+              評価一覧
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__guide
+              ガイド
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .list__contact
+              お問い合わせ
+              = fa_icon 'angle-right', class: 'icon fa-2x'
         .content__left__merpay
           メルペイ
         .merpay__list
-          .merpay__transfer
-            = link_to '売上・振込申請'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .merpay__point
-            = link_to 'ポイント'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .merpay__transfer
+              売上・振込申請
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .merpay__point
+              ポイント
+              = fa_icon 'angle-right', class: 'icon fa-2x'
         .content__left__config
           設定
         .config__lisut
-          .config__profile
-            = link_to 'プロフィール',   edit_user_path(current_user.id)
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .config__address
-            = link_to '発送元・お届け先住所変更'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .config__payment
-            = link_to '支払い方法', new_user_cards_path(current_user.id)
-            = fa_icon 'angle-right', class: 'icon fa-2x '
-          .config__passmail
-            = link_to 'メール/パスワード'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .config__person
-            = link_to '本人情報',  address_users_path(current_user.id)
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .config__tell
-            = link_to '電話番号の確認'
-            = fa_icon 'angle-right', class: 'icon fa-2x'
-          .config__logout
-            = link_to "ログアウト", signout_users_path
-            = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to edit_user_path(current_user.id) do
+            .config__profile
+              プロフィール
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .config__address
+              発送元・お届け先住所変更
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to new_user_cards_path(current_user.id) do
+            .config__payment
+              支払い方法
+              = fa_icon 'angle-right', class: 'icon fa-2x '
+          = link_to '/' do
+            .config__passmail
+              メール/パスワード
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to address_user_path(current_user.id) do
+            .config__person
+              本人情報
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to '/' do
+            .config__tell
+              電話番号の確認
+              = fa_icon 'angle-right', class: 'icon fa-2x'
+          = link_to signout_user_path do
+            .config__logout
+              ログアウト
+              = fa_icon 'angle-right', class: 'icon fa-2x'

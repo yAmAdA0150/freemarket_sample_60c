@@ -9,7 +9,7 @@
           = link_to "", class: "user_link user_link--name" do
             = image_tag "mercari_icon.png", class: "user_link__icon", size: "60x60"
             .user_link__name.bold
-              たろちゃん
+              =@user.name
         .mypage-content__user--rating
           = link_to "", class: "user_link" do
             .user_link__detail
@@ -20,7 +20,7 @@
               .products-num
                 出品数
                 %span.num
-                  0
+                  =@user.items.where(display_id:1).length
       .mypage-content__tab
         .mypage-tabs
           %input#my-notification-tab{checked: "checked", name: "tab_item", type: "radio"}

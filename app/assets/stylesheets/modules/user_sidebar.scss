@@ -1,12 +1,16 @@
 .content-area {
-    background: #fff;
     display: block;
     background-repeat: no-repeat;
     border-width: 0;
     width: 280px;
     margin-right: 80px;
+    a {
+        text-decoration: none;
+        color: #333;
+    }
     .content__left {
         width: 280px;
+        background-color: transparent;
         .content__left__list {
             background-repeat: no-repeat;
             margin: 0;
@@ -52,13 +56,10 @@
             list-style: none;
             display: flex;
             justify-content: space-between;
-            a {
-                text-decoration: none;
-                color: #333;
-            }
             .icon {
                 position: relative;
                 font-size: 22px;
+                color: grey;
             }
         }
         .list__todolist {
@@ -73,7 +74,7 @@
         .list__exhibitnow {
             @extend .list__news;
         }
-        .clist__transactionnow {
+        .list__transactionnow {
             @extend .list__news;
         }
         .list__transactionend {
@@ -85,7 +86,7 @@
         .list__buyend {
             @extend .list__news;
         }
-        .clist__newslist {
+        .list__newslist {
             @extend .list__news;
         }
         .list__evaluation {
@@ -98,7 +99,7 @@
             @extend .list__news;
         }
         .content__left__merpay {
-            margin: 40px 0 0;
+            margin: 40px 0 8px;
             font-size: 16px;
             background-repeat: no-repeat;
             padding: 0;
