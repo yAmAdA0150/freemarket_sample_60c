@@ -19,7 +19,7 @@
             .list__goodjob
               いいね！一覧
               = fa_icon 'angle-right', class: 'icon fa-2x'
-          = link_to new_item_path do
+          = link_to new_user_item_path(current_user) do
             .list__exhibit
               出品する
               = fa_icon 'angle-right', class: 'icon fa-2x'
@@ -97,7 +97,7 @@
             .config__tell
               電話番号の確認
               = fa_icon 'angle-right', class: 'icon fa-2x'
-          = link_to signout_user_path do
+          = link_to signout_user_path(current_user) do
             .config__logout
               ログアウト
               = fa_icon 'angle-right', class: 'icon fa-2x'
