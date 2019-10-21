@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
+before_action :header_category
+
   def index
     @categories = Category.all
-    @parents = Category.all.where(ancestry: nil)
   end
 
   def show
