@@ -7,11 +7,10 @@
         = link_to root_path do
           = image_tag "mercari_widelogo.png", alt: "Mercari", class: "topbar__main__icon--logo"
       .topbar__main__search
-        %form{class: 'topbar__main__search__form'}
-          %input{placeholder: "何かお探しですか？", class: 'topbar__main__search__form--folder'}
-          %button{class: 'topbar__main__search__form--push'}
-            = link_to '#' do
-              = fa_icon 'search', class: 'icon'
+        = form_tag search_items_path,method: :get, class: 'topbar__main__search__form' do
+          =text_field_tag :keyword, params[:keyword], class: 'topbar__main__search__form--folder', placeholder: "何かお探しですか？"
+          =button_tag class:'topbar__main__search__form--push' do
+            = fa_icon 'search', class: 'icon'
     .topbar__under
       %ul.topbar__under__left
         %li.topbar__under__left__choice{id: :search}
