@@ -2,13 +2,26 @@ $(function() {
 
     // 変数定義
     var count = 0;
+    // ドラックドロップを保持
     var list = new DataTransfer();
+    // ２つのドロップボックスを定期
+    var dropBox1 = $("#dropbox1");
+    var dropBox2 = $("#dropbox2");
+    var dropFile = $('#item-drop-zone');
 
-    // ドラッグアンドドロップ枠を縮める関数
-    function deleteWidth(num) {
-        var del = 615 - num * 115
-        $(".contents-item__container__uploadbox__zone-item__dropbox").css('width', `${del}px`)
+    // ドラッグアンドドロップ枠1を縮める関数
+    function deleteWidth1(num) {
+        var del = 615 - num * 126
+        dropBox1.css('width', `${del}px`)
+
     }
+    // ドラッグアンドドロップ枠2を縮める関数
+    function deleteWidth2(num) {
+        var num = num - 5
+        var del = 615 - num * 126
+        dropBox2.css('width', `${del}px`)
+    }
+
 
     // input[type=file]に、FileListを入力する関数
     function appendFile(list) {
@@ -23,7 +36,7 @@ $(function() {
         if (input.files && input.files[0]) {
             $.each(input.files, function(index, file) {
                 count += 1;
-                if (count >= 6) {
+                if (count > 10) {
                     count -= 1
                     return false;
                 }
@@ -37,19 +50,48 @@ $(function() {
                                 <img alt="test" src="${loadedImageUri}" class="contents-item__container__uploadbox__zone-item__have-item--upload-image">
                                 </figure>
                                 <div class="contents-item__container__uploadbox__zone-item__have-item__upload-btnbox">
-                                <a class="contents-item__container__uploadbox__zone-item__have-item--upload-btn">編集</a>
+                                <a class="contents-item__container__uploadbox__zone-item__have-item--upload-btn" id="pict-edit">編集</a>
                                 <a class="contents-item__container__uploadbox__zone-item__have-item--upload-btn btn-left" href="#" data-pict="${file.name}" id="pict-delete">削除</a>
                                 </div>
                                 </li>`;
 
                     if (count < 5) {
+
                         var num = input.files.length
                         num += edit_num
-                        deleteWidth(num)
+                        deleteWidth1(num)
+                        dropBox1.before(html);
+                    } else if (count == 5) {
+                        $('.camera-image').css('display', `none`)
+                        $('.inner_text').css('display', `block`)
+                        dropBox1.css('display', `none`)
+                        dropBox2.css('display', `inline-block`)
+                        dropBox1.before(html);
+                        dropBox2.append(dropFile)
+                    } else if (count < 10) {
+                        var num = input.files.length
+                        num += edit_num
+                        deleteWidth2(num)
+                        dropBox2.before(html);
+                    } else if (count > 9) {
+                        dropBox2.before(html);
+                        dropBox2.css('display', `none`)
+
                     } else {
-                        $(".contents-item__container__uploadbox__zone-item__dropbox").hide()
+                        return false
                     }
-                    target_ul.append(html);
+                    if (count == 4) {
+                        debugger
+                        $('.camera-image').css('display', `block`)
+                        $('.inner_text').css('display', `none`)
+                    } else if (count == 9) {
+                        debugger
+                        $('.camera-image').css('display', `block`)
+                        $('.inner_text').css('display', `none`)
+                    } else {
+                        return false
+                    }
+
                 }
                 reader.readAsDataURL(input.files[index]);
             })
@@ -68,7 +110,7 @@ $(function() {
 
     });
 
-    // 出品-削除ボタンがクリックされたら発火
+    // 削除ボタンがクリックされたら発火
     $(document).on("click", "#pict-delete", function(e) {
         e.preventDefault();
         var target = $(e.target);
@@ -89,33 +131,53 @@ $(function() {
 
         count -= 1
         maxspace = 4
-        if (count == maxspace) {
-            var width = 615 - 115 * maxspace
-            $(".contents-item__container__uploadbox__zone-item__dropbox").show()
-            $(".contents-item__container__uploadbox__zone-item__dropbox").css("width", `${width}px`)
+        if (count < 4) {
+            deleteWidth1(count)
+        } else if (count == maxspace) {
+            var width = 615 - 126 * maxspace
+            dropBox1.css("width", `${width}px`)
+            dropBox1.css("display", `inline-block`)
+            dropBox2.css("display", `none`)
+            $('.camera-image').css('display', `block`)
+            $('.inner_text').css('display', `none`)
+            dropBox1.append(dropFile)
+        } else if (count == 9) {
+            var width = 615 - 126 * 4
+            dropBox2.css("width", `${width}px`)
+            dropBox2.css("display", `inline-block`)
         } else {
-            deleteWidth(count)
+            deleteWidth2(count)
+        }
+        if (count == 3) {
+            $('.camera-image').css('display', `none`)
+            $('.inner_text').css('display', `block`)
+        } else if (count == 5) {
+
+            $('.inner_text').css('display', `block`)
+        } else if (count == 8) {
+            $('.camera-image').css('display', `none`)
+            $('.inner_text').css('display', `block`)
         }
     })
 
     // 編集-削除ボタンがクリックされたら発火
-    $(document).on("click", "#pict-delete-edit", function(e) {
-        e.preventDefault();
-        var target = $(e.target);
-        var pict_id = target.data('delete');
-        count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
-        target.parent().parent().remove();
+    // $(document).on("click", ".pict-delete-edit", function(e) {
+    //     e.preventDefault();
+    //     var target = $(e.target);
+    //     var pict_id = target.data('delete');
+    //     count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
+    //     target.parent().parent().remove();
 
-        if (count == 5) {
-            $('.contents-item__container__uploadbox__zone-item__dropbox').show();
-        }
-        deleteWidth(count - 1)
+    //     // if (count == 5) {
+    //     //     $('.contents-item__container__uploadbox__zone-item__dropbox').show();
+    //     // }
+    //     deleteWidth1(count - 1)
 
-        count -= 1
+    //     count -= 1
 
-        hidden_form = `<input type="hidden", name="[delete_ids][]", value="${pict_id}">`
-        $('.contents-item__container__uploadbox__zone-item').append(hidden_form)
+    //     hidden_form = `<input type="hidden", name="[delete_ids][]", value="${pict_id}">`
+    //     $('.contents-item__container__uploadbox__zone-item').append(hidden_form)
 
-    })
+    // })
 
 });
