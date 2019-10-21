@@ -15,6 +15,11 @@ class ApplicationController < ActionController::Base
         :birthday,
         :mobile_number])
       end
+
+      def header_category 
+        @parents = Category.all.where(ancestry: nil)
+      end
+      
       private
     
       def production?
