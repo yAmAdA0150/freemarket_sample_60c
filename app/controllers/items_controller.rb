@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?)',"%#{params[:keyword]}%").limit(20)
+
   end
 
   def edit
@@ -70,20 +71,11 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
 
-    @trader = Trader.new(
-      seller_id: @item.user.id,
-      buyer_id: current_user.id
-    )
-    @trader.save
-
     @trading = Trading.new(
-      condition: @item.condition.id,
-      delivery_to: 1,
-      payment: 1,
-      status: 1,
+      status_id: 1,
+      buyer_id: current_user.id,
+      seller_id: @item.user.id,
       item_id: @item.id,
-      trader_id: @trader.id,
-      shipping_id: 1
     )
     @trading.save
 
