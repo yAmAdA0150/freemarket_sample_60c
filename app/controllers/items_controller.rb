@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
   before_action :header_category 
+
+  require 'payjp'
+
   def index
     @parents = Category.all.where(ancestry: nil)
     @user = current_user
@@ -45,27 +48,46 @@ class ItemsController < ApplicationController
   def destroy
   end
 
-  # def index
-  #   card = Card.where(user_id: current_user.id).first
-  #   if card.blank?
-  #     redirect_to controller: "card", action: "new"
-  #   else
-  #     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-  #     customer = Payjp::Customer.retrieve(card.customer_id)
-  #     @default_card_information = customer.cards.retrieve(card.card_id)
-  #   end
-  # end
-
-  def pay
+  def confirmation
     @item = Item.find(params[:id])
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    charge = Payjp::Charge.create(
-      amount: @item.price,
-      card: params['payjp-token'],
+    card = Card.where(user_id: current_user.id).first
+      if card.blank?
+        redirect_to controller: "card", action: "new"
+      else
+        Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @default_card_information = customer.cards.retrieve(card.card_id)
+      end
+  end
+
+  def buy
+    @item = Item.find(params[:id])
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    Payjp::Charge.create(
+      amount:  @item.price,
+      customer: card.customer_id,
       currency: 'jpy'
     )
-    # 購入完了画面に遷移
-    redirect_to action: :done
+
+    @trader = Trader.new(
+      seller_id: @item.user.id,
+      buyer_id: current_user.id
+    )
+    @trader.save
+
+    @trading = Trading.new(
+      condition: @item.condition.id,
+      delivery_to: 1,
+      payment: 1,
+      status: 1,
+      item_id: @item.id,
+      trader_id: @trader.id,
+      shipping_id: 1
+    )
+    @trading.save
+
+    redirect_to action: "done"
   end
 
   def done

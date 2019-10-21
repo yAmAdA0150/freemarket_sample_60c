@@ -4,8 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :review, null: false
       t.text :text, null: false
       t.timestamps
-
-      t.references :trader, null: false, foreign_key: true
+      t.integer :trading_id, null: false
     end
   end
 end

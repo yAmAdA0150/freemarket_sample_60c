@@ -7,9 +7,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :condition_id, null: false
       t.integer :display_id, null: false
       t.timestamps
-
-      t.references :size, null: false, foreign_key: true
-      t.references :brand, null: false, index: true, foreign_key: true
+      t.integer :size_id
+      t.integer :brand_id, index: true
       t.references :category, null: false, index: true, foreign_key: true
       t.references :user, null: false, index: true, foreign_key: true
     end
