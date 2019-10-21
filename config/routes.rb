@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         get 'delete'
       end
     end
-    resources :items, only: [:new,:create, :edit,:update] do
+    resources :items, only: [:new,:create, :edit,:update,:destroy] do
       collection do
         get 'done'
       end
