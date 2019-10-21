@@ -42,7 +42,7 @@ class CardsController < ApplicationController
   end
 
   def delete
-    card = Card.find(user_id: current_user.id).first
+    card = Card.find(current_user.id)
     if card.blank?
     else
         customer = Payjp::Customer.retrieve(card.customer_id)
@@ -54,7 +54,7 @@ class CardsController < ApplicationController
   end
 
   def show
-    card = Card.find(user_id:current_user.id).first
+    card = Card.find(current_user.id)
     if card.blank?
       redirect_to action: "new" 
     else
