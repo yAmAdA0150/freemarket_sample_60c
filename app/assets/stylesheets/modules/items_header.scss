@@ -1,5 +1,4 @@
 header {
-    // height: 110px;
     position: relative;
     background-color: white;
     z-index: 3;
@@ -9,28 +8,21 @@ header {
         margin: 0 auto;
         padding: 8px 0 0;
         &__main {
-            // left: 0;
             align-items: center;
             display: flex;
             justify-content: space-between;
             &__icon {
-                // display: block;
-                // align-items: center;
-                // text-decoration: none;
                 height: 50px;
                 margin-right: 45px;
                 &--logo {
-                    // height: 50px;
                     width: 165px;
                 }
             }
             &__search {
                 width: 100%;
                 height: 40px;
-                // position: relative;
                 &__form {
                     position: relative;
-                    // width: 100%;
                     height: 100%;
                     &--folder {
                         border-radius: 5px;
@@ -83,16 +75,6 @@ header {
                     z-index: 3;
                     padding-right: 20px;
                     &:hover ul.topbar__under__left__choice__example__list {
-                        display: block;
-                        visibility: visible;
-                        opacity: 1;
-                    }
-                    &:hover .all-category {
-                        display: block;
-                        visibility: visible;
-                        opacity: 1;
-                    }
-                    &:hover ul.all-cateogry__first {
                         display: block;
                         visibility: visible;
                         opacity: 1;
