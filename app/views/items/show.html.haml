@@ -119,7 +119,7 @@
           送料込み
         - else
           着払い
-    =link_to "https://www.mercari.com/jp/transaction/buy/m15053644537/" do
+    =link_to confirmation_user_item_path(current_user) do
       .item__content__price__box__item__buy__btn
         購入画面に進む
     .item__content__description
