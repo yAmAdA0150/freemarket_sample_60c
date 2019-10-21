@@ -1,14 +1,7 @@
-// 商品出品ページ
-
--# 下記についてはできていない状態です。
--# ・出品画像のドラックアンドドロップおよびアップロード
--# ・カテゴリーやブランドなどの非表示部分の選択肢表示
-
 = render 'shared/grayheader'
-
 .sell
   %section.content
-    = form_with model: @item, local: true do |f|
+    = form_for [current_user, @item], method: :post do |f|
       = f.hidden_field :display_id, value:1
       .contents-item__message
         商品の情報を入力
@@ -21,14 +14,20 @@
             最大5枚までアップロードできます
           .contents-item__container__uploadbox__zone-item
             .contents-item__container__uploadbox__zone-item__have-item.clearfix
-              %ul{id: "item-append-target"}
-              = f.fields_for :images do |f_image|
-                = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix" do
+              .target-box{id: "item-append-target"}
+                = f.fields_for :images do |f_image|
+                  = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1" do
+                    %br
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+                    = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
                   %br
-                  ドラッグアンドドロップ
-                  %br
-                  またはクリックしてファイルをアップロード
-                  = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                  = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2" do
+                    %br
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
       .content__product
         %h3.content__product__name.clearfix
           商品名
@@ -132,7 +131,7 @@
                 .content__price__right__box__title__price__yen
                   ¥
                   .content__price__right__box__title__price__yen__text
-                    = f.text_field :price ,placeholder: "例） 300", class: 'content__price__right__box__title__price__yen__text--folder', id:"price-field", maxlength:"7"
+                    = f.telephone_field :price ,placeholder: "例） 300",class: 'content__price__right__box__title__price__yen__text--folder', id:"price-field", autocomplete:"off", maxlength:"7"
             %li.content__price__right__box__fee
               .content__price__right__box__fee__left
                 販売手数料(10%)

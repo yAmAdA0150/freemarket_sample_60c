@@ -19,8 +19,9 @@ Rails.application.routes.draw do
       end
     end
     resources :items, only: [:new,:create, :edit,:update] do
-      collection do
+      member do
         get 'buy'
+        post 'done'
       end
     end
   end

@@ -15,7 +15,7 @@
           =link_to category_path(p.id) do
             %p.all-category
               すべて
-          - @categories.order('created_at DESC').where(ancestry: p.id ).each do |c|
+          - p.children.each do |c|
             .category-index__box__all__child
               =c.genre
               .category-index__box__all__child__inner.clearfix

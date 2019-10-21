@@ -4,10 +4,10 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :size
   has_many :comments
-  has_many :images
+  has_many :images, dependent: :destroy
   has_many :likes
   has_one :trading
-  has_one :shipping
+  has_one :shipping, dependent: :destroy
 
   validates :images, associated: true, presence: true
 

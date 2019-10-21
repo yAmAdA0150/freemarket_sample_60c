@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
   def index
+    @parents = Category.all.where(ancestry: nil)
     @user = current_user
     @items = Item.all.order("created_at DESC") 
     @category = Category.all.where(id: [1,2,8,6])
@@ -22,11 +23,12 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item)
     else
       @item.images = []
       @item.images.build
-      redirect_to new_item_path
+      @parents = Category.all.where(ancestry: nil)
+      render :new
     end
   end
 
