@@ -204,5 +204,8 @@
       .user-items--another__items__content__block
         -@item.category.items.limit(6).each do |item|
           = render partial:"detail", locals: { item: item } unless (item == @item)
-                      
+- breadcrumb :item
+.bread_crumbs.item-show
+  .bread_crumbs__line
+    = breadcrumbs separator: " > ", class: "breadcrumbs-list"
 =render 'shared/footer'

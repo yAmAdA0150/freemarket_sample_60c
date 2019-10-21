@@ -1,4 +1,11 @@
 = render 'shared/header'
+-if @category.is_root?
+  - breadcrumb :category_parent
+-elsif @category.has_children?
+  - breadcrumb :category_child
+-else
+  - breadcrumb :category_gchild
+=render 'shared/breadcrumbs.html.haml'
 .category-show
   .category-show__list
     -if @category.has_children?

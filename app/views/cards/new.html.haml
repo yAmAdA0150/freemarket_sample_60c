@@ -1,9 +1,7 @@
+=render 'shared/header'
+- breadcrumb :card
+=render 'shared/breadcrumbs.html.haml'
 %section.new
-  =render 'shared/header'
-  .bread_crumbs
-  .bread_crumbs__line
-    -# - breadcrumb :user
-    -# = breadcrumbs separator: " > ", class: "breadcrumbs-list"
   .new__main__section
     .new__main__section__side
       =render 'shared/user_sidebar'

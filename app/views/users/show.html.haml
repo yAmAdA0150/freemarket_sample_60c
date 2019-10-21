@@ -1,4 +1,5 @@
 = render 'shared/header.html.haml'
+- breadcrumb :user
 = render 'shared/breadcrumbs.html.haml'
 .mypage
   .mypage__container
@@ -48,8 +49,3 @@
           取引中の商品はありません
 = render 'shared/footer.html.haml'
 = render 'shared/camera.html.haml'
-
--# .header-bottom__bread__crumbs
--#   .bread-crumbs
--#     - breadcrumb :mypage
--#     = breadcrumbs separator: " ＞ "

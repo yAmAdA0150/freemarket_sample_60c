@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+  before_action :header_category 
   def index
     @parents = Category.all.where(ancestry: nil)
     @user = current_user

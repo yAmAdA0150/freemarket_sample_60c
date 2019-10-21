@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :load_payjp, only: [:payment, :delete, :show]
-  
+  before_action :header_category 
   require 'payjp'
 
   def new
