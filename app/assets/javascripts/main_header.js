@@ -1,7 +1,7 @@
 $(function () {
 
   var categorySearch = $("#search");
-  categorySearch.on("mouseenter", function () {
+  categorySearch.on("mouseenter", function () {    //カテゴリーから探すにカーソルを合わせた時の動き
     $(".all-category").css({
       'display': `block`
     });
@@ -15,7 +15,7 @@ $(function () {
       'display': 'none'
     });
   });
-  $("#search").on("mouseleave", function () {
+  $("#search").on("mouseleave", function () {    //カテゴリーから探すからカーソルを離した時の動き
     $(".all-category").css({
       'display': 'none'
     });
@@ -37,7 +37,7 @@ $(function () {
         });
 
         function appendChild(child) {
-          var html = `<a href="/categories/child.id", class="link"><option value="${child.ancestry}/${child.id}", class="category-child" >${child.name}</option></a>`
+          var html = `<a href="/categories/${child.id}", class="link"><option value="${child.ancestry}/${child.id}", class="category-child" >${child.name}</option></a>`
           childCategory.append(html);
         }
         if (children.length !== 0) {
@@ -70,7 +70,7 @@ $(function () {
           });
 
           function appendGchild(gchild) {
-            var html = `<a href="/categories/gchild.id", class="link"><option value="${gchild.id}", class="category-gchild">${gchild.name}</option></a>`
+            var html = `<a href="/categories/${gchild.id}", class="link"><option value="${gchild.id}", class="category-gchild">${gchild.name}</option></a>`
             gchildCategory.append(html);
           }
           if (gchildren.length !== 0) {
