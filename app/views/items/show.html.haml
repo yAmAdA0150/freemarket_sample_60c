@@ -11,7 +11,8 @@
         回の取引実績を持つ
         =@item.user.name
         さんから出品されました。
-        =@item.brand.name
+        -if @item.brand.present?
+          =@item.brand.name
         （
         =@item.category.genre 
         \/
@@ -68,13 +69,14 @@
                 =link_to category_path(@item.category.id) do
                   =fa_icon 'angle-right', class:"nav__item__link-next-icon"
                   =@item.category.genre
-          %tr.item__content__main__table__tbody__tr
-            %th.item__content__main__table__tbody__tr__th 
-              ブランド
-            %td.item__content__main__table__tbody__tr__td
-              .item__content__main__table__tbody__tr__td__name
-              =link_to "#" do
-                =@item.brand.name
+          -if @item.brand.present?
+            %tr.item__content__main__table__tbody__tr
+              %th.item__content__main__table__tbody__tr__th 
+                ブランド
+              %td.item__content__main__table__tbody__tr__td
+                .item__content__main__table__tbody__tr__td__name
+                =link_to "#" do
+                  =@item.brand.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
               商品の状態
@@ -197,8 +199,6 @@
         -# %li.media__box__center__icon__Line
           =link_to "https://line.com/" , class: "media__box__icon__line" do
             = fa_icon 'line-square',  class: "media__box__center__icon__line-i"
-  -# 他のアイテム出品情報
-  -# ユーザー縛りの出品アイテム
   .user-items--another
     .user-items--another__items__content
       %h3.user-items--another__items__content__name

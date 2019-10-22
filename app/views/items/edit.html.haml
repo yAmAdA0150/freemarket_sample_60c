@@ -1,0 +1,297 @@
+= render 'shared/grayheader'
+-console
+.sell
+  %section.content
+    = form_for [current_user, @item], method: :patch do |f|
+      = f.hidden_field :display_id, value:1
+      .contents-item__message
+        商品の情報を入力
+      .contents-item__container
+        .contents-item__container__uploadbox
+          .contents-item__container__uploadbox__text.label
+            出品画像
+            %span.content__product__name__need 必須
+          .contents-item__container__uploadbox__info.info
+            最大10枚までアップロードできます
+          .contents-item__container__uploadbox__zone-item
+            .contents-item__container__uploadbox__zone-item__have-item.clearfix
+              .target-box{id: "item-append-target"}
+                - files = 0
+                - @item.images.each do |image|
+                  - files += 1
+                  %li.contents-item__container__uploadbox__zone-item__have-item--upload-item
+                    %figure.contents-item__container__uploadbox__zone-item__have-item--upload-figure
+                      = image_tag "#{image.url}", alt: '', class: 'contents-item__container__uploadbox__zone-item__have-item--upload-image pict-delete-edit'
+                    .contents-item__container__uploadbox__zone-item__have-item__upload-btnbox
+                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn{href: "#"} 編集
+                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn.btn-left{data: {delete: "#{image.id}"}, href: '#', id: 'pict-delete-edit'} 削除
+                = f.fields_for :image do |f_image|
+                  - if files <= 3
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1", style: "width: #{615 - files * 126}px;" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                  -elsif files == 4
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1",style:"display:none;" do
+                      %p.inner_text{style:"display:none;"}
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image',style:"display:block;"
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2", style: "width: #{615 - (files - 5)* 126}px; display:inline-block;" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                  -elsif (files < 9 && files > 5)
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1", style: "display:none;" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2", style: "width: #{615 - (files - 5) * 126}px; display:inline-block;" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                  -elsif files == 9
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1", style:"display:none;" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2", id:"dropbox2", style: "width: #{615 - (files - 5) * 126}px; display:inline-block;" do
+                      %p.inner_text{style:"display:none;"}
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image',style:"display:block;"
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                  - else 
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox1",style:"display:none" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox2",style:"display:none" do
+                      %p.inner_text
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                      = fa_icon 'camera', class: 'mark fa-3x camera-image'
+      .content__product
+        %h3.content__product__name.clearfix
+          商品名
+          %span.content__product__name__need
+            必須
+        .content__product__text
+          = f.text_field :name, placeholder: "商品名（必須40文字まで）", class:'content__product__text--folder'
+        %h3.content__product__explanation
+          商品の説明
+          %span.content__product__explanation__need
+            必須
+        = f.text_area :text ,placeholder: '商品の説明（必須1,000文字以内）（色、素材、重さ、低下、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。', class: "content__product__inner"
+      .content__details
+        %h3.content__details__left  商品の詳細
+        .content__details__right
+          .content__details__right__category
+            .content__details__right__category__name
+              カテゴリー
+              %span.content__details__right__category__name__need
+                必須
+            .content__details__right__category__box#category_parent
+              %select.content__details__right__category__box__top#parent_select
+                %option ---
+                -@parents.each do |p|
+                  -if p == @item.category.root
+                    %option{value:p.id, selected:true}
+                      =p.genre
+                  -else
+                    %option{value:p.id}
+                      =p.genre
+              %select.content__details__right__category__box__top#category_child.item-edit
+                %option ---
+                -@item.category.parent.siblings.each do |c|
+                  -if c == @item.category.parent
+                    %option{value:c.id, selected: true}
+                      = c.genre
+                  -else
+                    %option{value:c.id}
+                      = c.genre
+              %select.content__details__right__category__box__top.item-edit#select_gchild{name:"item[category_id]"}
+                %option ---
+                -@item.category.siblings.each do |c|
+                  -if c == @item.category
+                    %option{value:c.id, selected: true}
+                      = c.genre
+                  -else
+                    %option{value:c.id}
+                      = c.genre
+          -if @item.size.present?
+            .content__details__right__size.item-edit#size_box
+              .content__details__right__size__name
+                サイズ
+                %span.content__details__right__size__name__need
+                  必須
+              .content__details__right__size__box
+                .content__details__right__size__box__top
+                  %select{name:"item[size_id]",class:"content__details__right__size__box__top__choice", id:"select_size"}
+                    %opntion ---
+                    -@item.category.sizes.each do |size|
+                      - if size == @item.size
+                        %option{value: size.id, selected: true}
+                          = size.name
+                      - else
+                        %option{value: size.id}
+                          = size.name
+          -else
+            .content__details__right__size#size_box
+              .content__details__right__size__name
+                サイズ
+                %span.content__details__right__size__name__need
+                  必須
+              .content__details__right__size__box
+                .content__details__right__size__box__top
+                  %select{name:"item[size_id]",class:"content__details__right__size__box__top__choice", id:"select_size"}
+                    %opntion ---
+          -if @item.brand.present?
+            .content__details__right__brand.item-edit#brand_box
+              .content__details__right__brand__name
+                ブランド
+                %span.content__details__right__brand__name__need
+                  任意
+              .content__details__right__brand__box
+                .content__details__right__brand__box__top
+                  %input{type:"text", class:"content__details__right__brand__box__top__choice", id:"brand_input", autocomplete:"off",value:"#{@item.brand.name}"}
+                  .content__details__right__brand__box__top__search-result#search-result
+                  = f.hidden_field :brand_id, id:"hidden-field"
+          -else
+            .content__details__right__brand#brand_box
+              .content__details__right__brand__name
+                ブランド
+                %span.content__details__right__brand__name__need
+                  任意
+              .content__details__right__brand__box
+                .content__details__right__brand__box__top
+                  %input{type:"text", class:"content__details__right__brand__box__top__choice", id:"brand_input", autocomplete:"off"}
+                  .content__details__right__brand__box__top__search-result#search-result
+                  = f.hidden_field :brand_id, id:"hidden-field"
+          .content__details__right__status
+            .content__details__right__status__name
+              商品の状態
+              %span.content__details__right__status__name__need
+                必須
+            .content__details__right__status__box
+              .content__details__right__status__box__bottom
+                = f.collection_select :condition_id, Condition.all, :id, :name, class:"content__details__right__status__box__bottom__choice"
+      .content__delivery
+        .flex
+          %h3.content__delivery__left 配送について
+          = link_to '#', class: 'content__delivery__mark' do
+            ?
+        .content__delivery__right
+          = f.fields_for :shipping do |s|
+            .content__delivery__right__burden
+              %label.content__delivery__right__burden__name
+                配送料の負担
+                %span.content__delivery__right__burden__name__need
+                  必須
+              .content__delivery__right__burden__box
+                = s.select :charge,[["--", 0],["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]]
+            .content__delivery__right__way.item-edit#delivery-method
+              %label.content__delivery__right__way__name
+                配送の方法
+                %span.content__delivery__right__way__name__need
+                  必須
+              .content__delivery__right__way__box
+                = s.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, class:"content__delivery__right__way__box__choice"
+            .content__delivery__right__area
+              %label.content__delivery__right__area__name
+                発送元の地域
+                %span.content__delivery__right__area__name__need
+                  必須
+                .content__delivery__right__area__box
+                  = s.collection_select :prefecture_id, Prefecture.all, :id, :name
+            .content__delivery__right__days
+              %label.content__delivery__right__days__name
+                発送までの日数
+                %span.content__delivery__right__days__name__need
+                  必須
+              .content__delivery__right__days__box
+                = s.collection_select :term_id, Term.all, :id, :name, class:"content__delivery__right__days__box__choice"
+      .content__price
+        .flex
+          %h3.content__price__left  販売価格(300〜9,999,999)
+          = link_to '#', class: 'content__price__mark' do
+            ?
+        .content__price__right
+          %ul.content__price__right__box
+            %li.content__price__right__box__title
+              .content__price__right__box__title__price
+                .content__price__right__box__title__price__name
+                  価格
+                  %span.content__price__right__box__title__price__name__need
+                    必須
+                .content__price__right__box__title__price__yen
+                  ¥
+                  .content__price__right__box__title__price__yen__text
+                    = f.telephone_field :price ,placeholder: "例） 300",class: 'content__price__right__box__title__price__yen__text--folder', id:"price-field", autocomplete:"off", maxlength:"7"
+            %li.content__price__right__box__fee
+              .content__price__right__box__fee__left
+                販売手数料(10%)
+              .content__price__right__box__fee__right#charge
+                -@charge = @item.price*0.1
+                = "¥" + @charge.round.to_s(:delimited, delimiter: ',')
+            %li.content__price__right__box__profit
+              .content__price__right__box__profit__left
+                販売利益
+              .content__price__right__box__profit__right#benefit
+                -@benefit = (@item.price - @charge.round)
+                = "¥" + @benefit.to_s(:delimited, delimiter: ',')
+      .content__choice
+        .content__choice__top
+          %p
+            = link_to '禁止されている出品', '#', class: 'choice-link'
+            、
+            = link_to '行為', '#', class: 'choice-link'
+            を必ずご確認ください。
+          %p
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            = link_to '偽ブランドの販売', '#', class: 'choice-link'
+            は犯罪であり処罰される可能性があります。
+          %p
+            また、出品をもちまして
+            =link_to '加盟店規約', '#', class: 'choice-link'
+            に同意したことになります。
+        =f.submit "出品する",class: 'content__choice__middle'
+        %button{class: 'content__choice__under'}
+          = link_to '#', class: 'content__choice__under--push' do
+            もどる
+= render 'shared/grayfooter'

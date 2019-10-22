@@ -1,6 +1,9 @@
 $(function() {
-    var categoryParent = $("#category_parent");
     var parentSelect = $("#parent_select");
+    var categoryChild = $('#category_child');
+    var categoryGchild = $('#select_gchild');
+    var sizeBox = $('#size_box');
+    var hiddenField = $('#hidden-field');
     // 子カテゴリーの非同期表示
     parentSelect.on("change", function() {
         var chooseParent = $(this).val();
@@ -11,15 +14,19 @@ $(function() {
                 dataType: 'json'
             })
             .done(function(children) {
+                hiddenField.val('');
                 var sizeBox = $('#size_box')
                 sizeBox.css({
                     'display': 'none'
                 })
-                $('#select_gchild').remove('');
-                $('#category_child').remove('');
-                var selectChild = $(`<select class="content__details__right__category__box__top" id="category_child"></select>`);
-                categoryParent.append(selectChild)
-                var categoryChild = $('#category_child')
+                categoryGchild.css({
+                    'display': 'none'
+                })
+
+                categoryChild.css({
+                    'display': 'block'
+                })
+                categoryChild.empty();
                 categoryChild.append(`<option> --- </option>`)
 
                 function appendChild(child) {
@@ -38,8 +45,6 @@ $(function() {
     });
     // 孫カテゴリーの非同期表示
     $(document).ajaxStop(function() {
-        var categoryParent = $("#category_parent");
-        var categoryChild = $('#category_child');
         categoryChild.on("change", function() {
             var chooseChild = $(this).val();
             $.ajax({
@@ -49,14 +54,14 @@ $(function() {
                     dataType: 'json'
                 })
                 .done(function(children) {
-                    var sizeBox = $('#size_box')
                     sizeBox.css({
                         'display': 'none'
                     })
-                    $('#select_gchild').remove('');
-                    var selectGchild = $(`<select class="content__details__right__category__box__top" id="select_gchild" name="item[category_id]"></select>`);
-                    categoryParent.append(selectGchild)
-                    var categoryGchild = $('#select_gchild')
+                    categoryGchild.css({
+                        'display': 'block'
+                    })
+                    hiddenField.val('');
+                    categoryGchild.empty();
                     categoryGchild.append(`<option> --- </option>`)
 
                     function appendGchild(child) {
@@ -74,10 +79,8 @@ $(function() {
                 })
         });
         // サイズの非同期表示
-        var sizeBox = $('#size_box');
         var brandBox = $('#brand_box');
-        var selectGchild = $('#select_gchild')
-        selectGchild.on("change", function() {
+        categoryGchild.on("change", function() {
             var chooseSize = $(this).val();
             $.ajax({
                     type: 'GET',
@@ -93,6 +96,7 @@ $(function() {
                         brandBox.css({
                             'display': 'block'
                         })
+                        hiddenField.val('');
                         var selectSize = $('#select_size');
                         selectSize.empty();
                         selectSize.append(`<option> --- </option>`)
@@ -148,7 +152,6 @@ $(function() {
         var brandAll = $('.brand-name')
         brandAll.on("click", function() {
             var hiddenValue = $(this).attr('value');
-            var hiddenField = $('#hidden-field');
             var inputName = $(this).text();
             searchResult.css({
                 'display': 'none'

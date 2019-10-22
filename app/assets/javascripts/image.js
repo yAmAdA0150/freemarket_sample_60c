@@ -72,20 +72,20 @@ $(function() {
                         var num = input.files.length
                         num += edit_num
                         deleteWidth2(num)
-                        dropBox2.before(html);
+                        dropBox1.before(html);
                     } else if (count > 9) {
-                        dropBox2.before(html);
+                        dropBox1.before(html);
                         dropBox2.css('display', `none`)
 
                     } else {
                         return false
                     }
                     if (count == 4) {
-                        debugger
+
                         $('.camera-image').css('display', `block`)
                         $('.inner_text').css('display', `none`)
                     } else if (count == 9) {
-                        debugger
+
                         $('.camera-image').css('display', `block`)
                         $('.inner_text').css('display', `none`)
                     } else {
@@ -102,15 +102,15 @@ $(function() {
     $(document).on("change", "#item-drop-zone", function() {
         count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
         var edit_num = 0
-        if ($('.pict-delete-edit').length) {
-            edit_num = $('.pict-delete-edit').length
+        if ($('#pict-delete-edit').length) {
+            edit_num = $('#pict-delete-edit').length
         }
         readURL(this, list, edit_num);
         appendFile(list);
 
     });
 
-    // 削除ボタンがクリックされたら発火
+    // new - 削除ボタンがクリックされたら発火
     $(document).on("click", "#pict-delete", function(e) {
         e.preventDefault();
         var target = $(e.target);
@@ -152,7 +152,6 @@ $(function() {
             $('.camera-image').css('display', `none`)
             $('.inner_text').css('display', `block`)
         } else if (count == 5) {
-
             $('.inner_text').css('display', `block`)
         } else if (count == 8) {
             $('.camera-image').css('display', `none`)
@@ -160,24 +159,47 @@ $(function() {
         }
     })
 
-    // 編集-削除ボタンがクリックされたら発火
-    // $(document).on("click", ".pict-delete-edit", function(e) {
-    //     e.preventDefault();
-    //     var target = $(e.target);
-    //     var pict_id = target.data('delete');
-    //     count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
-    //     target.parent().parent().remove();
+    // edit - 削除ボタンがクリックされたら発火
+    $(document).on("click", "#pict-delete-edit", function(e) {
+        e.preventDefault();
+        var target = $(e.target);
+        var pict_id = target.data('delete');
+        count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
+        target.parent().parent().remove();
 
-    //     // if (count == 5) {
-    //     //     $('.contents-item__container__uploadbox__zone-item__dropbox').show();
-    //     // }
-    //     deleteWidth1(count - 1)
+        count -= 1
+        maxspace = 4
+        if (count < 4) {
+            deleteWidth1(count)
+        } else if (count == maxspace) {
+            var width = 615 - 126 * maxspace
+            dropBox1.css("width", `${width}px`)
+            dropBox1.css("display", `inline-block`)
+            dropBox2.css("display", `none`)
+            $('.camera-image').css('display', `block`)
+            $('.inner_text').css('display', `none`)
+            dropBox1.append(dropFile)
+        } else if (count == 9) {
+            var width = 615 - 126 * 4
+            dropBox2.css("width", `${width}px`)
+            dropBox2.css("display", `inline-block`)
+        } else {
+            deleteWidth2(count)
+        }
+        if (count == 3) {
+            $('.camera-image').css('display', `none`)
+            $('.inner_text').css('display', `block`)
+        } else if (count == 5) {
+            $('.inner_text').css('display', `block`)
+        } else if (count == 8) {
+            $('.camera-image').css('display', `none`)
+            $('.inner_text').css('display', `block`)
+        }
 
-    //     count -= 1
 
-    //     hidden_form = `<input type="hidden", name="[delete_ids][]", value="${pict_id}">`
-    //     $('.contents-item__container__uploadbox__zone-item').append(hidden_form)
+        hidden_form = `<input type="hidden", name="[delete_ids][]", value="${pict_id}">`
+        $('.contents-item__container__uploadbox__zone-item').append(hidden_form)
 
-    // })
+    })
 
 });

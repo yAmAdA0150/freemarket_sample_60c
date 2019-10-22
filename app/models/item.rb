@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-  belongs_to :brand
   belongs_to :category
   belongs_to :user
-  belongs_to :size
+  belongs_to :brand, optional: true
+  belongs_to :size, optional: true
   has_many :comments
   has_many :images, dependent: :destroy
   has_many :likes

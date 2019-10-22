@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :header_category 
-
+  before_action :set_item, except: [:index,:new,:create,:search]
   require 'payjp'
 
   def index
@@ -41,16 +41,47 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @images = Image.where(item_id:params[:id])
   end
 
   def update
+    edit_params = item_params
+    image_del_list = delete_images if delete_images
+    image_edit_list = edit_params[:images_attributes] if edit_params[:images_attributes]
+    edit_params.delete(:images_attributes)
+    edit_params = edit_params.merge(size_id: nil) unless edit_params.has_key?(:size_id)
+    edit_params = edit_params.merge(brand_id: nil) unless edit_params.has_key?(:brand_id)
+    if image_edit_list
+      image_edit_list.each do |img|
+        Image.create(img.merge(item_id: @item.id))
+      end
+    end
+    if image_del_list
+      image_del_list.each do |image_id|
+        Image.find(image_id).destroy
+      end
+    end
+    if @item.update(edit_params)
+      redirect_to item_path(params[:id])
+    else
+      set_ancestry
+      render :edit
+    end
   end
 
   def destroy
+    if @item.user == current_user
+      if @item.destroy
+        redirect_to user_path(current_user)
+      else
+        redirect_to item_path(@item)
+      end
+    else
+      render :show
+    end
   end
 
   def confirmation
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
       if card.blank?
         redirect_to controller: "card", action: "new"
@@ -62,7 +93,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
@@ -100,5 +130,17 @@ class ItemsController < ApplicationController
       images_attributes: [:url]
       )
       .merge(user_id: current_user.id)
+  end
+
+  def delete_images
+    if params.has_key?(:delete_ids)
+      return params.require(:delete_ids)
+    else
+      return nil
+    end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
