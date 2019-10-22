@@ -18,8 +18,10 @@ $(function() {
     // ドラッグアンドドロップ枠2を縮める関数
     function deleteWidth2(num) {
         var num = num - 5
-        var del = 615 - num * 126
-        dropBox2.css('width', `${del}px`)
+        if (num > 0) {
+            var del = 615 - num * 126
+            dropBox2.css('width', `${del}px`)
+        }
     }
 
 
@@ -91,7 +93,7 @@ $(function() {
                     }
 
                 }
-                reader.readAsDataURL(input.files[index]);
+                reader.readAsDataURL(input.files[index])
             })
         }
     }
@@ -143,10 +145,13 @@ $(function() {
             var width = 615 - 126 * 4
             dropBox2.css("width", `${width}px`)
             dropBox2.css("display", `inline-block`)
+            $('.camera-image').css('display', `block`)
+            $('.inner_text').css('display', `none`)
         } else {
             deleteWidth2(count)
         }
         if (count == 3) {
+
             $('.camera-image').css('display', `none`)
             $('.inner_text').css('display', `block`)
         } else if (count == 5) {
@@ -181,6 +186,8 @@ $(function() {
             var width = 615 - 126 * 4
             dropBox2.css("width", `${width}px`)
             dropBox2.css("display", `inline-block`)
+            $('.camera-image').css('display', `block`)
+            $('.inner_text').css('display', `none`)
         } else {
             deleteWidth2(count)
         }

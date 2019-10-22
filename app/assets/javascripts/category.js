@@ -3,6 +3,7 @@ $(function() {
     var categoryChild = $('#category_child');
     var categoryGchild = $('#select_gchild');
     var sizeBox = $('#size_box');
+    var selectSize = $('#select_size');
     var hiddenField = $('#hidden-field');
     // 子カテゴリーの非同期表示
     parentSelect.on("change", function() {
@@ -15,6 +16,7 @@ $(function() {
             })
             .done(function(children) {
                 hiddenField.val('');
+
                 var sizeBox = $('#size_box')
                 sizeBox.css({
                     'display': 'none'
@@ -27,6 +29,7 @@ $(function() {
                     'display': 'block'
                 })
                 categoryChild.empty();
+                selectSize.empty();
                 categoryChild.append(`<option> --- </option>`)
 
                 function appendChild(child) {
@@ -61,6 +64,7 @@ $(function() {
                         'display': 'block'
                     })
                     hiddenField.val('');
+                    selectSize.empty();
                     categoryGchild.empty();
                     categoryGchild.append(`<option> --- </option>`)
 
@@ -97,7 +101,7 @@ $(function() {
                             'display': 'block'
                         })
                         hiddenField.val('');
-                        var selectSize = $('#select_size');
+
                         selectSize.empty();
                         selectSize.append(`<option> --- </option>`)
 
