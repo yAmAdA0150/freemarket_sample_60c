@@ -57,6 +57,8 @@
                 -@parents.each do |p|
                   %option{value:"#{p.id}"}
                     =p.genre
+              %select.content__details__right__category__box__top#category_child
+              %select.content__details__right__category__box__top#select_gchild{name:"item[category_id]"}
           .content__details__right__size#size_box
             .content__details__right__size__name
               サイズ

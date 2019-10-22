@@ -41,7 +41,7 @@
                             flex: 1;
                             display: block;
                             .target-box {
-                                width: 620px;
+                                width: 640px;
                                 margin: 0;
                                 padding: 0;
                                 box-sizing: border-box;
@@ -50,7 +50,7 @@
                             &--upload-item {
                                 margin: 20px 0;
                                 box-sizing: border-box;
-                                width: 114px;
+                                width: 112px;
                                 margin-left: 0;
                                 display: inline-block;
                                 border: 1px solid #eee;
@@ -64,12 +64,12 @@
                                 text-align: center;
                                 width: auto;
                                 padding: 0;
-                                height: 114px;
+                                height: 112px;
                                 border-radius: 0 !important;
                             }
                             &--upload-image {
                                 height: 140px;
-                                width: 112px;
+                                width: 110px;
                             }
                             &__upload-btnbox {
                                 font-size: 14px;
@@ -237,6 +237,14 @@
                             font-size: 16px;
                             background-color: #FFF;
                         }
+                        #category_child,
+                        #select_gchild {
+                            display: none;
+                        }
+                        #category_child.item-edit,
+                        #select_gchild.item-edit {
+                            display: block;
+                        }
                     }
                 }
                 &__size {
@@ -270,6 +278,9 @@
                             }
                         }
                     }
+                }
+                &__size.item-edit {
+                    display: block;
                 }
                 &__brand {
                     margin-top: 35px;
@@ -322,13 +333,16 @@
                         }
                     }
                 }
+                &__brand.item-edit {
+                    display: block;
+                }
                 &__status {
                     margin-top: 40px;
                     display: block;
                     &__name {
                         font-weight: bold;
                         display: inline-block;
-                        select {
+                        &__need {
                             padding: 2px 4px;
                             margin-left: 8px;
                             font-size: 12px;
@@ -435,6 +449,9 @@
                             background-color: #FFF;
                         }
                     }
+                }
+                &__way.item-edit {
+                    display: block;
                 }
                 &__area {
                     min-width: 100%;
@@ -1160,6 +1177,12 @@
     }
 }
 
+// 編集ページ用
+.item-edit {
+    display: block;
+}
+
+// 調整のためのコメントアウト
 // @media (min-width: 768px) {
 //     .sell-shrink {
 //         display: none;
