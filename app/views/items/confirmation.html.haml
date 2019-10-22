@@ -1,0 +1,124 @@
+-# 商品購入ページ
+= render 'shared/grayheader'
+
+.confirmation
+  %section.center
+    %h2.center__titles
+      購入内容の確認
+    %section.center__item
+      %h3.center__item__photo
+        = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+      %p.center__item__name
+        = @item.name
+      %form{action: '#', class: 'center__item__form'}
+      .center__item__form__total
+        .center__item__form__total__price
+          = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+        .center__item__form__total__specified
+          着払い
+      %ul.center__item__form__point
+        %li.center__item__form__point__box
+          .center__item__form__point__box__attention
+            ポイントはありません
+      %ul.center__item__form__price
+        %li.center__item__form__price__pay
+          .center__item__form__price__pay__title
+            支払い金額
+          .center__item__form__price__pay__figure
+            %span.center__item__form__price__pay__figure__yen
+              = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+      %button{class: 'center__item__form__finish'}
+        = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
+    %section.center__address
+      .center__address__box
+        %h3.center__address__box__title
+          配送先
+        .center__address__box__content
+          = @address.postcode
+          %br
+          = @address.city
+          %br
+          = @address.street
+          %br
+          = current_user.name
+        .center__address__box__change
+          = link_to '#', class: 'center__address__box__change--alteration' do
+            変更する ＞
+    %section.center__cash
+      .center__cash__box
+        %h3.center__cash__box__title
+          支払い方法
+        .center__cash__box__content
+          -# 以下カード情報表示
+          .center__cash__box__content__number
+            = "**** **** **** " + @default_card_information.last4
+          .center__cash__box__content__date
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            =exp_month + " / " + exp_year
+          .center__cash__box__content__card__type
+        .center__cash__box__change
+          = link_to '#', class: 'center__cash__box__change--alteration' do
+            変更する ＞
+
+.confirmation-shrink
+  %section.center
+    %h2.center__title
+      購入内容の確認
+    %section.center__item
+      %h3.center__item__photo
+        = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+      %p.center__item__name
+        = @item.name
+      %form{action: '#', class: 'center__item__form'}
+        .center__item__form__total
+          .center__item__form__total__price
+            = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+          .center__item__form__total__specified
+            着払い
+        %ul.center__item__form__point
+          %li.center__item__form__point__box
+            .center__item__form__point__box__attention
+              ポイントはありません
+        %ul.center__item__form__price
+          %li.center__item__form__price__pay
+            .center__item__form__price__pay__title
+              支払い金額
+            .center__item__form__price__pay__figure
+              %span.center__item__form__price__pay__figure__yen
+                = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+          %button{class: 'center__item__form__finish'}
+            = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
+    %section.center__address
+      .center__address__box
+        %h3.center__address__box__title
+          配送先
+        .center__address__box__content
+          = @address.postcode
+          %br
+          = @address.city
+          %br
+          = @address.street
+          %br
+          = current_user.name
+        .center__address__box__change
+          = link_to '#', class: 'center__address__box__change--alteration' do
+            変更する ＞
+    %section.center__cash
+      .center__cash__box
+        %h3.center__cash__box__title
+          支払い方法
+        .center__cash__box__content
+          -# 以下カード情報表示
+          .center__cash__box__content__number
+            = "**** **** **** " + @default_card_information.last4
+          .center__cash__box__content__date
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            =exp_month + " / " + exp_year
+          .center__cash__box__content__card__type
+        .center__cash__box__change
+          = link_to '#', class: 'center__cash__box__change--alteration' do
+            変更する ＞
+
+= render 'shared/grayfooter'
