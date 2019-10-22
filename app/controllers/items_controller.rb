@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :header_category 
-
+  before_action :set_item, except: [:index,:new,:create,:search]
   require 'payjp'
 
   def index
@@ -41,12 +41,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @images = Image.where(item_id:params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     edit_params = item_params
     image_del_list = delete_images if delete_images
     image_edit_list = edit_params[:images_attributes] if edit_params[:images_attributes]
@@ -72,17 +70,18 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.user == current_user
-      @item.destroy
-      redirect_to user_path(current_user)
+      if @item.destroy
+        redirect_to user_path(current_user)
+      else
+        redirect_to item_path(@item)
+      end
     else
       render :show
     end
   end
 
   def confirmation
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
       if card.blank?
         redirect_to controller: "card", action: "new"
@@ -94,7 +93,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
@@ -140,5 +138,9 @@ class ItemsController < ApplicationController
     else
       return nil
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
