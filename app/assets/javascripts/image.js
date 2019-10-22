@@ -36,13 +36,13 @@ $(function() {
         if (input.files && input.files[0]) {
             $.each(input.files, function(index, file) {
                 count += 1;
+                // 画像10枚以上は投稿させない
                 if (count > 10) {
                     count -= 1
                     return false;
                 }
                 list.items.add(file);
                 var reader = new FileReader();
-                var target_ul = $("#item-append-target");
                 reader.onload = function(e) {
                     var loadedImageUri = e.target.result;
                     var html = `<li class="contents-item__container__uploadbox__zone-item__have-item--upload-item">
@@ -54,9 +54,7 @@ $(function() {
                                 <a class="contents-item__container__uploadbox__zone-item__have-item--upload-btn btn-left" href="#" data-pict="${file.name}" id="pict-delete">削除</a>
                                 </div>
                                 </li>`;
-
                     if (count < 5) {
-
                         var num = input.files.length
                         num += edit_num
                         deleteWidth1(num)
