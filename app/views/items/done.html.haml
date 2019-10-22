@@ -1,23 +1,126 @@
 -# 商品購入完了画面
-= render 'shared/header'
-%section.buy-done
-  .main__section
-    = render 'shared/user_sidebar'
-    .main__section__content
-      .main__section__content__box
-        .main__section__content__box__buy
-          %h2.main__section__content__box__buy__text
-            購入が完了しました！
-          .main__section__content__box__buy__name
-            ブランド 空箱 5個セット
-          .main__section__content__box__buy__price
-            1,100円(税込)
-        .main__section__content__box__buy__logout
-        =link_to root_path ,class:'logout-link' do
-          %button.main__section__content__box__buy__logout__button
-            トップページに戻る
 
-= render 'shared/camera'
+= render 'shared/grayheader'
 
-= render 'shared/footer' 
-""
+.done
+  %section.purchase
+    .purchase__announce
+      .purchase__announce__wait
+        = fa_icon 'clock', class: 'mark'
+        %span
+          発送をお待ちください
+      .purchase__announce__shipping
+        出品者からの発送通知をお待ちください
+    .purchase__message
+      %h2.purchase__message__text
+        購入が完了しました
+    .purchase__item
+      .purchase__item__box
+        .purchase__item__box__pic
+          = image_tag @image.url.to_s, alt: "#{@item.name}", class: "image-pic"
+        .purchase__item__box__name
+          = @item.name
+    %section.purchase__price
+      = "¥" + @item.price.to_s(:delimeted, delimiter: ',')
+      %span.purchase__price__tax
+        -if @item.shipping.charge == 1
+          送料込み
+        -else
+          着払い
+    .purchase__address
+      %h3.purchase__address__heading
+        配送先
+      .purchase__address__contents
+        = @address.postcode
+        .br
+        = @address.city
+        = @address.street
+        -# = @address.building.name
+        .br
+        = @current_user.name
+    .purchase__pay
+      %h3.purchase__pay__heading
+        支払い方法
+      .purchase__pay__card
+        = "**** **** ****" + @default_card_information.last4
+      .purchase__pay__date
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+    .purchase__flow
+      %h3.purchase__flow__text
+        発送通知後の流れ
+      .purchase__flow__image
+      =image_tag "smile-icon.png", class:"evaluation"
+      %p
+      商品を受け取ったら
+      %p
+      出品者の評価をしましょう。
+      %p
+      購入代金が出品者に振り込まれます。
+      %p
+      評価後に取引は完了です。
+      .purchase__flow__return
+        =link_to "マイページへもどる", user_path(current_user), class: "link"
+
+.done-shrink
+  %section.purchase
+    .purchase__announce
+      .purchase__announce__wait
+        = fa_icon 'clock', class: 'mark'
+        %span
+          発送をお待ちください
+      .purchase__announce__shipping
+        出品者からの発送通知をお待ちください
+    .purchase__message
+      %h2.purchase__message__text
+        購入が完了しました
+    .purchase__item
+      .purchase__item__box
+        .purchase__item__box__pic
+          =image_tag @image.url.to_s, alt: "#{@item.name}", class: "image-pic"
+        .purchase__item__box__name
+          = @item.name
+    %section.purchase__price
+      = "¥" + @item.price.to_s(:delimeted, delimiter: ',')
+      %span.purchase__price__tax
+        -if @item.shipping.charge == 1
+          (税込)送料込み
+        -else
+          着払い
+    .purchase__address
+      %h3.purchase__address__heading
+        配送先
+      .purchase__address__contents
+        = @address.postcode
+        .br
+        = @address.city
+        = @address.street
+        .br
+        = @current_user.name
+    .purchase__pay
+      %h3.purchase__pay__heading
+        支払い方法
+      .purchase__pay__card
+        = "**** **** ****" + @default_card_information.last4
+      .purchase__pay__date
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+    .purchase__flow
+      %h3.purchase__flow__text
+        発送通知後の流れ
+      .purchase__flow__image
+      =image_tag "smile-icon.png", class:"evaluation"
+      %p
+      商品を受け取ったら
+      %p
+      出品者の評価をしましょう。
+      %p
+      購入代金が出品者に振り込まれます。
+      %p
+      評価後に取引は完了です。
+      .purchase__flow__return
+        =link_to "マイページへもどる", user_path(current_user), class: "link"
+
+= render 'shared/grayfooter'
