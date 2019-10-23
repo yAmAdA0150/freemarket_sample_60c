@@ -22,8 +22,8 @@
                     %figure.contents-item__container__uploadbox__zone-item__have-item--upload-figure
                       = image_tag "#{image.url}", alt: '', class: 'contents-item__container__uploadbox__zone-item__have-item--upload-image pict-delete-edit'
                     .contents-item__container__uploadbox__zone-item__have-item__upload-btnbox
-                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn{href: "#"} 編集
-                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn.btn-left{data: {delete: "#{image.id}"}, href: '#', id: 'pict-delete-edit'} 削除
+                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn{href: "/"} 編集
+                      %a.contents-item__container__uploadbox__zone-item__have-item--upload-btn.btn-left{data: {delete: "#{image.id}"}, href: '/', id: 'pict-delete-edit'} 削除
                 = f.fields_for :image do |f_image|
                   - if files == 10
                     = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox", style: "display:none;" do
@@ -43,7 +43,7 @@
                           %br
                           %br
                           またはクリックしてファイルをアップロード
-                        = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4 && files != 9)?"display:none;":"display:block;"}"
+                        = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4 && files != 9)? "display:none;": "display:block;"}"
                         = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
       .content__product
         %h3.content__product__name.clearfix
