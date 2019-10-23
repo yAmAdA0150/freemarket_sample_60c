@@ -82,6 +82,9 @@ class ItemsController < ApplicationController
   end
 
   def confirmation
+    @item = Item.find(params[:id])
+    @image = Image.find(@item.id)
+    @address = Address.find(current_user.id)
     card = Card.where(user_id: current_user.id).first
       if card.blank?
         redirect_to controller: "card", action: "new"
@@ -93,6 +96,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
@@ -115,6 +119,7 @@ class ItemsController < ApplicationController
   end
 
   def done
+    @address = Address.find(current_user.id)
     @item = Item.find(params[:id])
     @image= Image.find(@item.id)
     card = Card.where(user_id: current_user.id).first

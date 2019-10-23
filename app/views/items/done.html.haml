@@ -1,5 +1,4 @@
 -# 商品購入完了画面
-
 = render 'shared/grayheader'
 
 .done
@@ -16,8 +15,10 @@
         購入が完了しました
     .purchase__item
       .purchase__item__box
+        -# 商品画像
         .purchase__item__box__pic
           = image_tag @image.url.to_s, alt: "#{@item.name}", class: "image-pic"
+        -# 商品金額
         .purchase__item__box__name
           = @item.name
     %section.purchase__price
@@ -41,6 +42,7 @@
     .purchase__pay
       %h3.purchase__pay__heading
         支払い方法
+      -# カード情報
       .purchase__pay__card
         = "**** **** ****" + @default_card_information.last4
       .purchase__pay__date
@@ -62,7 +64,7 @@
       評価後に取引は完了です。
       .purchase__flow__return
         =link_to "マイページへもどる", user_path(current_user), class: "link"
-
+-# 画面サイズ縮小した時に表示
 .done-shrink
   %section.purchase
     .purchase__announce
@@ -122,5 +124,6 @@
       評価後に取引は完了です。
       .purchase__flow__return
         =link_to "マイページへもどる", user_path(current_user), class: "link"
+
 
 = render 'shared/grayfooter'

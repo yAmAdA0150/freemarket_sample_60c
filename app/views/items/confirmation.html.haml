@@ -6,12 +6,15 @@
     %h2.center__titles
       購入内容の確認
     %section.center__item
+      -# 商品イメージ
       %h3.center__item__photo
         = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+      -# 商品名
       %p.center__item__name
         = @item.name
       %form{action: '#', class: 'center__item__form'}
       .center__item__form__total
+        -# 商品金額
         .center__item__form__total__price
           = "¥" + @item.price.to_s(:delimited, delimiter: ',')
         .center__item__form__total__specified
@@ -31,6 +34,7 @@
         = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
     %section.center__address
       .center__address__box
+        -# 配送情報
         %h3.center__address__box__title
           配送先
         .center__address__box__content
@@ -61,6 +65,7 @@
           = link_to '#', class: 'center__cash__box__change--alteration' do
             変更する ＞
 
+-# 画面サイズ縮小したとき表示
 .confirmation-shrink
   %section.center
     %h2.center__title

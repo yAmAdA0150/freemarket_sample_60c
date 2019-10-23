@@ -1,5 +1,4 @@
 //商品購入確認ページ
-
 .confirmation {
     .center {
         width: 700px;
@@ -14,9 +13,11 @@
             border-bottom: 1px solid #f5f5f5;
         }
 
+
         &__item {
             max-width: 320px;
             margin: 24px auto;
+
 
             &__photo {
                 float: left;
@@ -27,6 +28,7 @@
                     width: 64px;
                 }
             }
+
 
             &__name {
                 width: calc(100% - 80px);
@@ -39,14 +41,17 @@
                 display: block;
             }
 
+
             &__form {
                 padding-top: 64px;
                 display: block;
                 text-align: center;
 
+
                 &__total {
                     display: flex;
                     padding: 10px;
+
 
                     &__price {
                         width: 100px;
@@ -60,6 +65,7 @@
                         display: flex;
                     }
 
+
                     &__specified {
                         margin-top: 8px;
                         font-weight: none;
@@ -68,6 +74,7 @@
                         padding-right: 60px;
                     }
                 }
+
 
                 &__point {
                     &__box {
@@ -81,6 +88,7 @@
                         }
                     }
                 }
+
 
                 &__price {
                     height: 60px;
@@ -105,6 +113,7 @@
                     }
                 }
 
+
                 &__finish {
                     cursor: pointer;
                     margin-bottom: 15px;
@@ -124,6 +133,7 @@
                 }
             }
         }
+
 
         &__address {
             padding: 24px 12.5% 40px;
@@ -152,6 +162,7 @@
                 }
             }
         }
+
 
         &__cash {
             padding: 24px 12.5% 40px;
@@ -183,6 +194,7 @@
     }
 }
 
+
 .confirmation-shrink {
     .center {
         width: 100%;
@@ -196,6 +208,7 @@
             font-weight: bold;
             border-bottom: 1px solid #f5f5f5;
         }
+
 
         &__item {
             max-width: 320px;
@@ -211,6 +224,7 @@
                 }
             }
 
+
             &__name {
                 width: calc(100% - 80px);
                 margin: 0 0 0 16px;
@@ -222,10 +236,12 @@
                 display: block;
             }
 
+
             &__form {
                 padding-top: 64px;
                 display: block;
                 text-align: center;
+
 
                 &__total {
                     display: flex;
@@ -250,6 +266,7 @@
                         text-align: left;
                     }
                 }
+
 
                 &__point {
                     &__box {
@@ -287,6 +304,7 @@
                     }
                 }
 
+
                 &__announcement {
                     margin-top: 8px;
                     color: #FF0211;
@@ -304,6 +322,7 @@
                     font-size: 14px;
                     text-align: center;
 
+
                     .link-to {
                         text-decoration: none;
                         color: white;
@@ -316,6 +335,7 @@
             padding: 24px 12.5% 40px;
             border-top: 1px solid #f5f5f5;
             margin-top: 80px;
+
 
             &__box {
                 max-width: 320px;
@@ -340,6 +360,7 @@
                 }
             }
         }
+
 
         &__cash {
             padding: 24px 12.5% 40px;
@@ -371,11 +392,13 @@
     }
 }
 
+
 @media (min-width: 768px) {
     .confirmation-shrink {
         display: none;
     }
 }
+
 
 @media (max-width: 767px) {
     .confirmation {
