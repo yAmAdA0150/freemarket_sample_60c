@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :header_category 
   before_action :set_item, except: [:index,:new,:create,:search]
-  before_action :set_address, except:[:index,:show,:new,:create,:search,:buy,:edit,:update, :destroy]
+  before_action :set_address, only:[:confirmation, :done]
   require 'payjp'
 
   def index
@@ -126,7 +126,6 @@ class ItemsController < ApplicationController
         customer = Payjp::Customer.retrieve(card.customer_id)
         @default_card_information = customer.cards.retrieve(card.card_id)
       end
-    @address = Address.find(params[:user_id])
   end
 
   private
