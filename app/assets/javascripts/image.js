@@ -5,23 +5,18 @@ $(function() {
     // ドラックドロップを保持
     var list = new DataTransfer();
     // ２つのドロップボックスを定期
-    var dropBox1 = $("#dropbox1");
-    var dropBox2 = $("#dropbox2");
+    var dropBox = $("#dropbox");
     var dropFile = $('#item-drop-zone');
-
-    // ドラッグアンドドロップ枠1を縮める関数
+    var camera = $('.camera-image');
+    var innerText = $('.inner_text');
+    // ドラッグアンドドロップ枠を縮める関数
     function deleteWidth1(num) {
-        var del = 615 - num * 126
-        dropBox1.css('width', `${del}px`)
-
-    }
-    // ドラッグアンドドロップ枠2を縮める関数
-    function deleteWidth2(num) {
-        var num = num - 5
-        if (num > 0) {
-            var del = 615 - num * 126
-            dropBox2.css('width', `${del}px`)
+        if (num > 4) {
+            var num = num - 5
         }
+        var del = 615 - num * 126
+        dropBox.css('width', `${del}px`)
+
     }
 
 
@@ -60,37 +55,33 @@ $(function() {
                         var num = input.files.length
                         num += edit_num
                         deleteWidth1(num)
-                        dropBox1.before(html);
+                        dropBox.before(html);
+                        if (count == 4) {
+                            camera.css('display', `block`)
+                            innerText.css('display', `none`)
+                        }
                     } else if (count == 5) {
-                        $('.camera-image').css('display', `none`)
-                        $('.inner_text').css('display', `block`)
-                        dropBox1.css('display', `none`)
-                        dropBox2.css('display', `inline-block`)
-                        dropBox1.before(html);
-                        dropBox2.append(dropFile)
+                        camera.css('display', `none`)
+                        innerText.css('display', `block`)
+                        dropBox.before(html);
+                        deleteWidth1(num)
+                    } else if (count == 10) {
+                        dropBox.before(html);
+                        dropBox.css('display', `none`)
                     } else if (count < 10) {
                         var num = input.files.length
                         num += edit_num
-                        deleteWidth2(num)
-                        dropBox1.before(html);
-                    } else if (count > 9) {
-                        dropBox1.before(html);
-                        dropBox2.css('display', `none`)
+                        deleteWidth1(num)
+                        dropBox.before(html);
+                        if (count == 9) {
+                            camera.css('display', `block`)
+                            innerText.css('display', `none`)
+                        }
 
-                    } else {
+                    } else if (count > 10) {
                         return false
                     }
-                    if (count == 4) {
 
-                        $('.camera-image').css('display', `block`)
-                        $('.inner_text').css('display', `none`)
-                    } else if (count == 9) {
-
-                        $('.camera-image').css('display', `block`)
-                        $('.inner_text').css('display', `none`)
-                    } else {
-                        return false
-                    }
 
                 }
                 reader.readAsDataURL(input.files[index])
@@ -131,34 +122,17 @@ $(function() {
 
         count -= 1
         maxspace = 4
-        if (count < 4) {
-            deleteWidth1(count)
-        } else if (count == maxspace) {
-            var width = 615 - 126 * maxspace
-            dropBox1.css("width", `${width}px`)
-            dropBox1.css("display", `inline-block`)
-            dropBox2.css("display", `none`)
-            $('.camera-image').css('display', `block`)
-            $('.inner_text').css('display', `none`)
-            dropBox1.append(dropFile)
+        deleteWidth1(count)
+        if (count == maxspace) {
+            camera.css('display', `block`)
+            innerText.css('display', `none`)
         } else if (count == 9) {
-            var width = 615 - 126 * 4
-            dropBox2.css("width", `${width}px`)
-            dropBox2.css("display", `inline-block`)
-            $('.camera-image').css('display', `block`)
-            $('.inner_text').css('display', `none`)
+            camera.css('display', `block`)
+            innerText.css('display', `none`)
+            dropBox.css('display', `inline-block`)
         } else {
-            deleteWidth2(count)
-        }
-        if (count == 3) {
-
-            $('.camera-image').css('display', `none`)
-            $('.inner_text').css('display', `block`)
-        } else if (count == 5) {
-            $('.inner_text').css('display', `block`)
-        } else if (count == 8) {
-            $('.camera-image').css('display', `none`)
-            $('.inner_text').css('display', `block`)
+            camera.css('display', `none`)
+            innerText.css('display', `block`)
         }
     })
 
@@ -172,33 +146,17 @@ $(function() {
 
         count -= 1
         maxspace = 4
-        if (count < 4) {
-            deleteWidth1(count)
-        } else if (count == maxspace) {
-            var width = 615 - 126 * maxspace
-            dropBox1.css("width", `${width}px`)
-            dropBox1.css("display", `inline-block`)
-            dropBox2.css("display", `none`)
-            $('.camera-image').css('display', `block`)
-            $('.inner_text').css('display', `none`)
-            dropBox1.append(dropFile)
+        deleteWidth1(count)
+        if (count == maxspace) {
+            camera.css('display', `block`)
+            innerText.css('display', `none`)
         } else if (count == 9) {
-            var width = 615 - 126 * 4
-            dropBox2.css("width", `${width}px`)
-            dropBox2.css("display", `inline-block`)
-            $('.camera-image').css('display', `block`)
-            $('.inner_text').css('display', `none`)
+            camera.css('display', `block`)
+            innerText.css('display', `none`)
+            dropBox.css('display', `inline-block`)
         } else {
-            deleteWidth2(count)
-        }
-        if (count == 3) {
-            $('.camera-image').css('display', `none`)
-            $('.inner_text').css('display', `block`)
-        } else if (count == 5) {
-            $('.inner_text').css('display', `block`)
-        } else if (count == 8) {
-            $('.camera-image').css('display', `none`)
-            $('.inner_text').css('display', `block`)
+            camera.css('display', `none`)
+            innerText.css('display', `block`)
         }
 
 

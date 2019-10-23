@@ -79,6 +79,13 @@
                   =@item.brand.name
           %tr.item__content__main__table__tbody__tr
             %th.item__content__main__table__tbody__tr__th 
+              商品のサイズ
+            %td.item__content__main__table__tbody__tr__td
+              .item__content__main__table__tbody__tr__td__name
+                -if @item.size.present?
+                  =@item.size.name
+          %tr.item__content__main__table__tbody__tr
+            %th.item__content__main__table__tbody__tr__th 
               商品の状態
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
