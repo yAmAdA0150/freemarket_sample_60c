@@ -105,6 +105,8 @@
                         &__name {
                             margin: 0;
                             display: block;
+                            max-width: 163px;
+                            word-wrap: break-word;
                         }
                         &__valuation {
                             display: block;
