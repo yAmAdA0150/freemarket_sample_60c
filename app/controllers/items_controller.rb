@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :header_category 
   before_action :set_item, except: [:index,:new,:create,:search]
-  before_action :set_address
+  before_action :set_address, except:[:index,:show,:new,:create,:search,:buy,:edit,:update, :destroy]
   require 'payjp'
 
   def index
@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   end 
 
   def show
+    @item = Item.find(params[:id])
     @items = Item.order("created_at DESC") 
   end
 
