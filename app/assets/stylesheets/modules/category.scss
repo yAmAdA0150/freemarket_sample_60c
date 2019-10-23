@@ -1,3 +1,5 @@
+//ヘッダーのカテゴリーを探す・ドロップダウン部分 
+
 .all-category {
     position: absolute;
     display: none;
@@ -44,6 +46,7 @@
         left: 224px;
         height: 617px;
         width: 224px;
+        overflow: scroll;
         background-color: white;
         cursor: pointer;
         .link {
@@ -65,6 +68,7 @@
         left: 448px;
         width: 320px;
         height: 617px;
+        overflow: scroll;
         background-color: white;
         cursor: pointer;
         .link {
