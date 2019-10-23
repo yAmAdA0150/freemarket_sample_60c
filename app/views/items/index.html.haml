@@ -40,7 +40,7 @@
           %ul.main__header__block__menu
             -@category.each do |category|
               %li.main__header__block__menu__name
-                =link_to "#category-#{category.id}", class:"link" do
+                =link_to "#category#{category.id}", class:"link" do
                   =category.genre
     -@category.each do |category|
       = render partial:"shared/category", locals: { category: category }
