@@ -59,16 +59,16 @@
             %td.item__content__main__table__tbody__tr__td
               .item__content__main__table__tbody__tr__td__name
                 .item__content__main__table__tbody__tr__td__name__category
-                =link_to category_path(@item.category.root_id) do
-                  =@item.category.root.genre
+                  =link_to category_path(@item.category.root_id) do
+                    =@item.category.root.genre
                 .item__content__main__table__tbody__tr__td__name__genre
-                =link_to category_path(@item.category.parent.id) do
-                  =fa_icon 'angle-right', class:"nav__item__link-next-icon"
-                  =@item.category.parent.genre
+                  =link_to category_path(@item.category.parent.id) do
+                    =fa_icon 'angle-right', class:"nav__item__link-next-icon"
+                    =@item.category.parent.genre
                 .item__content__main__table__tbody__tr__td__name__ancestry
-                =link_to category_path(@item.category.id) do
-                  =fa_icon 'angle-right', class:"nav__item__link-next-icon"
-                  =@item.category.genre
+                  =link_to category_path(@item.category.id) do
+                    =fa_icon 'angle-right', class:"nav__item__link-next-icon"
+                    =@item.category.genre
           -if @item.brand.present?
             %tr.item__content__main__table__tbody__tr
               %th.item__content__main__table__tbody__tr__th 
