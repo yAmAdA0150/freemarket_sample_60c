@@ -122,7 +122,7 @@
     .item__content__price__box.visible-sp
       %span.item__content__price__box__value
         = "¥" + @item.price.to_s(:delimited, delimiter: ',')
-      %span.item__content__price__box__tax (税金)
+      %span.item__content__price__box__tax (税込)
       %span.item__content__price__box__fee
         -if @item.shipping.charge == 1
           送料込み
@@ -144,7 +144,7 @@
           %button.item__content__button__container__left__item
             = fa_icon 'heart', class: "icon-link"
             %span.item__content__button__container__left__item__good 
-              いいね
+              いいね!
             %span.item__content__button__container__left__item__good 
               0
           .item__content__button__container__left__report
