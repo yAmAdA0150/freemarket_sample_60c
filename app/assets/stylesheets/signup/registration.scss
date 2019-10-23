@@ -154,3 +154,43 @@ p.info {
     color: #888;
     font-weight: normal;
 }
+
+.registration__error {
+    color: red;
+    font-weight: normal;
+}
+
+.field_with_errors {
+    display: inline-block;
+}
+
+.field_with_errors input {
+    border: solid 1px red!important;
+}
+
+.field_with_errors input:focus {
+    border: solid 1px #0099e8!important;
+}
+
+.field_with_errors .default-select {
+    width: 90px;
+    border: solid 1px red!important;
+}
+
+.field_with_errors .sms-confirmation__main__form__content__input {
+    width: 340px;
+}
+
+.field_with_errors .address__box__main__form__input {
+    width: 400px;
+}
+
+.field_with_errors #user_address_attributes_prefecture_id {
+    border: solid 1px red!important;
+    width: 400px;
+}
+
+.field_with_errors select:focus,
+.field_with_errors #user_address_attributes_prefecture_id:focus {
+    border: solid 1px #0099e8!important;
+}

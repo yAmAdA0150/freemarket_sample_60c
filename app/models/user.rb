@@ -23,7 +23,7 @@ class User < ApplicationRecord
         validates :password, length: { minimum: 7, maximum: 128}
         validates :password_confirmation, length: { minimum: 7, maximum: 128}
         validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-        validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, presence: true
+        validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, :birthyear, :birthmonth, :birthday, presence: true
 
       @pass = Devise.friendly_token[0, 7]
   def self.without_sns_data(auth)

@@ -37,21 +37,25 @@
             %span.address__box__main__form__label__require
               必須
             =i.text_field :postcode,class:"address__box__main__form__input", placeholder:"例）123-4567"
+            = render partial: 'shared/error-address', locals: {address: @user.address, column: "postcode"}
           .address__box__main__form
             =i.label :"都道府県", class:"address__box__main__form__label"
             %span.address__box__main__form__label__require
               必須
-            = i.collection_select :prefecture_id, Prefecture.all, :id, :name
+            = i.collection_select :prefecture_id, Prefecture.all, :id, :name,{include_blank: '---'}
+            = render partial: 'shared/error-address', locals: {address: @user.address, column: "prefecture_id"}
           .address__box__main__form
             =i.label :"市町村", class:"address__box__main__form__label", for:"city-field"
             %span.address__box__main__form__label__require
               必須
             =i.text_field :city ,class:"address__box__main__form__input",placeholder:"例）横浜市緑区", id:"city-field"
+            = render partial: 'shared/error-address', locals: {address: @user.address, column: "city"}
           .address__box__main__form
             =i.label :"番地",class:"address__box__main__form__label", for:"street-field"
             %span.address__box__main__form__label__require
               必須
             =i.text_field :street ,class:"address__box__main__form__input",placeholder:"例）青山1-1-1", id:"street-field"
+            = render partial: 'shared/error-address', locals: {address: @user.address, column: "street"}
           .address__box__main__form
             =i.label :"建物名", class:"address__box__main__form__label", for:"building-field"
             %span.address__box__main__form__label__optional

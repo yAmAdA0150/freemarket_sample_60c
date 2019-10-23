@@ -54,12 +54,16 @@ class CardsController < ApplicationController
   end
 
   def show
-    card = Card.find(current_user.id)
-    if card.blank?
-      redirect_to action: "new" 
+    if current_user.card.present?
+      card = Card.find(current_user.id)
+      if card.blank?
+        redirect_to action: "new" 
+      else
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @customer_card= customer.cards.retrieve(card.card_id)
+      end
     else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @customer_card= customer.cards.retrieve(card.card_id)
+      redirect_to action: "new" 
     end
   end
 

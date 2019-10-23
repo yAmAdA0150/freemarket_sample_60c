@@ -6,23 +6,9 @@
     = render 'shared/user_sidebar'
     .main__section__content
       .main__section__content__box
-        %form.main__setion__content__box__form
-          -# = form_for(@user,url:signout_path) do |f|
-          -#   =render '/', {model:@user}
-          -#   %p
-          -#     = f.label :name
-          -#     = f.text_field :name
-          -#   %p
-          -#   = f.label :email
-          -#   = f.text_field :email
-          -#   %p
-          -#   = f.label :password
-          -#   = f.text_field :password
-          -#   %p
-          -#   = f.label :passwordconfirmation
-          -#   = f.text_field :passwordconfirmation  
+        %form.main__setion__content__box__form 
           .main__section__content__box__form__logout
-            =link_to destroy_user_session_path ,class:'logout-link' do
+            =link_to destroy_user_session_path, method: :delete ,class:'logout-link' do
               %button.main__section__content__box__form__logout__button
                 ログアウト
 
@@ -31,22 +17,8 @@
     .main__section__content
       .main__section__content__box
         %form.main__setion__content__box__form
-          -# = form_for(@user,url:signout_path) do |f|
-          -#   =render '/', {model:@user}
-          -#   %p
-          -#     = f.label :name
-          -#     = f.text_field :name
-          -#   %p
-          -#   = f.label :email
-          -#   = f.text_field :email
-          -#   %p
-          -#   = f.label :password
-          -#   = f.text_field :password
-          -#   %p
-          -#   = f.label :passwordconfirmation
-          -#   = f.text_field :passwordconfirmation  
           .main__section__content__box__form__logout
-            =link_to destroy_user_session_path ,class:'logout-link' do
+            =link_to destroy_user_session_path, method: :delete ,class:'logout-link' do
               %button.main__section__content__box__form__logout__button
                 ログアウト
     = render 'shared/user_sidebar',class:"user_sidebar"
@@ -55,23 +27,9 @@
   .main__section
     .main__section__content
       .main__section__content__box
-        %form.main__setion__content__box__form
-          -# = form_for(@user,url:signout_path) do |f|
-          -#   =render '/', {model:@user}
-          -#   %p
-          -#     = f.label :name
-          -#     = f.text_field :name
-          -#   %p
-          -#   = f.label :email
-          -#   = f.text_field :email
-          -#   %p
-          -#   = f.label :password
-          -#   = f.text_field :password
-          -#   %p
-          -#   = f.label :passwordconfirmation
-          -#   = f.text_field :passwordconfirmation  
+        %form.main__setion__content__box__form 
           .main__section__content__box__form__logout
-            =link_to destroy_user_session_path ,class:'logout-link' do
+            =link_to destroy_user_session_path, method: :delete ,class:'logout-link' do
               %button.main__section__content__box__form__logout__button
                 ログアウト
     = render 'shared/user_sidebar'

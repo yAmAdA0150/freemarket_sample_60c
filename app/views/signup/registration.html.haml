@@ -37,22 +37,26 @@
             %span.require 必須
             %br  
             = f.text_field :name, placeholder: "例）メルカリ太郎",class: 'textbox'
+            = render partial: 'shared/error', locals: {user: @user, column: "name"}
           .registration-main__box__contents__form-group
             = f.label :email, "メールアドレス"
             %span.require 必須
             %br  
             = f.text_field :email,autocomplete:"email",placeholder: "PC・携帯どちらでもか",class: 'textbox'
-          - if @user.email == nil
+            = render partial: 'shared/error', locals: {user: @user, column: "email"}
+          - if session[:uid].nil? && session[:provider].nil?
             .registration-main__box__contents__form-group
               = f.label :password, "パスワード"
               %span.require 必須
               %br  
               = f.password_field :password,placeholder: "7文字以上",class: 'textbox'
+              = render partial: 'shared/error', locals: {user: @user, column: "password"}
             .registration-main__box__contents__form-group
               = f.label :password_confirmation, "パスワード（確認）"
               %span.require 必須
               %br  
               = f.password_field :password_confirmation,placeholder: "7文字以上",class: 'textbox'
+              = render partial: 'shared/error', locals: {user: @user, column: "password_confirmation"}
           - else
             = f.hidden_field :password, placeholder: '　7文字以上'
             = f.hidden_field :password_confirmation, placeholder: '　7文字以上'          
@@ -67,12 +71,16 @@
             %br  
             = f.text_field :first_name,placeholder: "例）山田",class: 'namebox'
             = f.text_field :last_name,placeholder: "例）麻耶",class: 'namebox'
+            = render partial: 'shared/error', locals: {user: @user, column: "first_name"}
+            = render partial: 'shared/error', locals: {user: @user, column: "last_name"}
           .registration-main__box__contents__form-group 
             = f.label :first_name_kana, "お名前カナ(全角)"
             %span.require 必須
             %br  
             = f.text_field :first_name_kana,placeholder: "例）ヤマダ",class: 'namebox'
             = f.text_field :last_name_kana,placeholder: "例）マヤ",class: 'namebox'
+            = render partial: 'shared/error', locals: {user: @user, column: "first_name_kana"}
+            = render partial: 'shared/error', locals: {user: @user, column: "last_name_kana"}
           .registration-main__box__contents__form-group
             = f.label :birth, "生年月日"
             %span.require 必須
@@ -83,6 +91,9 @@
             %span 月
             = f.select :birthday,(1..31).to_a,{include_blank: '--'},class: 'default-select select-day'
             %span 日
+            = render partial: 'shared/error', locals: {user: @user, column: "birthyear"}
+            = render partial: 'shared/error', locals: {user: @user, column: "birthmonth"}
+            = render partial: 'shared/error', locals: {user: @user, column: "birthday"}
           %p.info
             ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .registration-main__box__contents__form-group

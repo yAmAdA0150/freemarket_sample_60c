@@ -39,7 +39,6 @@ class SignupController < ApplicationController
   def creditcard
   end
   
-  # コンプリート ログイン状態となる
   def complete
   end
   
@@ -102,6 +101,9 @@ class SignupController < ApplicationController
     session[:first_name] = user_params[:first_name]
     session[:last_name_kana] = user_params[:last_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
+    session[:birthyear] = user_params[:birthyear]
+    session[:birthmonth] = user_params[:birthmonth]
+    session[:birthday] = user_params[:birthday]
   
     @user = User.new(
       name: session[:name], 

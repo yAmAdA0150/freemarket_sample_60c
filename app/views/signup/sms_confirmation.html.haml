@@ -34,6 +34,7 @@
         .sms-confirmation__main__form__content
           = f.label :mobile_number,"携帯電話の番号", class:"sms-confirmation__main__form__content__title"
           = f.text_field :mobile_number, placeholder: " 例）携帯電話の番号を入力",class:"sms-confirmation__main__form__content__input"
+          = render partial: 'shared/error', locals: {user: @user, column: "mobile_number"}
           %p.sms-confirmation__main__form__content__user
             本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
           = f.submit "SNSを送信する",class:"sms-confirmation__main__form__content__button"
