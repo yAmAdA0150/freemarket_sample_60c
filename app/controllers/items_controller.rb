@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :header_category 
   before_action :set_item, except: [:index,:new,:create,:search]
+  before_action :set_address
   require 'payjp'
 
   def index
@@ -12,7 +13,6 @@ class ItemsController < ApplicationController
   end 
 
   def show
-    @item = Item.find(params[:id])
     @items = Item.order("created_at DESC") 
   end
 
@@ -82,6 +82,7 @@ class ItemsController < ApplicationController
   end
 
   def confirmation
+    @image = Image.find(@item.id)
     card = Card.where(user_id: current_user.id).first
       if card.blank?
         redirect_to controller: "card", action: "new"
@@ -115,7 +116,6 @@ class ItemsController < ApplicationController
   end
 
   def done
-    @item = Item.find(params[:id])
     @image= Image.find(@item.id)
     card = Card.where(user_id: current_user.id).first
       if card.blank?
@@ -155,5 +155,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_address
+    @address = Address.find(current_user.id)
   end
 end

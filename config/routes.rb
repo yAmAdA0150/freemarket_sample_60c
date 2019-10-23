@@ -19,11 +19,9 @@ Rails.application.routes.draw do
       end
     end
     resources :items, only: [:new,:create, :edit,:update,:destroy] do
-      collection do
-        get 'done'
-      end
       member do
-        get 'confirmation' =>'items#confirmation'
+        get 'done'
+        get 'confirmation'
         post 'confirmation' => 'items#buy'
       end
     end
