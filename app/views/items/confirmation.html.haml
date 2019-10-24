@@ -6,19 +6,18 @@
     %h2.center__titles
       購入内容の確認
     %section.center__item
-      -# 商品イメージ
-      %h3.center__item__photo
-        = image_tag @item.images.first.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
-      -# 商品名
-      %p.center__item__name
-        = @item.name
-      %form{action: '#', class: 'center__item__form'}
+      .center__item__box
+        .center__item__box__box
+          %span.center__item__box__box__photo
+            = image_tag @item.images.first.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+          %span.center__item__box__box__name
+            = @item.name
       .center__item__form__total
-        -# 商品金額
-        .center__item__form__total__price
-          = "¥" + @item.price.to_s(:delimited, delimiter: ',')
-        .center__item__form__total__specified
-          着払い
+        .center__item__form__total__total
+          %span.center__item__form__total__total__price
+            = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+          %span.center__item__form__total__total__specified
+            着払い
       %ul.center__item__form__point
         %li.center__item__form__point__box
           .center__item__form__point__box__attention
@@ -30,15 +29,15 @@
           .center__item__form__price__pay__figure
             %span.center__item__form__price__pay__figure__yen
               = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+          
       -if @card.blank?
-        %button{class: 'center__item__form__blank'}
-          = link_to '購入する', user_cards_path, method: :get, class:'link-to'
+        %p.center__item__form__price__pay__mustpay
+          配送先と支払い方法の入力を完了してください
+        = link_to '購入する', user_cards_path, method: :get, class:'btn center__item__form__blank'
       -else
-        %button{class: 'center__item__form__finish'}
-          = link_to '購入する', buy_user_item_path, method: :post, class:'link-to'
+        = link_to '購入する', buy_user_item_path, method: :post, class:'btn center__item__form__finish'
     %section.center__address
       .center__address__box
-        -# 配送情報
         %h3.center__address__box__title
           配送先
         .center__address__box__content
@@ -79,15 +78,17 @@
     %h2.center__title
       購入内容の確認
     %section.center__item
-      %h3.center__item__photo
-        -# = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
-      %p.center__item__name
-        = @item.name
-      %form{action: '#', class: 'center__item__form'}
-        .center__item__form__total
-          .center__item__form__total__price
+      .center__item__box
+        .center__item__box__box
+          %span.center__item__box__box__photo
+            = image_tag @item.images.first.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+          %span.center__item__box__box__name
+            = @item.name
+      .center__item__form__total
+        .center__item__form__total__total
+          %span.center__item__form__total__total__price
             = "¥" + @item.price.to_s(:delimited, delimiter: ',')
-          .center__item__form__total__specified
+          %span.center__item__form__total__total__specified
             着払い
         %ul.center__item__form__point
           %li.center__item__form__point__box
@@ -101,11 +102,11 @@
               %span.center__item__form__price__pay__figure__yen
                 = "¥" + @item.price.to_s(:delimited, delimiter: ',')
         -if @card.blank?
-          %button{class: 'center__item__form__blank'}
-            = link_to '購入する', user_cards_path, method: :get, class:'link-to'
-        -else  
-          %button{class: 'center__item__form__finish'}
-            = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
+          %p.center__item__form__price__pay__mustpay
+            配送先と支払い方法の入力を完了してください
+          = link_to '購入する', user_cards_path, method: :get, class:'btn center__item__form__blank'
+        -else
+          = link_to '購入する', buy_user_item_path, method: :post, class:'btn center__item__form__finish'
     %section.center__address
       .center__address__box
         %h3.center__address__box__title

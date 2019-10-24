@@ -42,7 +42,7 @@ class CardsController < ApplicationController
   end
 
   def delete
-    card = Card.find(current_user.id)
+    card = Card.find_by(user_id:current_user.id)
     if card.blank?
     else
         customer = Payjp::Customer.retrieve(card.customer_id)
