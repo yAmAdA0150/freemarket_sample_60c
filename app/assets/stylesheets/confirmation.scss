@@ -113,8 +113,8 @@
 
                         &__mustpay {
                             margin-top: 10px;
-														color: red;
-														text-align: center;
+                            color: red;
+                            text-align: center;
                         }
                     }
                 }
@@ -138,7 +138,8 @@
                 &__finish {
                     cursor: pointer;
                     display: block;
-                    margin-bottom: 15px;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
                     background-color: #FF0211;
                     height: 47px;
                     width: 320px;
@@ -156,6 +157,7 @@
         &__address {
             padding: 24px 12.5% 40px;
             border-top: 1px solid #f5f5f5;
+            margin-top: 40px;
 
             &__box {
                 max-width: 320px;
@@ -327,8 +329,8 @@
 
                         &__mustpay {
                             margin-top: 10px;
-														color: red;
-														text-align: center;
+                            color: red;
+                            text-align: center;
                         }
                     }
                 }
@@ -375,7 +377,7 @@
         &__address {
             padding: 24px 12.5% 40px;
             border-top: 1px solid #f5f5f5;
-            margin-top: 80px;
+            margin-top: 40px;
 
             &__box {
                 max-width: 320px;
