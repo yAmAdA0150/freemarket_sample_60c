@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   require 'payjp'
 
   def new
-   @card = Card.new
+  @card = Card.new
   end
 
   def create
@@ -55,7 +55,7 @@ class CardsController < ApplicationController
 
   def show
     if current_user.card.present?
-      card = Card.find(current_user.id)
+      card = Card.find_by(user_id:current_user.id)
       if card.blank?
         redirect_to action: "new" 
       else
