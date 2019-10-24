@@ -61,6 +61,8 @@ $(function() {
                             innerText.css('display', `none`)
                         }
                     } else if (count == 5) {
+                        var num = input.files.length
+                        num += edit_num
                         camera.css('display', `none`)
                         innerText.css('display', `block`)
                         dropBox.before(html);
@@ -93,8 +95,8 @@ $(function() {
     $(document).on("change", "#item-drop-zone", function() {
         count = $('.contents-item__container__uploadbox__zone-item__have-item--upload-item').length
         var edit_num = 0
-        if ($('#pict-delete-edit').length) {
-            edit_num = $('#pict-delete-edit').length
+        if ($('.pict-delete-edit').length) {
+            edit_num = $('.pict-delete-edit').length
         }
         readURL(this, list, edit_num);
         appendFile(list);
