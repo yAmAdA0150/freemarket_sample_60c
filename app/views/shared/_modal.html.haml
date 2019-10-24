@@ -1,0 +1,15 @@
+%section#modal.modal--is_hidden
+  .modal-head
+    .modal-head__top
+      .modal-head__top__check 確認
+      削除すると二度と復活できません
+      %br
+      削除する代わりに停止することもできます。
+      %br
+      本当に削除しますか？
+    .modal-head-bottom
+      .modal-head-bottom__modal-btn-cancel
+      =link_to item_path(@item), class: 'modal-head-bottom__modal-btn-left' do
+        キャンセル
+      =link_to user_item_path(@item),method: :delete , class:"modal-head-bottom__modal-btn-cancel__submit" do
+        削除する

@@ -174,9 +174,8 @@
           or
         =link_to "/", class:"user__buttons__link grey" do
           出品を一旦停止する
-        =link_to user_item_path(@item),method: :delete , class:"user__buttons__link grey" do
+        =link_to "#",method: :delete , class:"user__buttons__link grey", id: "delete_botton" do
           この商品を削除する
-              
   -if user_signed_in?
     %section.message
       .message__box__content
@@ -240,3 +239,4 @@
   .bread_crumbs__line
     = breadcrumbs separator: " > ", class: "breadcrumbs-list"
 =render 'shared/footer'
+=render 'shared/modal.html.haml'
