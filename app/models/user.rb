@@ -6,9 +6,8 @@ class User < ApplicationRecord
 
         has_many :comments, dependent: :destroy
         has_many :items, dependent: :destroy
-        has_many :likes
+        has_many :likes, dependent: :destroy
         has_many :sns_credentials, dependent: :destroy
-        has_many :traders
         has_many :notifications, dependent: :destroy
         has_many :to_do_lists, dependent: :destroy
         has_many :messages

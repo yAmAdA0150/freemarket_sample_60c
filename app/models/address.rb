@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
   
-  belongs_to :user, dependent: :destroy, optional: true
+  belongs_to :user
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture

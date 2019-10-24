@@ -26,11 +26,15 @@
         されます。
       .item__content__main--large__photo.clearfix
         .item__content__main--large__photo__box.clearfix
+          -if @item.display_id != 1
+            .soldout-pic
+              %div
+                SOLD
           = image_tag "#{@item.images.first.url}", alt: "#{@item.name}", class: 'item__main__photo'
         %ui.item__content__main--large__photo__list
           -@item.images.each do |image|
             %li.item__content__main--large__photo__list-one
-              = image_tag "#{image.url}", alt: "#{@item.name}", class: 'item__content__main--large__photo__list-one'
+              = image_tag "#{image.url}", alt: "#{@item.name}", class: 'item__content__main--large__photo__list-one clearfix'
       %table.item__content__main__table
         %tbody.item__content__main__table__tbody
           %tr.item__content__main__table__tbody__tr

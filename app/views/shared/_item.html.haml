@@ -4,6 +4,10 @@
       .item__box__image
         %span.item__box__image__price
           = "¥" + item.price.to_s(:delimited, delimiter: ',')
+        -if item.display_id != 1
+          .soldout-pic
+            %div
+              SOLD
         = image_tag "#{item.images.first.url}", alt:"#{item.text}", class:"item__box__image__photo"
       .item__box__text
         %span.item__box__text__title

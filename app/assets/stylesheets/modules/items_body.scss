@@ -448,6 +448,39 @@ body {
     }
 }
 
+.soldout-pic {
+    position: absolute;
+    z-index: 2;
+    width: 40%;
+    height: 40%;
+    div {
+        top: 20px;
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+        z-index: 3;
+        color: #fff;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+}
+
+.soldout-pic:after {
+    border-width: 100px 100px 0 0;
+    border-color: #ea352d transparent transparent transparent;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
 .item.is-show {
     opacity: 1;
     visibility: visible;
