@@ -17,7 +17,7 @@
       .purchase__item__box
         -# 商品画像
         .purchase__item__box__pic
-          = image_tag @image.url.to_s, alt: "#{@item.name}", class: "image-pic"
+          = image_tag @item.images.first.url.to_s, alt: "#{@item.name}", class: "image-pic"
         -# 商品金額
         .purchase__item__box__name
           = @item.name
@@ -80,7 +80,7 @@
     .purchase__item
       .purchase__item__box
         .purchase__item__box__pic
-          =image_tag @image.url.to_s, alt: "#{@item.name}", class: "image-pic"
+          =image_tag @item.images.first.url.to_s, alt: "#{@item.name}", class: "image-pic"
         .purchase__item__box__name
           = @item.name
     %section.purchase__price
