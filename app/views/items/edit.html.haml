@@ -37,14 +37,14 @@
                   -else
                     -if files > 4
                       - files = files - 5
-                      = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox", style: "width: #{615 - files * 126}px;" do
-                        %p.inner_text{style:"#{(files == 4 || files == 9)? 'display:none;' : 'display:block;'}"}
-                          ドラッグアンドドロップ
-                          %br
-                          %br
-                          またはクリックしてファイルをアップロード
-                        = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4 && files != 9)? "display:none;": "display:block;"}"
-                        = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox", style: "width: #{615 - files * 126}px;" do
+                      %p.inner_text{style:"#{(files == 4)? 'display:none;' : 'display:block;'}"}
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4)? "display:none;": "display:block;"}"
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
       .content__product
         %h3.content__product__name.clearfix
           商品名

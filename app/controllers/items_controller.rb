@@ -65,7 +65,6 @@ class ItemsController < ApplicationController
     if @item.update(edit_params)
       redirect_to item_path(params[:id])
     else
-      set_ancestry
       render :edit
     end
   end
