@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   belongs_to :size, optional: true
   has_many :comments
   has_many :images, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_one :trading
   has_one :shipping, dependent: :destroy
 
-  validates :images, associated: true, presence: true
+  validates :images, length: {maximum: 10, minimum: 1}
 
   accepts_nested_attributes_for :images
   accepts_nested_attributes_for :shipping
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :display
 
-  validates :name, :price, :text, :user_id, :condition_id, :category_id, :display_id,presence: true
+  validates :name, :price, :text, :user_id, :condition_id, :category_id, :display_id ,presence: true
   validates :price, 
             presence: true,
             numericality: { only_integer: true,  greater_than: 299, less_than: 10000000}

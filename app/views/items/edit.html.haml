@@ -37,14 +37,14 @@
                   -else
                     -if files > 4
                       - files = files - 5
-                      = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox", style: "width: #{615 - files * 126}px;" do
-                        %p.inner_text{style:"#{(files == 4 || files == 9)? 'display:none;' : 'display:block;'}"}
-                          ドラッグアンドドロップ
-                          %br
-                          %br
-                          またはクリックしてファイルをアップロード
-                        = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4 && files != 9)? "display:none;": "display:block;"}"
-                        = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
+                    = f_image.label :url, for: nil , class: "contents-item__container__uploadbox__zone-item__dropbox clearfix", id:"dropbox", style: "width: #{615 - files * 126}px;" do
+                      %p.inner_text{style:"#{(files == 4)? 'display:none;' : 'display:block;'}"}
+                        ドラッグアンドドロップ
+                        %br
+                        %br
+                        またはクリックしてファイルをアップロード
+                      = fa_icon 'camera',class:'mark fa-3x camera-image', style:"#{(files != 4)? "display:none;": "display:block;"}"
+                      = f_image.file_field :url, multiple: true, type: 'file', name: "item[images_attributes][][url]", class: "contents-item__container__uploadbox__zone-item__dropbox--fileform", id: "item-drop-zone"
       .content__product
         %h3.content__product__name.clearfix
           商品名
@@ -153,7 +153,7 @@
       .content__delivery
         .flex
           %h3.content__delivery__left 配送について
-          = link_to '#', class: 'content__delivery__mark' do
+          = link_to 'https://www.mercari.com/jp/help_center/article/68/', class: 'content__delivery__mark' do
             ?
         .content__delivery__right
           = f.fields_for :shipping do |s|
@@ -188,7 +188,7 @@
       .content__price
         .flex
           %h3.content__price__left  販売価格(300〜9,999,999)
-          = link_to '#', class: 'content__price__mark' do
+          = link_to 'https://www.mercari.com/jp/help_center/article/64/', class: 'content__price__mark' do
             ?
         .content__price__right
           %ul.content__price__right__box
@@ -217,17 +217,17 @@
       .content__choice
         .content__choice__top
           %p
-            = link_to '禁止されている出品', '#', class: 'choice-link'
+            = link_to '禁止されている出品', 'https://www.mercari.com/jp/help_center/getting_started/prohibited_items/', class: 'choice-link'
             、
-            = link_to '行為', '#', class: 'choice-link'
+            = link_to '行為', 'https://www.mercari.com/jp/help_center/getting_started/prohibited_conduct/', class: 'choice-link'
             を必ずご確認ください。
           %p
             またブランド品でシリアルナンバー等がある場合はご記載ください。
-            = link_to '偽ブランドの販売', '#', class: 'choice-link'
+            = link_to '偽ブランドの販売', 'https://www.mercari.com/jp/help_center/getting_started/counterfeit_goods/', class: 'choice-link'
             は犯罪であり処罰される可能性があります。
           %p
             また、出品をもちまして
-            =link_to '加盟店規約', '#', class: 'choice-link'
+            =link_to '加盟店規約', 'https://www.mercari.com/jp/seller_terms/', class: 'choice-link'
             に同意したことになります。
         =f.submit "出品する",class: 'content__choice__middle'
         %button{class: 'content__choice__under'}

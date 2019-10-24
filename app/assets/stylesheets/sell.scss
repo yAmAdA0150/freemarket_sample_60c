@@ -628,6 +628,14 @@
         outline: none;
         border: 1px solid #0099e8;
     }
+    .field_with_errors {
+        width: 100%;
+        input,
+        textarea,
+        select {
+            border: 1px solid #FF0211;
+        }
+    }
 }
 
 .sell-shrink {
