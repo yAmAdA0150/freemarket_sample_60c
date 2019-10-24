@@ -24,7 +24,7 @@ class User < ApplicationRecord
         validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
         validates :name, :email, :password, :password_confirmation, :first_name, :first_name_kana ,:last_name, :last_name_kana, :mobile_number, :birthyear, :birthmonth, :birthday, presence: true
 
-      @pass = Devise.friendly_token[0, 7]
+    @pass = Devise.friendly_token[0, 7]
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
     snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
