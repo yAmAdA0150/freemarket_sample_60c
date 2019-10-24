@@ -22,7 +22,8 @@
         .purchase__item__box__name
           = @item.name
     %section.purchase__price
-      = "¥" + @item.price.to_s(:delimeted, delimiter: ',')
+      = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+      
       %span.purchase__price__tax
         -if @item.shipping.charge == 1
           送料込み
