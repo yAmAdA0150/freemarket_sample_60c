@@ -8,7 +8,7 @@
     %section.center__item
       -# 商品イメージ
       %h3.center__item__photo
-        = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+        = image_tag @item.images.first.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
       -# 商品名
       %p.center__item__name
         = @item.name
@@ -30,8 +30,12 @@
           .center__item__form__price__pay__figure
             %span.center__item__form__price__pay__figure__yen
               = "¥" + @item.price.to_s(:delimited, delimiter: ',')
-      %button{class: 'center__item__form__finish'}
-        = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
+      -if @card.blank?
+        %button{class: 'center__item__form__blank'}
+          = link_to '購入する', user_cards_path, method: :get, class:'link-to'
+      -else
+        %button{class: 'center__item__form__finish'}
+          = link_to '購入する', buy_user_item_path, method: :post, class:'link-to'
     %section.center__address
       .center__address__box
         -# 配送情報
@@ -46,7 +50,7 @@
           %br
           = current_user.name
         .center__address__box__change
-          = link_to '#', class: 'center__address__box__change--alteration' do
+          = link_to '#', class:"center__address__box__change--alteration" do
             変更する ＞
     %section.center__cash
       .center__cash__box
@@ -54,15 +58,19 @@
           支払い方法
         .center__cash__box__content
           -# 以下カード情報表示
-          .center__cash__box__content__number
-            = "**** **** **** " + @default_card_information.last4
-          .center__cash__box__content__date
-            - exp_month = @default_card_information.exp_month.to_s
-            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-            =exp_month + " / " + exp_year
-          .center__cash__box__content__card__type
+          -if @card.blank?
+            .center__cash__box__content__number
+              = "/ "
+          -else
+            .center__cash__box__content__number
+              = "**** **** **** " + @default_card_information.last4
+            .center__cash__box__content__date
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              =exp_month + " / " + exp_year
+            .center__cash__box__content__card__type
         .center__cash__box__change
-          = link_to '#', class: 'center__cash__box__change--alteration' do
+          = link_to user_cards_path, method: :get, class: 'center__address__box__change--alteration' do
             変更する ＞
 
 -# 画面サイズ縮小したとき表示
@@ -72,7 +80,7 @@
       購入内容の確認
     %section.center__item
       %h3.center__item__photo
-        = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
+        -# = image_tag @image.url.to_s, alt: 'prpduct', class: 'center__item__photo--product'
       %p.center__item__name
         = @item.name
       %form{action: '#', class: 'center__item__form'}
@@ -92,6 +100,10 @@
             .center__item__form__price__pay__figure
               %span.center__item__form__price__pay__figure__yen
                 = "¥" + @item.price.to_s(:delimited, delimiter: ',')
+        -if @card.blank?
+          %button{class: 'center__item__form__blank'}
+            = link_to '購入する', user_cards_path, method: :get, class:'link-to'
+        -else  
           %button{class: 'center__item__form__finish'}
             = link_to '購入する', confirmation_user_item_path, method: :post, class:'link-to'
     %section.center__address
@@ -115,15 +127,19 @@
           支払い方法
         .center__cash__box__content
           -# 以下カード情報表示
-          .center__cash__box__content__number
-            = "**** **** **** " + @default_card_information.last4
-          .center__cash__box__content__date
-            - exp_month = @default_card_information.exp_month.to_s
-            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-            =exp_month + " / " + exp_year
-          .center__cash__box__content__card__type
+          -if @card.blank?
+            .center__cash__box__content__number
+              = "/ "
+          -else
+            .center__cash__box__content__number
+              = "**** **** **** " + @default_card_information.last4
+            .center__cash__box__content__date
+              - exp_month = @default_card_information.exp_month.to_s
+              - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+              =exp_month + " / " + exp_year
+            .center__cash__box__content__card__type
         .center__cash__box__change
-          = link_to '#', class: 'center__cash__box__change--alteration' do
+          = link_to user_cards_path, method: :get, class: 'center__address__box__change--alteration' do
             変更する ＞
 
 = render 'shared/grayfooter'

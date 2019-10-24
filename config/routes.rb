@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       member do
         get 'done'
         get 'confirmation'
-        post 'confirmation' => 'items#buy'
+        post 'buy'
       end
     end
   end
