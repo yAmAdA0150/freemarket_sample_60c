@@ -134,9 +134,14 @@
           着払い
     -if current_user != @item.user
       -if @item.display_id == 1
-        =link_to confirmation_user_item_path(current_user) do
-          .item__content__price__box__item__buy__btn
-            購入画面に進む
+        -if user_signed_in?
+          =link_to confirmation_user_item_path(current_user) do
+            .item__content__price__box__item__buy__btn
+              購入画面に進む
+        -else
+          =link_to user_session_path do
+            .item__content__price__box__item__buy__btn
+              購入画面に進む
       -else
         .item__content__price__box__item__buy__btn.sold-out
           売り切れました
