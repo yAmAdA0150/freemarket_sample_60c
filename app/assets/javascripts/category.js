@@ -33,7 +33,7 @@ $(function() {
                 categoryChild.append(`<option> --- </option>`)
 
                 function appendChild(child) {
-                    var html = `<option value="${child.ancestry}/${child.id}" class="${child.ancestry}/${child.id}">${child.name}</option>`
+                    var html = `<option value="${child.id}">${child.name}</option>`
                     categoryChild.append(html);
                 }
                 if (children.length !== 0) {

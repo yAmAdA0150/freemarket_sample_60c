@@ -11,5 +11,5 @@
             = fa_icon 'angle-right'
     .item_all
       .items
-        -@items.where(category_id: category.descendant_ids).each do |item|
+        -@items.where(category_id: category.descendant_ids).limit(10).each do |item|
           = render partial:"shared/item", locals: { item: item }
