@@ -115,7 +115,6 @@ class ItemsController < ApplicationController
   end
 
   def done
-    @image= Image.find(@item.id)
     card = Card.where(user_id: current_user.id).first
       if card.blank?
         redirect_to controller: "card", action: "new"
