@@ -48,7 +48,6 @@ class CardsController < ApplicationController
         customer = Payjp::Customer.retrieve(card.customer_id)
         customer.delete
         card.delete
-        card.destroy
     end
       redirect_to action: "show"
   end

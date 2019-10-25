@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index,:new,:create,:search]
   before_action :set_address, only:[:confirmation, :done]
   before_action :not_buy_selfitem, only:[:confirmation, :buy, :done]
-  before_action :not_otheritem, only:[:edit, :destroy]
+  before_action :not_edit_desrtoy_otheritem, only:[:edit, :destroy]
   require 'payjp'
 
   def index
@@ -95,7 +95,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @card = Card.where(user_id: current_user.id).first
+    @card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       amount:  @item.price,
@@ -117,7 +117,7 @@ class ItemsController < ApplicationController
   end
 
   def done
-    card = Card.where(user_id: current_user.id).first
+    card = Card.find_by(user_id: current_user.id)
       if card.blank?
         redirect_to controller: "card", action: "new"
       else
@@ -160,11 +160,11 @@ class ItemsController < ApplicationController
     @address = Address.find(current_user.id)
   end
 
-  def not_selfitem
+  def not_buy_selfitem
     redirect_to root_path unless @item.user_id != current_user.id
   end
 
-  def not_otheritem
+  def not_edit_destroy_otheritem
     redirect_to root_path if @item.user_id != current_user.id
   end
 
