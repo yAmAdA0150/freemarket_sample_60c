@@ -150,12 +150,9 @@
           =simple_format(@item.text)
       .item__content__button__container
         .item__content__button__container__left
-          %button.item__content__button__container__left__item
-            = fa_icon 'heart', class: "icon-link"
-            %span.item__content__button__container__left__item__good 
-              いいね!
-            %span.item__content__button__container__left__item__good 
-              0
+          .item__content__button__container__left__heart
+            %div{id: "favorite-#{@item.id}"}
+              = render partial:"items/like", locals: { item: @item }
           .item__content__button__container__left__report
             = link_to "#", class:"report-link" do
               = fa_icon 'flag', class: "icon-link"

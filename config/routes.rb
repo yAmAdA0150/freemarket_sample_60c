@@ -50,4 +50,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/item/:item_id/likes' => "likes#create"
+  delete '/item/:item_id/likes' => "likes#destroy"
+
 end

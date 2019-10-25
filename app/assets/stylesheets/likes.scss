@@ -1,0 +1,55 @@
+//いいね!を押した時
+
+.item-like {
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid red;
+  background: #FFF;
+  .favorite {
+    .icon-red {
+      font-size: 14px;
+      vertical-align: middle;
+      color: red;
+    }
+    .text {
+      font-size: 14px;
+      margin: 1px 0 0 8px;
+      vertical-align: middle;
+      text-decoration: none;
+      color: red;
+      .count {
+        text-decoration: none;
+        color: red;
+      }
+    }
+  }
+}
+
+
+//いいね!をしていない時
+
+.item-nolike {
+    padding: 8px 16px;
+    border-radius: 40px;
+    color: #333;
+    border: 1px solid #f5f5f5;
+    background: #f5f5f5;
+    .unfavorite {
+    .icon-blue {
+      font-size: 14px;
+      vertical-align: middle;
+      color: black;
+    }
+    .unlike {
+      font-size: 14px;
+      margin: 1px 0 0 8px;
+      vertical-align: middle;
+      text-decoration: none;
+      color: black;
+      &__uncount {
+        text-decoration: none;
+        color: black;
+      }    
+    }
+  }
+}

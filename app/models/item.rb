@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   has_many :comments
   has_many :images, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
   has_one :trading
   has_one :shipping, dependent: :destroy
 

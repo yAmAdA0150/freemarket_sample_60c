@@ -1,0 +1,18 @@
+//ユーザーがいいねをしているかしていないかをif文で確認
+
+- if Like.find_by(user_id: current_user.id, item_id: @item.id)
+  %button.item-like
+    = link_to "/item/#{@item.id}/likes", class: "favorite", method: :delete, remote: true do
+      = fa_icon 'heart', class: "icon-red"
+      %span.text
+        いいね!
+        %span.count 
+          = item.likes.count
+- else
+  %button.item-nolike
+    = link_to "/item/#{@item.id}/likes", class: "unfavorite", method: :post, remote: true do
+      = fa_icon 'heart', class: "icon-blue"
+      %span.unlike
+        いいね!
+        %span.unlike__uncount
+          = item.likes.count
