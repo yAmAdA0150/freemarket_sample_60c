@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :header_category 
   before_action :set_item, except: [:index,:new,:create,:search]
   before_action :set_address, only:[:confirmation, :done]
+  before_action :not_buy_selfitem, only:[:confirmation, :buy, :done]
+  before_action :not_otheritem, only:[:edit, :destroy]
   require 'payjp'
 
   def index
@@ -84,7 +86,6 @@ class ItemsController < ApplicationController
   def confirmation
     @card = Card.find_by(user_id:current_user.id)
       if @card.blank?
-        # redirect_to controller: "cards", action: "create"
       else
         Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
         customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -157,4 +158,13 @@ class ItemsController < ApplicationController
   def set_address
     @address = Address.find(current_user.id)
   end
+
+  def not_selfitem
+    redirect_to root_path unless @item.user_id != current_user.id
+  end
+
+  def not_otheritem
+    redirect_to root_path if @item.user_id != current_user.id
+  end
+
 end
