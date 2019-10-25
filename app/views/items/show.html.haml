@@ -30,11 +30,11 @@
             .soldout-pic
               %div
                 SOLD
-          = image_tag "#{@item.images.first.url}", alt: "#{@item.name}", class: 'item__main__photo'
-        %ui.item__content__main--large__photo__list
+          = image_tag "#{@item.images.first.url}", alt: "#{@item.name}", class: 'item__main__photo',id:'item__main__photo'
+        %ul.item__content__main--large__photo__list
           -@item.images.each do |image|
             %li.item__content__main--large__photo__list-one
-              = image_tag "#{image.url}", alt: "#{@item.name}", class: 'item__content__main--large__photo__list-one clearfix'
+              = image_tag "#{image.url}", alt: "#{@item.name}", class:'thumb',data: { image: "#{image.url}" }
       %table.item__content__main__table
         %tbody.item__content__main__table__tbody
           %tr.item__content__main__table__tbody__tr
@@ -174,8 +174,9 @@
           or
         =link_to "/", class:"user__buttons__link grey" do
           出品を一旦停止する
-        =link_to "#",method: :delete , class:"user__buttons__link grey", id: "delete_botton" do
+        =link_to user_item_path(@item),method: :delete , class:"user__buttons__link grey" do
           この商品を削除する
+              
   -if user_signed_in?
     %section.message
       .message__box__content
@@ -239,4 +240,3 @@
   .bread_crumbs__line
     = breadcrumbs separator: " > ", class: "breadcrumbs-list"
 =render 'shared/footer'
-=render 'shared/modal.html.haml'
