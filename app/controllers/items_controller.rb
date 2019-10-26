@@ -40,8 +40,16 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where('name LIKE(?)',"%#{params[:keyword]}%").limit(20)
-
+    if params[:q].present?
+      # 検索フォームからアクセスした時の処
+      @q = Item.ransack(search_params)
+      @items = @q.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @q = Item.ransack(params[:q])
+      @items = Item.all
+    end
   end
 
   def edit
@@ -166,6 +174,29 @@ class ItemsController < ApplicationController
 
   def not_edit_destroy_otheritem
     redirect_to root_path if @item.user_id != current_user.id
+  end
+
+  def search_params
+
+    if params[:gchild].present?
+      category_ids = params[:gchild]
+    elsif params[:child].present?
+      @category = Category.find(params[:child])
+      category_ids = @category.descendant_ids
+    end
+
+    params.require(:q).permit(
+      :sorts,
+      :name_cont,
+      :brand_id_eq,
+      :size_id_in,
+      :price_gteq,
+      :price_lteq,
+      { condition_id_in: [] },
+      { display_id_in: [] },
+      { size_id_in: [] },
+      { shipping_charge_in: [] }
+      ).merge(category_id_in: category_ids)
   end
 
 end
