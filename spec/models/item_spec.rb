@@ -2,9 +2,8 @@ require 'rails_helper'
 
 describe Item do
   describe '#create' do
-    it "is valid with a name, text, category_id, size_id, brand_id, display, " do
-      item = build(:item)
-      expect(item).to be_valid
+    it "is valid with a name, text, category_id, display_id " do
+      expect(build(:item)).to be_valid
     end
 
     it "is invalid without a name" do
@@ -19,22 +18,40 @@ describe Item do
       expect(item.errors[:text]).to include("can't be blank")
     end
 
-    it "is invalid without a category_id" do
-      item = build(:item, category_id: nil)
+    it "is invalid without a category" do
+      item = build(:item, category: nil)
       item.valid?
-      expect(item.errors[:category_id]).to include("can't be blank")
+      expect(item.errors[:category]).to include("must exist")
     end
 
-    it "is invalid without a size_id" do
-      item = build(:item, size_id: nil)
+    it "is invalid without a user" do
+      item = build(:item, user: nil)
       item.valid?
-      expect(item.errors[:size_id]).to include("can't be blank")
+      expect(item.errors[:user]).to include("must exist")
     end
 
-    it "is invalid without a brand_id" do
-      item = build(:item, brand_id: nil)
+    it "is invalid without a condition_id" do
+      item = build(:item, condition_id: nil)
       item.valid?
-      expect(item.errors[:brand_id]).to include("can't be blank")
+      expect(item.errors[:condition_id]).to include("can't be blank")
+    end
+
+    it "is invalid without a display_id" do
+      item = build(:item, display_id: nil)
+      item.valid?
+      expect(item.errors[:display_id]).to include("can't be blank")
+    end
+
+    it "is invalid if price is less than 299" do
+      item = build(:item, price: 299)
+      item.valid?
+      expect(item.errors[:price]).to include("must be greater than 299")
+    end
+
+    it "is invalid if price is less than 100000000" do
+      item = build(:item, price: 100000000)
+      item.valid?
+      expect(item.errors[:price]).to include("must be less than 10000000")
     end
   end
 end

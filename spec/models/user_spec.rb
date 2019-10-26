@@ -13,6 +13,12 @@ describe User do
       user.valid?
       expect(user.errors[:name]).to include("can't be blank")
     end
+  # 　emailに正確ではない
+    it "is invalid if email is already invalid" do
+      user = build(:user, email:"abc")
+      user.valid?
+      expect(user.errors[:email]).to include("is invalid")
+    end
 
     # name_kanaが空では登録できないこと
     it "is invalid without a first_name_kana" do

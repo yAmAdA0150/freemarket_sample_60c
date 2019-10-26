@@ -33,7 +33,7 @@
 
 
 
-# Custom SSH Options
+# Custom SSH s
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
 # limited set of options, consult the Net::SSH documentation.

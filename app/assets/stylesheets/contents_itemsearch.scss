@@ -1,0 +1,27 @@
+.search{
+  &__header{
+
+  }
+  &__body{
+    margin: 40px auto 0;
+    width: 1020px;
+    padding: 0 0 40px;
+    &__sidebar{
+      margin: 0 40px 0 0;
+      float:left;
+    }
+    &__content{
+      height: 1788px;
+      width: 700px;
+      float: left;
+      &__items{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px 6px;
+      }
+    }
+  }
+  &__footer{
+    clear: left;
+  }
+}

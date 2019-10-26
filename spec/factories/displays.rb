@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :size, class: Size do
+  factory :display do
     name {Faker::Team.name}
   end
 end
