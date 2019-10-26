@@ -1,3 +1,14 @@
 .search
--@items.each do |i|
-  =i.name
+  .search__header
+    =render "shared/header"
+  .search__body
+    .search__body__sidebar
+      =render "shared/itemsearch_sidebar"
+    .search__body__content
+      .search__body__content__items
+        -@items.each do |item|
+          = render partial:"shared/item", locals: { item: item }
+  .search__footer
+    =render "shared/footer"
+
+=render "shared/camera"

@@ -1,0 +1,98 @@
+.item-search
+  .search-box
+  = search_form_for(@q, url: search_items_path) do |f|
+    .search-box__header
+      = f.select(:sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc', 'いいね!の多い順': 'likes_count desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()',:class => 'selectbox'} )
+    .search-box__body
+      .search-box__body__head
+        詳細検索
+      .search-box__body__form
+        .search-box__body__form__keyword
+          = f.label :name_cont ,{class: 'keywordlabel'} do
+            %i.fa.fa-search
+              キーワードを検索する
+          = f.text_field :name_cont ,{placeholder: "値下げ", id: "keyword", class: 'box'}
+        .serach-box__body__form__category
+          %label.serach-box__body__form__category__head
+            %i.fa.fa-search
+              カテゴリーを選択する
+          %select.search-box__body__form__category__parent#parent_select1
+            %option ---
+            -@parents.each do |p|
+              %option{value: "#{p.id}"}
+                = p.genre
+          %select.search-box__body__form__category__child#category_child1{name:"child"}
+          %div
+            .search-box__body__form__category__gchild#select_gchild1
+        .search-box__body__form__brand
+          = f.label :brand_id_eq do
+            %i.fa.fa-search
+              ブランド名から探す
+            %input{type: :text, placeholder: "例）シャネル", id: "search-input",class: 'box'}
+            .search-box__body__form__brand__search-result#brand-search-result
+            = f.hidden_field :brand_id_eq, id:"hidden-field1"
+        .search-box__body__form__size
+          %label.search-box__body__form__size
+            %i.fa.fa-search
+              サイズを指定する
+          %select.size-name{name: "size-name", type: "text",class:"box",id:"select_size"}
+            %option{value: ""} --
+            %option{value: "160"}洋服のサイズ
+            %option{value: "382"}メンズ靴のサイズ
+            %option{value: "219"}レディース靴のサイズ
+            %option{value: "210"}スカートのサイズ
+            %option{value: "496"}キッズ服のサイズ
+            %option{value: "536"}ベビー・キッズ靴のサイズ
+            %option{value: "469"}ベビー服のサイズ
+            %option{value: "1221"}タイヤのサイズ
+            %option{value: "147"}オートバイのサイズ
+            %option{value: "1268"}ヘルメットのサイズ
+            %option{value: "984"}テレビのサイズ
+            %option{value: "1083"}スキー/スノーボードのサイズ
+            %option{value: "977"}カメラレンズのサイズ
+          .div  
+            .search-box__body__form__size__checkboxes#result_size
+        .search-box__body__form__price
+          = f.label :price do
+            %i.fa.fa-search
+              価格
+          .search-box__body__form__price__box
+            = f.text_field :price_gteq, placeholder: "¥Min", id: "low_price", class: 'leftbox'
+            %span.wave &nbsp;&nbsp;~
+            = f.text_field :price_lteq, placeholder: "¥Max", id: "high_price", class: 'rightbox'
+        .search-box__body__form__condition
+          = f.label :condition_id do
+            %i.fa.fa-search
+              商品の状態
+        .search-box__body__form__condition__checkboxes
+          -Condition.all.each do |t|
+            .search-box__body__form__condition__checkboxes__checkbox
+              %input{type: :checkbox, name: "q[condition_id_in][]",id:"condition_id_in_#{t.id}", value: t.id}
+                %label{for: "condition_id_in_#{t.id}"}
+                  = t.name
+        .search-box__body__form__shipping
+          = f.label :charge do
+            %i.fa.fa-search
+              配送料の負担者
+          .search-box__body__form__shipping__checkboxes
+            .search-box__body__form__shipping__checkboxes__checkbox
+              %input{type: :checkbox, name: "q[shipping_charge_in][]", id:"q_shipping_charge_in_1", value: 1}
+              %label{for: "q_shipping_charge_in_1"}送料込み(出品者負担)
+            .search-box__body__form__shipping__checkboxes__checkbox
+              %input{type: :checkbox, name: "q[shipping_charge_in][]", id:"q_shipping_charge_in_2", value: 2}
+              %label{for: "q_shipping_charge_in_2"}着払い(購入者負担)
+        .search-box__body__form__display
+          = f.label :display_id do
+            %i.fa.fa-search
+              販売状況
+          .div
+            .search-box__body__form__display__checkboxes
+              -Display.all.each do |v|
+                .search-box__body__form__display__checkboxes__checkbox
+                  %input{type: :checkbox, name: "q[display_id_in][]",id:"display_id_in_#{v.id}", value: v.id}
+                  %label{for: "display_id_in_#{v.id}"}
+                    = v.name
+          .search-box__body__form__btn
+            %button.search-box__body__form__btn__clear
+              クリア
+            = f.submit "完了", class: 'completebtn'
