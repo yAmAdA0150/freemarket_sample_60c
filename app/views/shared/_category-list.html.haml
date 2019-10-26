@@ -5,7 +5,7 @@
         = link_to category_path(parent.id), class: 'category_first' do
           = parent.genre
     %li.all-category__first__type
-      = link_to '#', class: 'category_first' do
+      = link_to categories_path, class: 'category_first' do
         カテゴリー一覧
   %ul.all-category__second{id: :center}
 
