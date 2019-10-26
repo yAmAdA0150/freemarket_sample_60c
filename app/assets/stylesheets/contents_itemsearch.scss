@@ -1,27 +1,20 @@
-.search{
-  &__header{
-
-  }
-  &__body{
-    margin: 40px auto 0;
+.search {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto 40px;
     width: 1020px;
-    padding: 0 0 40px;
-    &__sidebar{
-      margin: 0 40px 0 0;
-      float:left;
+    &__body {
+        padding: 0 0 40px;
+        &__sidebar {
+            margin: 0 40px 0 0;
+        }
+        &__content {
+            width: 700px;
+            &__items {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px 12px;
+            }
+        }
     }
-    &__content{
-      height: 1788px;
-      width: 700px;
-      float: left;
-      &__items{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 6px 6px;
-      }
-    }
-  }
-  &__footer{
-    clear: left;
-  }
 }
