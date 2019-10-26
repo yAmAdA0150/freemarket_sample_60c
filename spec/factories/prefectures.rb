@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :size, class: Size do
+  factory :prefecture do
+    id {1}
     name {Faker::Team.name}
   end
 end

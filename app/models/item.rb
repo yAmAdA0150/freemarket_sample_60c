@@ -19,7 +19,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :display
 
-  validates :name, :price, :text, :user_id, :condition_id, :category_id, :display_id ,presence: true
+  validates :name, :price, :text, :condition_id, :display_id ,presence: true
   validates :price, 
             presence: true,
             numericality: { only_integer: true,  greater_than: 299, less_than: 10000000}

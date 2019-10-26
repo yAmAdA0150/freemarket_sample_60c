@@ -4,7 +4,7 @@ $(function() {
     var count = 0;
     // ドラックドロップを保持
     var list = new DataTransfer();
-    // ２つのドロップボックスを定期
+    // 1つのドロップボックスを定期
     var dropBox = $("#dropbox");
     var dropFile = $('#item-drop-zone');
     var camera = $('.camera-image');

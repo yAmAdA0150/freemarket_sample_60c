@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :size, class: Size do
+  factory :condition, class: Condition do
     name {Faker::Team.name}
   end
 end
