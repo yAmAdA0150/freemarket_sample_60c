@@ -1,16 +1,8 @@
 class Api::ItemsController < ApplicationController
   def search
-    if params[:q].present?
-      # 検索フォームからアクセスした時の処
       @q = Item.ransack(search_params)
       @items = @q.result
       render 'api/items/search.js.erb'
-    else
-    # 検索フォーム以外からアクセスした時の処理
-      params[:q] = { sorts: 'id desc' }
-      @q = Item.ransack(params[:q])
-      @items = Item.all
-    end
   end
 
   private
