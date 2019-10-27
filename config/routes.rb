@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'items#index'
 
-  # resource :user, only: [:destroy]
-
   resources :categories, only: [:show, :index]
 
   resources :users, only: [:show, :edit, :destroy, :update] do
@@ -35,6 +33,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :categories, only: :index
+    resources :items, except: [:index, :new, :create, :edit, :show, :update, :destroy] do
+      collection do
+        get 'search'
+      end
+    end
   end
 
   resources :signup do 
