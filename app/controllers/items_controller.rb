@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    
     if params[:q].present?
       # 検索フォームからアクセスした時の処
       @q = Item.ransack(search_params)

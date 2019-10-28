@@ -3,7 +3,7 @@
   .search__body__sidebar
     =render "shared/itemsearch_sidebar"
   .search__body__content
-    .search__body__content__items
+    .search__body__content__items#itemsearch-result
       -@items.each do |item|
         = render partial:"shared/item", locals: { item: item }
 =render "shared/footer"
