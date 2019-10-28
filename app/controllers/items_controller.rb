@@ -2,8 +2,9 @@ class ItemsController < ApplicationController
   before_action :header_category 
   before_action :set_item, except: [:index,:new,:create,:search]
   before_action :set_address, only:[:confirmation, :done]
-  before_action :not_buy_selfitem, only:[:confirmation, :buy, :done]
+  before_action :not_buy, only:[:confirmation, :buy, :done]
   before_action :not_edit_desrtoy_otheritem, only:[:edit, :destroy]
+
   require 'payjp'
 
   def index
@@ -168,8 +169,10 @@ class ItemsController < ApplicationController
     @address = Address.find(current_user.id)
   end
 
-  def not_buy_selfitem
-    redirect_to root_path unless @item.user_id != current_user.id
+  def not_buy
+    if @item.user_id == current_user.id || @item.display_id != 1
+    redirect_to root_path 
+    end
   end
 
   def not_edit_destroy_otheritem
