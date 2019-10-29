@@ -201,7 +201,8 @@ $(function() {
             });
 
             $(".search-box__body__form__btn__clear").bind("click", function(){
-              $(this.form).find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
+              $(this.form).find("textarea, :text").val("").end().find(":checked").prop("checked", false);
         });
       });
+
 });

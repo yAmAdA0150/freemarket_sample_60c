@@ -116,6 +116,8 @@
                 }
                 &__size {
                     &__checkboxes {
+                        position:relative;
+                        top: -32px;
                         grid-template-columns: repeat(2, 4fr);
                         gap: 10px 10px;
                         &__checkbox {
