@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index,:new,:create,:search]
   before_action :set_address, only:[:confirmation, :done]
   before_action :not_buy, only:[:confirmation, :buy, :done]
-  before_action :not_edit_desrtoy_otheritem, only:[:edit, :destroy]
+  before_action :not_edit_destroy_otheritem, only:[:edit, :destroy]
 
   require 'payjp'
 
